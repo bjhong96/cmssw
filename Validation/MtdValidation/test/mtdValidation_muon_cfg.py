@@ -37,10 +37,14 @@ process.MessageLogger.cerr.FwkReport  = cms.untracked.PSet(
     reportEvery = cms.untracked.int32(100),
 )
 
+# input files from correct CMSSW version!
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
 #        'file:step3.root'
-	'file:/eos/cms/store/relval/CMSSW_13_2_0_pre1/RelValZMM_14/GEN-SIM-RECO/PU_131X_mcRun4_realistic_v5_2026D95PU200-v1/2590000/0d9804a2-bdf6-45a6-8a97-8440b3dc88fa.root'
+#	'/store/relval/CMSSW_13_1_0_pre3/RelValZEE_14/GEN-SIM-RECO/PU_131X_mcRun4_realistic_v2_2026D95PU200-v1/00000/00ac807f-b506-4e65-8f14-49f9f9e9dbf5.root'
+#	'file:/eos/cms/store/relval/CMSSW_13_2_0_pre1/RelValZMM_14/GEN-SIM-RECO/PU_131X_mcRun4_realistic_v5_2026D95PU200-v1/2590000/0d9804a2-bdf6-45a6-8a97-8440b3dc88fa.root'
+#	'file:/eos/cms/store/relval/CMSSW_13_2_0_pre1/RelValZEE_14/GEN-SIM-RECO/PU_131X_mcRun4_realistic_v5_2026D95PU200-v1/2590000/0ed9d685-abfc-4b43-8b89-26099a64f09a.root'
+	'file:/eos/cms/store/relval/CMSSW_13_2_0_pre1/RelValTTbar_14TeV/GEN-SIM-RECO/PU_131X_mcRun4_realistic_v5_2026D95PU200-v1/2590000/237052f0-eff3-431f-81a2-9e34823953d7.root'
     )
 )
 
@@ -61,6 +65,8 @@ etlValidation = cms.Sequence(process.etlSimHitsValid + process.etlDigiHitsValid 
 
 # --- Global Validation
 process.load("Validation.MtdValidation.mtdTracksValid_cfi")
+process.load("Validation.MtdValidation.mtdEleIsoValid_cfi")   #Normunds
+process.load("Validation.MtdValidation.mtdMuonIsoValid_cfi")
 process.load("Validation.MtdValidation.vertices4DValid_cfi")
 
 # process.btlDigiHitsValid.optionalPlots = True
@@ -70,7 +76,9 @@ process.load("Validation.MtdValidation.vertices4DValid_cfi")
 # process.mtdTracksValid.optionalPlots = True
 # process.vertices4DValid.optionalPlots = True
 
-process.validation = cms.Sequence(btlValidation + etlValidation + process.mtdTracksValid + process.vertices4DValid)
+#process.validation = cms.Sequence(btlValidation + etlValidation + process.mtdTracksValid + process.vertices4DValid)
+#process.validation = cms.Sequence(btlValidation + etlValidation + process.mtdTracksValid + process.mtdEleIsoValid + process.vertices4DValid)   #Normunds
+process.validation = cms.Sequence(btlValidation + etlValidation + process.mtdTracksValid + process.mtdEleIsoValid + process.mtdMuonIsoValid + process.vertices4DValid)
 
 process.DQMoutput = cms.OutputModule("DQMRootOutputModule",
     dataset = cms.untracked.PSet(

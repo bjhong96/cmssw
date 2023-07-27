@@ -13,6 +13,8 @@ process.load("Configuration.Geometry.GeometryExtended2026D95Reco_cff")
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
+#mylist = FileUtils.loadListFromFile('filenames_update.txt') # input file with file names from grid grid control output
+
 process.MessageLogger.cerr.FwkReport  = cms.untracked.PSet(
     reportEvery = cms.untracked.int32(-1),
 )
@@ -21,6 +23,11 @@ process.MessageLogger.cerr.FwkReport  = cms.untracked.PSet(
 process.source = cms.Source("DQMRootSource",
     fileNames = cms.untracked.vstring('file:step3_inDQM.root')
 )
+
+# input source, when using grid control - from file with filename list
+# process.source = cms.Source("DQMRootSource",
+#     fileNames = cms.untracked.vstring(*mylist)
+# )
 
 # Path and EndPath definitions
 
@@ -32,9 +39,13 @@ process.dqmsave_step = cms.Path(process.DQMSaver)
 process.load("Validation.MtdValidation.btlSimHitsPostProcessor_cfi")
 process.load("Validation.MtdValidation.btlLocalRecoPostProcessor_cfi")
 process.load("Validation.MtdValidation.MtdTracksPostProcessor_cfi")
+process.load("Validation.MtdValidation.MtdEleIsoPostProcessor_cfi")   # Normunds
+process.load("Validation.MtdValidation.MtdMuonIsoPostProcessor_cfi")
 process.load("Validation.MtdValidation.Primary4DVertexPostProcessor_cfi")
 
-process.harvesting = cms.Sequence(process.btlSimHitsPostProcessor + process.btlLocalRecoPostProcessor + process.MtdTracksPostProcessor + process.Primary4DVertexPostProcessor)
+#process.harvesting = cms.Sequence(process.btlSimHitsPostProcessor + process.btlLocalRecoPostProcessor + process.MtdTracksPostProcessor + process.Primary4DVertexPostProcessor)
+#process.harvesting = cms.Sequence(process.btlSimHitsPostProcessor + process.btlLocalRecoPostProcessor + process.MtdTracksPostProcessor + process.MtdEleIsoPostProcessor + process.Primary4DVertexPostProcessor)   # Normunds
+process.harvesting = cms.Sequence(process.btlSimHitsPostProcessor + process.btlLocalRecoPostProcessor + process.MtdTracksPostProcessor + process.MtdEleIsoPostProcessor + process.MtdMuonIsoPostProcessor + process.Primary4DVertexPostProcessor)
 
 process.p = cms.Path( process.harvesting )
 

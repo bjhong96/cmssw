@@ -51,6 +51,7 @@ void BtlSimHitsHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
   // --- Get the monitoring histograms
   MonitorElement* meBtlHitLogEnergy = igetter.get(folder_ + "BtlHitLogEnergy");
   MonitorElement* meNevents = igetter.get(folder_ + "BtlNevents");
+  std::cout << "Hi" << std::endl;
 
   if (!meBtlHitLogEnergy || !meNevents) {
     edm::LogError("BtlSimHitsHarvester") << "Monitoring histograms not found!" << std::endl;

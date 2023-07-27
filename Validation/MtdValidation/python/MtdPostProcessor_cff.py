@@ -4,7 +4,9 @@ from Validation.MtdValidation.btlSimHitsPostProcessor_cfi import btlSimHitsPostP
 from Validation.MtdValidation.btlLocalRecoPostProcessor_cfi import btlLocalRecoPostProcessor
 from Validation.MtdValidation.MtdTracksPostProcessor_cfi import MtdTracksPostProcessor
 from Validation.MtdValidation.MtdEleIsoPostProcessor_cfi import MtdEleIsoPostProcessor #Normunds
+from Validation.MtdValidation.MtdMuonIsoPostProcessor_cfi import MtdMuonIsoPostProcessor #BJ
 from Validation.MtdValidation.Primary4DVertexPostProcessor_cfi import Primary4DVertexPostProcessor
 
 #mtdValidationPostProcessor = cms.Sequence(btlSimHitsPostProcessor + btlLocalRecoPostProcessor + MtdTracksPostProcessor + Primary4DVertexPostProcessor)
-mtdValidationPostProcessor = cms.Sequence(btlSimHitsPostProcessor + btlLocalRecoPostProcessor + MtdTracksPostProcessor + MtdEleIsoPostProcessor + Primary4DVertexPostProcessor) #Normunds
+#mtdValidationPostProcessor = cms.Sequence(btlSimHitsPostProcessor + btlLocalRecoPostProcessor + MtdTracksPostProcessor + MtdEleIsoPostProcessor + Primary4DVertexPostProcessor) #Normunds
+mtdValidationPostProcessor = cms.Sequence(btlSimHitsPostProcessor + btlLocalRecoPostProcessor + MtdTracksPostProcessor + MtdEleIsoPostProcessor + MtdMuonIsoPostProcessor + Primary4DVertexPostProcessor) #BJ
