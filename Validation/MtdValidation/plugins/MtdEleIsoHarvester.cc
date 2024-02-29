@@ -600,6 +600,10 @@ void MtdEleIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter& 
         !meEle_pt_MTD_4sigma_Sig_EE_ || !meEle_pt_MTD_3sigma_Sig_EE_ || !meEle_pt_MTD_2sigma_Sig_EE_ ||
         !meEle_pt_MTD_4sigma_Bkg_EB_ || !meEle_pt_MTD_3sigma_Bkg_EB_ || !meEle_pt_MTD_2sigma_Bkg_EB_ ||
         !meEle_pt_MTD_4sigma_Bkg_EE_ || !meEle_pt_MTD_3sigma_Bkg_EE_ || !meEle_pt_MTD_2sigma_Bkg_EE_ ||
+        !meEle_pt_sim_MTD_4sigma_Sig_EB_ || !meEle_pt_sim_MTD_3sigma_Sig_EB_ || !meEle_pt_sim_MTD_2sigma_Sig_EB_ ||
+        !meEle_pt_sim_MTD_4sigma_Sig_EE_ || !meEle_pt_sim_MTD_3sigma_Sig_EE_ || !meEle_pt_sim_MTD_2sigma_Sig_EE_ ||
+        !meEle_pt_sim_MTD_4sigma_Bkg_EB_ || !meEle_pt_sim_MTD_3sigma_Bkg_EB_ || !meEle_pt_sim_MTD_2sigma_Bkg_EB_ ||
+        !meEle_pt_sim_MTD_4sigma_Bkg_EE_ || !meEle_pt_sim_MTD_3sigma_Bkg_EE_ || !meEle_pt_sim_MTD_2sigma_Bkg_EE_ ||
         !meEle_eta_MTD_4sigma_Sig_EB_ || !meEle_eta_MTD_3sigma_Sig_EB_ || !meEle_eta_MTD_2sigma_Sig_EB_ ||
         !meEle_phi_MTD_4sigma_Sig_EB_ || !meEle_phi_MTD_3sigma_Sig_EB_ || !meEle_phi_MTD_2sigma_Sig_EB_ ||
         !meEle_eta_MTD_4sigma_Sig_EE_ || !meEle_eta_MTD_3sigma_Sig_EE_ || !meEle_eta_MTD_2sigma_Sig_EE_ ||
@@ -2091,7 +2095,7 @@ void MtdEleIsoHarvester::fillDescriptions(edm::ConfigurationDescriptions& descri
   edm::ParameterSetDescription desc;
 
   desc.add<std::string>("folder", "MTD/ElectronIso/");
-  desc.add<bool>("option_plots", false);
+  desc.add<bool>("option_plots", true);
 
   descriptions.add("MtdEleIsoPostProcessor", desc);
 }
