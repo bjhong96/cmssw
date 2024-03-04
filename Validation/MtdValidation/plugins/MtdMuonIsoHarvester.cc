@@ -71,6 +71,20 @@ private:
   MonitorElement* mePtEffMTD_sim_4sigma_Sig_EB_;
   MonitorElement* mePtEffMTD_sim_3sigma_Sig_EB_;
   MonitorElement* mePtEffMTD_sim_2sigma_Sig_EB_;
+  // test
+  MonitorElement* mePtEffMTD_gen_4sigma_Sig_EB_;
+  MonitorElement* mePtEffMTD_gen_3sigma_Sig_EB_;
+  MonitorElement* mePtEffMTD_gen_2sigma_Sig_EB_;
+  MonitorElement* mePtEffMTD_gen_4sigma_Sig_EE_;
+  MonitorElement* mePtEffMTD_gen_3sigma_Sig_EE_;
+  MonitorElement* mePtEffMTD_gen_2sigma_Sig_EE_;
+  MonitorElement* mePtEffMTD_gen_4sigma_Bkg_EB_;
+  MonitorElement* mePtEffMTD_gen_3sigma_Bkg_EB_;
+  MonitorElement* mePtEffMTD_gen_2sigma_Bkg_EB_;
+  MonitorElement* mePtEffMTD_gen_4sigma_Bkg_EE_;
+  MonitorElement* mePtEffMTD_gen_3sigma_Bkg_EE_;
+  MonitorElement* mePtEffMTD_gen_2sigma_Bkg_EE_;
+  // test end
 
   MonitorElement* mePtEffMTD_4sigma_Sig_EB_;
   MonitorElement* meEtaEffMTD_4sigma_Sig_EB_;
@@ -332,6 +346,20 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
   MonitorElement* meMuon_pt_sim_MTD_2sigma_Sig_EB_ = igetter.get(folder_ + "Muon_pT_sim_MTD_2sigma_Sig_EB");
   MonitorElement* meMuon_pt_sim_MTD_3sigma_Sig_EB_ = igetter.get(folder_ + "Muon_pT_sim_MTD_3sigma_Sig_EB");
   MonitorElement* meMuon_pt_sim_MTD_4sigma_Sig_EB_ = igetter.get(folder_ + "Muon_pT_sim_MTD_4sigma_Sig_EB");
+  // test
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Sig_EB_ = igetter.get(folder_ + "Muon_pT_gen_MTD_2sigma_Sig_EB");
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Sig_EB_ = igetter.get(folder_ + "Muon_pT_gen_MTD_3sigma_Sig_EB");
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Sig_EB_ = igetter.get(folder_ + "Muon_pT_gen_MTD_4sigma_Sig_EB");
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Sig_EE_ = igetter.get(folder_ + "Muon_pT_gen_MTD_2sigma_Sig_EE");
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Sig_EE_ = igetter.get(folder_ + "Muon_pT_gen_MTD_3sigma_Sig_EE");
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Sig_EE_ = igetter.get(folder_ + "Muon_pT_gen_MTD_4sigma_Sig_EE");
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Bkg_EB_ = igetter.get(folder_ + "Muon_pT_gen_MTD_2sigma_Bkg_EB");
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Bkg_EB_ = igetter.get(folder_ + "Muon_pT_gen_MTD_3sigma_Bkg_EB");
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Bkg_EB_ = igetter.get(folder_ + "Muon_pT_gen_MTD_4sigma_Bkg_EB");
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Bkg_EE_ = igetter.get(folder_ + "Muon_pT_gen_MTD_2sigma_Bkg_EE");
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Bkg_EE_ = igetter.get(folder_ + "Muon_pT_gen_MTD_3sigma_Bkg_EE");
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Bkg_EE_ = igetter.get(folder_ + "Muon_pT_gen_MTD_4sigma_Bkg_EE");
+  // test end
 
   MonitorElement* meMuon_pt_MTD_2sigma_Sig_EB_ = igetter.get(folder_ + "Muon_pT_MTD_2sigma_Sig_EB");
   MonitorElement* meMuon_eta_MTD_2sigma_Sig_EB_ = igetter.get(folder_ + "Muon_eta_MTD_2sigma_Sig_EB");
@@ -736,7 +764,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_4sigma_Sig_EB_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Sig_EB_, meMuon_pt_tot_Sig_EB_, mePtEffMTD_sim_4sigma_Sig_EB_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Sig_EB_, meMuon_pt_sim_tot_Sig_EB_, mePtEffMTD_sim_4sigma_Sig_EB_);
 
     mePtEffMTD_sim_3sigma_Sig_EB_ =
         ibook.book1D("pTeffMTD_sim_3sigma_Sig_EB",
@@ -745,7 +773,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_3sigma_Sig_EB_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Sig_EB_, meMuon_pt_tot_Sig_EB_, mePtEffMTD_sim_3sigma_Sig_EB_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Sig_EB_, meMuon_pt_sim_tot_Sig_EB_, mePtEffMTD_sim_3sigma_Sig_EB_);
 
     mePtEffMTD_sim_2sigma_Sig_EB_ =
         ibook.book1D("pTeffMTD_sim_2sigma_Sig_EB",
@@ -754,7 +782,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_2sigma_Sig_EB_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Sig_EB_, meMuon_pt_tot_Sig_EB_, mePtEffMTD_sim_2sigma_Sig_EB_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Sig_EB_, meMuon_pt_sim_tot_Sig_EB_, mePtEffMTD_sim_2sigma_Sig_EB_);
 
     meEtaEffMTD_1_Sig_EB_ = ibook.book1D("EtaEffMTD_1_Sig_EB",
                                          " MTD isolation Efficiency 1 Signal Barrel VS Eta;#eta;Efficiency",
@@ -974,6 +1002,97 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
   computeEfficiency1D(meMuon_phi_noMTD_Sig_EB_, meMuon_phi_tot_Sig_EB_, mePhiEffnoMTD_Sig_EB_);
 
   if (optionalPlots_) {
+    // test
+      // Sig EB
+    mePtEffMTD_gen_4sigma_Sig_EB_ = ibook.book1D("pTeffMTD_gen_4sigma_Sig_EB",
+		    " MTD isolation Efficiency GEN - 4 sigma compatibility - Signal Barrel VS pT;p_{T};Efficiency",
+		    meMuon_pt_sim_tot_Sig_EB_->getNbinsX(),
+		    meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmin(),
+		    meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_4sigma_Sig_EB_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_4sigma_Sig_EB_, meMuon_pt_sim_tot_Sig_EB_, mePtEffMTD_gen_4sigma_Sig_EB_);
+    mePtEffMTD_gen_3sigma_Sig_EB_ = ibook.book1D("pTeffMTD_gen_3sigma_Sig_EB",
+		    " MTD isolation Efficiency GEN - 3 sigma compatibility - Signal Barrel VS pT;p_{T};Efficiency",
+		    meMuon_pt_sim_tot_Sig_EB_->getNbinsX(),
+		    meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmin(),
+		    meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_3sigma_Sig_EB_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_3sigma_Sig_EB_, meMuon_pt_sim_tot_Sig_EB_, mePtEffMTD_gen_3sigma_Sig_EB_);
+    mePtEffMTD_gen_2sigma_Sig_EB_ = ibook.book1D("pTeffMTD_gen_2sigma_Sig_EB",
+		    " MTD isolation Efficiency GEN - 2 sigma compatibility - Signal Barrel VS pT;p_{T};Efficiency",
+		    meMuon_pt_sim_tot_Sig_EB_->getNbinsX(),
+		    meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmin(),
+		    meMuon_pt_sim_tot_Sig_EB_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_2sigma_Sig_EB_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_2sigma_Sig_EB_, meMuon_pt_sim_tot_Sig_EB_, mePtEffMTD_gen_2sigma_Sig_EB_);
+      // Sig EE
+    mePtEffMTD_gen_4sigma_Sig_EE_ = ibook.book1D("pTeffMTD_gen_4sigma_Sig_EE",
+		    " MTD isolation Efficiency GEN - 4 sigma compatibility - Signal Endcap VS pT;p_{T};Efficiency",
+		    meMuon_pt_sim_tot_Sig_EE_->getNbinsX(),
+		    meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmin(),
+		    meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_4sigma_Sig_EE_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_4sigma_Sig_EE_, meMuon_pt_sim_tot_Sig_EE_, mePtEffMTD_gen_4sigma_Sig_EE_);
+    mePtEffMTD_gen_3sigma_Sig_EE_ = ibook.book1D("pTeffMTD_gen_3sigma_Sig_EE",
+		    " MTD isolation Efficiency GEN - 3 sigma compatibility - Signal Endcap VS pT;p_{T};Efficiency",
+		    meMuon_pt_sim_tot_Sig_EE_->getNbinsX(),
+		    meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmin(),
+		    meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_3sigma_Sig_EE_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_3sigma_Sig_EE_, meMuon_pt_sim_tot_Sig_EE_, mePtEffMTD_gen_3sigma_Sig_EE_);
+    mePtEffMTD_gen_2sigma_Sig_EE_ = ibook.book1D("pTeffMTD_gen_2sigma_Sig_EE",
+		    " MTD isolation Efficiency GEN - 2 sigma compatibility - Signal Endcap VS pT;p_{T};Efficiency",
+		    meMuon_pt_sim_tot_Sig_EE_->getNbinsX(),
+		    meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmin(),
+		    meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_2sigma_Sig_EE_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_2sigma_Sig_EE_, meMuon_pt_sim_tot_Sig_EE_, mePtEffMTD_gen_2sigma_Sig_EE_);
+      // Bkg EB
+    mePtEffMTD_gen_4sigma_Bkg_EB_ = ibook.book1D("pTeffMTD_gen_4sigma_Bkg_EB",
+		 " MTD isolation Efficiency GEN - 4 sigma compatibility - Background Barrel VS pT;p_{T};Efficiency",
+		 meMuon_pt_sim_tot_Bkg_EB_->getNbinsX(),
+		 meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmin(),
+		 meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_4sigma_Bkg_EB_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_4sigma_Bkg_EB_, meMuon_pt_sim_tot_Bkg_EB_, mePtEffMTD_gen_4sigma_Bkg_EB_);
+    mePtEffMTD_gen_3sigma_Bkg_EB_ = ibook.book1D("pTeffMTD_gen_3sigma_Bkg_EB",
+		 " MTD isolation Efficiency GEN - 3 sigma compatibility - Background Barrel VS pT;p_{T};Efficiency",
+		 meMuon_pt_sim_tot_Bkg_EB_->getNbinsX(),
+		 meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmin(),
+		 meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_3sigma_Bkg_EB_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_3sigma_Bkg_EB_, meMuon_pt_sim_tot_Bkg_EB_, mePtEffMTD_gen_3sigma_Bkg_EB_);
+    mePtEffMTD_gen_2sigma_Bkg_EB_ = ibook.book1D("pTeffMTD_gen_2sigma_Bkg_EB",
+		 " MTD isolation Efficiency GEN - 2 sigma compatibility - Background Barrel VS pT;p_{T};Efficiency",
+		 meMuon_pt_sim_tot_Bkg_EB_->getNbinsX(),
+		 meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmin(),
+		 meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_2sigma_Bkg_EB_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_2sigma_Bkg_EB_, meMuon_pt_sim_tot_Bkg_EB_, mePtEffMTD_gen_2sigma_Bkg_EB_);
+      // Bkg EE
+    mePtEffMTD_gen_4sigma_Bkg_EE_ = ibook.book1D("pTeffMTD_gen_4sigma_Bkg_EE",
+		 " MTD isolation Efficiency GEN - 4 sigma compatibility - Background Barrel VS pT;p_{T};Efficiency",
+		 meMuon_pt_sim_tot_Bkg_EE_->getNbinsX(),
+		 meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmin(),
+		 meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_4sigma_Bkg_EE_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_4sigma_Bkg_EE_, meMuon_pt_sim_tot_Bkg_EE_, mePtEffMTD_gen_4sigma_Bkg_EE_);
+    mePtEffMTD_gen_3sigma_Bkg_EE_ = ibook.book1D("pTeffMTD_gen_3sigma_Bkg_EE",
+		 " MTD isolation Efficiency GEN - 3 sigma compatibility - Background Barrel VS pT;p_{T};Efficiency",
+		 meMuon_pt_sim_tot_Bkg_EE_->getNbinsX(),
+		 meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmin(),
+		 meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_3sigma_Bkg_EE_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_3sigma_Bkg_EE_, meMuon_pt_sim_tot_Bkg_EE_, mePtEffMTD_gen_3sigma_Bkg_EE_);
+    mePtEffMTD_gen_2sigma_Bkg_EE_ = ibook.book1D("pTeffMTD_gen_2sigma_Bkg_EE",
+		 " MTD isolation Efficiency GEN - 2 sigma compatibility - Background Barrel VS pT;p_{T};Efficiency",
+		 meMuon_pt_sim_tot_Bkg_EE_->getNbinsX(),
+		 meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmin(),
+		 meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmax());
+    mePtEffMTD_gen_2sigma_Bkg_EE_->getTH1()->SetMinimum(0.);
+    computeEfficiency1D(meMuon_pt_gen_MTD_2sigma_Bkg_EE_, meMuon_pt_sim_tot_Bkg_EE_, mePtEffMTD_gen_2sigma_Bkg_EE_);
+
+    // test end
     mePtEffgen_Sig_EB_ = ibook.book1D("pTeffMTD_gen_Sig_EB",
                                       " MTD isolation Efficiency - genInfo - Signal Barrel VS pT;p_{T};Efficiency",
                                       meMuon_pt_sim_tot_Sig_EB_->getNbinsX(),
@@ -1103,7 +1222,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_4sigma_Sig_EE_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Sig_EE_, meMuon_pt_tot_Sig_EE_, mePtEffMTD_sim_4sigma_Sig_EE_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Sig_EE_, meMuon_pt_sim_tot_Sig_EE_, mePtEffMTD_sim_4sigma_Sig_EE_);
 
     mePtEffMTD_sim_3sigma_Sig_EE_ =
         ibook.book1D("pTeffMTD_sim_3sigma_Sig_EE",
@@ -1112,7 +1231,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_3sigma_Sig_EE_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Sig_EE_, meMuon_pt_tot_Sig_EE_, mePtEffMTD_sim_3sigma_Sig_EE_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Sig_EE_, meMuon_pt_sim_tot_Sig_EE_, mePtEffMTD_sim_3sigma_Sig_EE_);
 
     mePtEffMTD_sim_2sigma_Sig_EE_ =
         ibook.book1D("pTeffMTD_sim_2sigma_Sig_EE",
@@ -1121,7 +1240,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Sig_EE_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_2sigma_Sig_EE_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Sig_EE_, meMuon_pt_tot_Sig_EE_, mePtEffMTD_sim_2sigma_Sig_EE_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Sig_EE_, meMuon_pt_sim_tot_Sig_EE_, mePtEffMTD_sim_2sigma_Sig_EE_);
 
     meEtaEffMTD_1_Sig_EE_ = ibook.book1D("EtaEffMTD_1_Sig_EE",
                                          " MTD isolation Efficiency 1 Signal Endcap VS Eta;#eta;Efficiency",
@@ -1470,7 +1589,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_4sigma_Bkg_EB_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Bkg_EB_, meMuon_pt_tot_Bkg_EB_, mePtEffMTD_sim_4sigma_Bkg_EB_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Bkg_EB_, meMuon_pt_sim_tot_Bkg_EB_, mePtEffMTD_sim_4sigma_Bkg_EB_);
 
     mePtEffMTD_sim_3sigma_Bkg_EB_ =
         ibook.book1D("pTeffMTD_sim_3sigma_Bkg_EB",
@@ -1479,7 +1598,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_3sigma_Bkg_EB_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Bkg_EB_, meMuon_pt_tot_Bkg_EB_, mePtEffMTD_sim_3sigma_Bkg_EB_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Bkg_EB_, meMuon_pt_sim_tot_Bkg_EB_, mePtEffMTD_sim_3sigma_Bkg_EB_);
 
     mePtEffMTD_sim_2sigma_Bkg_EB_ =
         ibook.book1D("pTeffMTD_sim_2sigma_Bkg_EB",
@@ -1488,7 +1607,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Bkg_EB_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_2sigma_Bkg_EB_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Bkg_EB_, meMuon_pt_tot_Bkg_EB_, mePtEffMTD_sim_2sigma_Bkg_EB_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Bkg_EB_, meMuon_pt_sim_tot_Bkg_EB_, mePtEffMTD_sim_2sigma_Bkg_EB_);
 
     meEtaEffMTD_1_Bkg_EB_ = ibook.book1D("EtaEffMTD_1_Bkg_EB",
                                          " MTD isolation Efficiency - 1 Bkg Barrel VS Eta;#eta;Efficiency",
@@ -1864,7 +1983,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_4sigma_Bkg_EE_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Bkg_EE_, meMuon_pt_tot_Bkg_EE_, mePtEffMTD_sim_4sigma_Bkg_EE_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_4sigma_Bkg_EE_, meMuon_pt_sim_tot_Bkg_EE_, mePtEffMTD_sim_4sigma_Bkg_EE_);
 
     mePtEffMTD_sim_3sigma_Bkg_EE_ =
         ibook.book1D("pTeffMTD_sim_3sigma_Bkg_EE",
@@ -1873,7 +1992,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_3sigma_Bkg_EE_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Bkg_EE_, meMuon_pt_tot_Bkg_EE_, mePtEffMTD_sim_3sigma_Bkg_EE_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_3sigma_Bkg_EE_, meMuon_pt_sim_tot_Bkg_EE_, mePtEffMTD_sim_3sigma_Bkg_EE_);
 
     mePtEffMTD_sim_2sigma_Bkg_EE_ =
         ibook.book1D("pTeffMTD_sim_2sigma_Bkg_EE",
@@ -1882,7 +2001,7 @@ void MtdMuonIsoHarvester::dqmEndJob(DQMStore::IBooker& ibook, DQMStore::IGetter&
                      meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmin(),
                      meMuon_pt_sim_tot_Bkg_EE_->getTH1()->GetXaxis()->GetXmax());
     mePtEffMTD_sim_2sigma_Bkg_EE_->getTH1()->SetMinimum(0.);
-    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Bkg_EE_, meMuon_pt_tot_Bkg_EE_, mePtEffMTD_sim_2sigma_Bkg_EE_);
+    computeEfficiency1D(meMuon_pt_sim_MTD_2sigma_Bkg_EE_, meMuon_pt_sim_tot_Bkg_EE_, mePtEffMTD_sim_2sigma_Bkg_EE_);
 
     meEtaEffMTD_1_Bkg_EE_ = ibook.book1D("EtaEffMTD_1_Bkg_EE",
                                          " MTD isolation Efficiency - 1 Bkg Endcap VS Eta;#eta;Efficiency",
