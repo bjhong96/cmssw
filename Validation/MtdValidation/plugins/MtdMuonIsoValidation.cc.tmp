@@ -126,34 +126,141 @@ private:
 
   // histograms for testing
   
-  MonitorElement* meMuonISO_time_muon_reco_;
-  MonitorElement* meMuonISO_time_trk_reco_;
-  MonitorElement* meMuonISO_time_muon_sim_;
-  MonitorElement* meMuonISO_time_trk_sim_;
+  // test for GEN CASE
+  std::vector<MonitorElement*> Muon_pT_gen_MTD_EB_list_Significance_Sig;
+  std::vector<MonitorElement*> Muon_pT_gen_MTD_EE_list_Significance_Sig;
+  std::vector<MonitorElement*> Muon_pT_gen_MTD_EB_list_Significance_Bkg;
+  std::vector<MonitorElement*> Muon_pT_gen_MTD_EE_list_Significance_Bkg;
 
-  MonitorElement* meMuonISO_have_time_muon_reco_;
-  MonitorElement* meMuonISO_have_time_trk_reco_;
-  MonitorElement* meMuonISO_have_time_muon_sim_;
-  MonitorElement* meMuonISO_have_time_trk_sim_;
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Sig_EB_;
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Sig_EB_;
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Sig_EB_;
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Sig_EE_;
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Sig_EE_;
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Sig_EE_;
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Bkg_EB_;
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Bkg_EB_;
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Bkg_EB_;
+  MonitorElement* meMuon_pt_gen_MTD_2sigma_Bkg_EE_;
+  MonitorElement* meMuon_pt_gen_MTD_3sigma_Bkg_EE_;
+  MonitorElement* meMuon_pt_gen_MTD_4sigma_Bkg_EE_;
 
-  MonitorElement* meMuonISO_dt_muon_trk_reco_1_;
-  MonitorElement* meMuonISO_dt_muon_trk_reco_2_;
-  MonitorElement* meMuonISO_dt_muon_trk_sim_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_;
+  std::vector<MonitorElement*> ch_iso_gen_EB_list_Significance_Sig;
+  std::vector<MonitorElement*> ch_iso_gen_EE_list_Significance_Sig;
+  std::vector<MonitorElement*> ch_iso_gen_EB_list_Significance_Bkg;
+  std::vector<MonitorElement*> ch_iso_gen_EE_list_Significance_Bkg;
 
-  MonitorElement* meMuonISO_mva_muon_reco_;
-  MonitorElement* meMuonISO_mva_trk_reco_;
-  MonitorElement* meMuonISO_mva_muon_sim_;
-  MonitorElement* meMuonISO_mva_trk_sim_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_2sigma_Sig_EB_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_3sigma_Sig_EB_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_4sigma_Sig_EB_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_2sigma_Bkg_EB_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_3sigma_Bkg_EB_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_4sigma_Bkg_EB_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_2sigma_Sig_EE_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_3sigma_Sig_EE_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_4sigma_Sig_EE_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_2sigma_Bkg_EE_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_3sigma_Bkg_EE_;
+  MonitorElement* meMuonISO_chIso_MTD_gen_4sigma_Bkg_EE_;
+  
+  std::vector<MonitorElement*> rel_ch_iso_gen_EB_list_Significance_Sig;
+  std::vector<MonitorElement*> rel_ch_iso_gen_EE_list_Significance_Sig;
+  std::vector<MonitorElement*> rel_ch_iso_gen_EB_list_Significance_Bkg;
+  std::vector<MonitorElement*> rel_ch_iso_gen_EE_list_Significance_Bkg;
+  
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_2sigma_Sig_EB_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_3sigma_Sig_EB_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_4sigma_Sig_EB_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_2sigma_Bkg_EB_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_3sigma_Bkg_EB_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_4sigma_Bkg_EB_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_2sigma_Sig_EE_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_3sigma_Sig_EE_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_4sigma_Sig_EE_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_2sigma_Bkg_EE_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_3sigma_Bkg_EE_;
+  MonitorElement* meMuonISO_rel_chIso_MTD_gen_4sigma_Bkg_EE_;
+  
+  // Several tests
+  
+  MonitorElement* meMuonISO_trk_genMatched_Sig_;
+  MonitorElement* meMuonISO_trk_genMatched_Sig_EB_;
+  MonitorElement* meMuonISO_trk_genMatched_Sig_EE_;
+  MonitorElement* meMuonISO_trk_genMatched_Bkg_;
+  MonitorElement* meMuonISO_trk_genMatched_Bkg_EB_;
+  MonitorElement* meMuonISO_trk_genMatched_Bkg_EE_;
 
-  MonitorElement* meMuonISO_dz_mus_;
-  MonitorElement* meMuonISO_dz_mus_EB_;
-  MonitorElement* meMuonISO_dz_mus_EE_;
-  MonitorElement* meMuonISO_dxy_mus_;
-  MonitorElement* meMuonISO_dxy_mus_EB_;
-  MonitorElement* meMuonISO_dxy_mus_EE_;
+  MonitorElement* meMuonISO_pTdiff_reco_tracker_muon_Sig_;
+  MonitorElement* meMuonISO_pTdiff_reco_tracker_muon_Bkg_;
+  
+  MonitorElement* meMuonISO_pT_muon_sim_;
+  MonitorElement* meMuonISO_pT_trk_sim_;
+  
+  MonitorElement* meMuonISO_time_muon_reco_Sig_;
+  MonitorElement* meMuonISO_time_muon_reco_Bkg_;
+  MonitorElement* meMuonISO_tErr_muon_reco_Sig_;
+  MonitorElement* meMuonISO_tErr_muon_reco_Bkg_;
+  MonitorElement* meMuonISO_time_trk_reco_Sig_;
+  MonitorElement* meMuonISO_time_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_tErr_trk_reco_Sig_;
+  MonitorElement* meMuonISO_tErr_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_time_muon_sim_Sig_;
+  MonitorElement* meMuonISO_time_muon_sim_Bkg_;
+  MonitorElement* meMuonISO_time_trk_sim_Sig_;
+  MonitorElement* meMuonISO_time_trk_sim_Bkg_;
 
+  MonitorElement* meMuonISO_has_time_muon_reco_Sig_;
+  MonitorElement* meMuonISO_has_time_muon_reco_Bkg_;
+  MonitorElement* meMuonISO_has_time_trk_reco_Sig_;
+  MonitorElement* meMuonISO_has_time_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_has_tErr_muon_reco_Sig_;
+  MonitorElement* meMuonISO_has_tErr_muon_reco_Bkg_;
+  MonitorElement* meMuonISO_has_tErr_trk_reco_Sig_;
+  MonitorElement* meMuonISO_has_tErr_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_has_mva_muon_reco_Sig_;
+  MonitorElement* meMuonISO_has_mva_muon_reco_Bkg_;
+  MonitorElement* meMuonISO_has_mva_trk_reco_Sig_;
+  MonitorElement* meMuonISO_has_mva_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_has_time_muon_sim_Sig_;
+  MonitorElement* meMuonISO_has_time_muon_sim_Bkg_;
+  MonitorElement* meMuonISO_has_time_trk_sim_Sig_;
+  MonitorElement* meMuonISO_has_time_trk_sim_Bkg_;
+
+  MonitorElement* meMuonISO_dt_muon_trk_reco_Sig_;
+  MonitorElement* meMuonISO_dt_muon_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_dt_muon_trk_sim_Sig_;
+  MonitorElement* meMuonISO_dt_muon_trk_sim_Bkg_;
+  MonitorElement* meMuonISO_dt_PV_trk_reco_Sig_;
+  MonitorElement* meMuonISO_dt_PV_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_dt_PV_trk_sim_Sig_;
+  MonitorElement* meMuonISO_dt_PV_trk_sim_Bkg_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_Sig_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_Sig_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_Bkg_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_genMatched_Sig_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_genMatched_Bkg_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_genMatched_Sig_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_genMatched_Bkg_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_Sig_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_Bkg_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_Sig_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_Bkg_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_genMatched_Sig_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_genMatched_Bkg_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_genMatched_Sig_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_genMatched_Bkg_;
+
+  MonitorElement* meMuonISO_mva_muon_reco_Sig_;
+  MonitorElement* meMuonISO_mva_muon_reco_Bkg_;
+  MonitorElement* meMuonISO_mva_trk_reco_Sig_;
+  MonitorElement* meMuonISO_mva_trk_reco_Bkg_;
+
+  MonitorElement* meMuonISO_dz_muon_;
+  MonitorElement* meMuonISO_dxy_muon_;
+
+  MonitorElement* meMuonISO_Nmus_Sig_;
+  MonitorElement* meMuonISO_Nmus_Bkg_;
   MonitorElement* meMuonISO_Nmus_Sig_EB_;
   MonitorElement* meMuonISO_Nmus_Sig_EE_;
   MonitorElement* meMuonISO_Nmus_Bkg_EB_;
@@ -305,7 +412,7 @@ private:
   MonitorElement* meMuonISO_rel_chIso_MTD_sim_4sigma_Sig_EB_;
 
   MonitorElement* meMuon_pt_tot_Sig_EB_;
-  MonitorElement* meMuon_pt_sim_tot_Sig_EB_;  // for GEN case is the same
+  MonitorElement* meMuon_pt_sim_tot_Sig_EB_;  // for GEN case is the same 
   MonitorElement* meMuon_eta_tot_Sig_EB_;
   MonitorElement* meMuon_phi_tot_Sig_EB_;
   MonitorElement* meMuon_pt_MTD_1_Sig_EB_;
@@ -1059,32 +1166,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
   reco::Vertex Vtx_chosen;
   // This part has to be included, because in ~1% of the events, the "good" vertex is the 1st one not the 0th one in the collection
-  /*
-  // test
-  cout << " " << endl;
-  cout << "N vertices: " << (int)vertices.size() << endl;
-  int vtx_idx=0;
-  for (int iVtx = 0; iVtx < (int)vertices.size(); iVtx++) {
-    cout << vtx_idx << "th vertex" << endl;
-    const reco::Vertex& vertex = vertices.at(iVtx);
-//    cout << vertex.pt() << endl;
-//    cout << vertex.z0() << endl;
-    cout << vertex.t() << endl;
-    if (!vertex.isFake() && vertex.ndof() >= 4) {
-      cout << vtx_idx << "th vertex" << " is passed the cuts" << endl;;
-      Vtx_chosen = vertex;
-    }
-    cout << " " << endl;
-    vtx_idx++;
-  }
-  // test end
-  */
   for (int iVtx = 0; iVtx < (int)vertices.size(); iVtx++) {
   //for (int iVtx = 40; iVtx < (int)vertices.size(); iVtx++) {
     const reco::Vertex& vertex = vertices.at(iVtx);
     if (!vertex.isFake() && vertex.ndof() >= 4) {
       Vtx_chosen = vertex;
-//      cout << iVtx << "th Vertex is chosen" << endl;
       break;
     }
   }
@@ -1094,66 +1180,37 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
     return (pdg == 23 or pdg == 24 or pdg == 15 or pdg == 13);
   };
 
-  int nmus_Sig_EB=0, nmus_Sig_EE=0;
-  int nmus_Bkg_EB=0, nmus_Bkg_EE=0;
+  int nmus_Sig=0, nmus_Sig_EB=0, nmus_Sig_EE=0;
+  int nmus_Bkg=0, nmus_Bkg_EB=0, nmus_Bkg_EE=0;
 
   int ntrk_genmatched=0;
   int ntrk_notgenmatched=0;
   int ntrk_nosiminfo=0;
-//  cout << "evt start" << endl;
   int nevt=0;
 
   for (const auto& muon : localMuonCollection) {
     bool muon_Prompt = false;
-
     float muon_track_source_dz = std::abs(muon.track()->dz(Vtx_chosen.position()));
     float muon_track_source_dxy = std::abs(muon.track()->dxy(Vtx_chosen.position()));
 
     // selecting "good" RECO muons
     // PARAM
-    /*
-    // test
-    if (muon.pt() < 10 || std::abs(muon.eta()) > 2.4) continue;
-//    meMuonISO_dz_mus_->Fill(muon_track_source_dz);
-//    if (muon.
 
+    // test
+    if (muon.track()->pt() >= 10 || std::abs(muon.track()->eta()) <= 2.4) {
+      meMuonISO_dz_muon_->Fill(muon_track_source_dz);
+      meMuonISO_dxy_muon_->Fill(muon_track_source_dxy);
+    }
     // test end
-    */
     
-    if (muon.pt() < 10 || std::abs(muon.eta()) > 2.4 || muon_track_source_dz > max_dz_vtx_cut || muon_track_source_dxy > max_dxy_vtx_cut)
+    //if (muon.pt() < 10 || std::abs(muon.eta()) > 2.4 || muon_track_source_dz > max_dz_vtx_cut || muon_track_source_dxy > max_dxy_vtx_cut)
+    if (muon.track()->pt() < 10 || std::abs(muon.track()->eta()) > 2.4 || muon_track_source_dz > max_dz_vtx_cut || muon_track_source_dxy > max_dxy_vtx_cut)
       continue;
 
-/*
-    int muon_SigTrkIdx = -1;
-    int muon_TrkIdx = -1;
-    double eta_diff = 99999.;
-    double eta_Sigdiff = 99999.;
-    for(const auto& trackGen : *GenRecTrackHandle) {
-      muon_TrkIdx++;
-      const reco::TrackRef muon_SigTrkRef_check(GenRecTrackHandle, muon_TrkIdx);
-      double dr = reco::deltaR(trackGen.momentum(), muon.combinedMuon()->momentum());
-      if(dr < 0.1) {
-        double deta = std::abs(muon.combinedMuon()->eta() - muon_SigTrkRef_check->eta());
-        eta_diff = deta;
-        if(eta_diff < eta_Sigdiff) {
-          eta_Sigdiff = eta_diff;
-          muon_SigTrkIdx = muon_TrkIdx;
-        }
-      }
-    }
-*/
     const reco::TrackRef muon_SigTrkRef = muon.track();
-
-    //const reco::TrackRef muon_SigTrkRef2 = muon.track();  //yes
-    //const reco::TrackRef muon_SigTrkRef2 = muon.combinedMuon();  //no
-    //const reco::TrackRef muon_SigTrkRef2 = muon.globalTrack();  //no
-//    cout << "muon_SigTrkTime2:    " << t0Pid[muon_SigTrkRef] << endl;
-//    cout << "muon_SigTrkMtdMva2:  " << mtdQualMVA[muon_SigTrkRef] << endl;
-//    cout << "muon_SigTrkTimeErr2: " << Sigmat0Pid[muon_SigTrkRef] << endl;
-    meMuonISO_time_muon_reco_->Fill(t0Pid[muon_SigTrkRef]);
-    meMuonISO_mva_muon_reco_->Fill(mtdQualMVA[muon_SigTrkRef]);
-    if(t0Pid[muon_SigTrkRef]==0) meMuonISO_have_time_muon_reco_->Fill(0);
-    else meMuonISO_have_time_muon_reco_->Fill(1);
+    cout << "muon_SigTrkTime2:    " << t0Pid[muon_SigTrkRef] << endl;
+    cout << "muon_SigTrkMtdMva2:  " << mtdQualMVA[muon_SigTrkRef] << endl;
+    cout << "muon_SigTrkTimeErr2: " << Sigmat0Pid[muon_SigTrkRef] << endl;
 
     //const reco::TrackRef muon_SigTrkRef(GenRecTrackHandle, muon_SigTrkIdx);
 
@@ -1172,7 +1229,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       muon_sim_phi = (tp.first)->phi();
       muon_sim_eta = (tp.first)->eta();
       // test
-//      cout << "tsim_muon                            : " << tsim_muon << endl;
+      cout << "tsim_muon                            : " << tsim_muon << endl;
 //      cout << "(tp.first)->eventId().bunchCrossing(): " << (tp.first)->eventId().bunchCrossing() << endl;
 //      cout << "(tp.first)->eventId().event()        : " << (tp.first)->eventId().event() << endl;
 //      cout << "(tp.first)->pdgId()                  : " << (tp.first)->pdgId() << endl;
@@ -1200,10 +1257,54 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 //	else cout << "Non-prompt Muon" << endl;
       }
     }
-    meMuonISO_time_muon_sim_->Fill(tsim_muon);
-    if(tsim_muon==-1) meMuonISO_have_time_muon_sim_->Fill(0);
-    else meMuonISO_have_time_muon_sim_->Fill(1);
 //    cout << "muon.motherPdgId             : " << muon.motherPdgId << endl;
+    if(muon_Prompt) {
+      if(t0Pid[muon_SigTrkRef]!=0) meMuonISO_time_muon_reco_Sig_->Fill(t0Pid[muon_SigTrkRef]);
+      meMuonISO_tErr_muon_reco_Sig_->Fill(Sigmat0Pid[muon_SigTrkRef]);
+      meMuonISO_mva_muon_reco_Sig_->Fill(mtdQualMVA[muon_SigTrkRef]);
+      // time_reco
+      if(t0Pid[muon_SigTrkRef]==0) meMuonISO_has_time_muon_reco_Sig_->Fill(0);
+      else meMuonISO_has_time_muon_reco_Sig_->Fill(1);
+      // tErr_reco
+      if(Sigmat0Pid[muon_SigTrkRef]==-1) meMuonISO_has_tErr_muon_reco_Sig_->Fill(0);
+      else meMuonISO_has_tErr_muon_reco_Sig_->Fill(1);
+      // mva_reco
+      if(mtdQualMVA[muon_SigTrkRef]==-1) meMuonISO_has_mva_muon_reco_Sig_->Fill(0);
+      else meMuonISO_has_mva_muon_reco_Sig_->Fill(1);
+
+      // time_sim
+      if(tsim_muon!=-1) meMuonISO_time_muon_sim_Sig_->Fill(tsim_muon);
+      if(tsim_muon==-1) meMuonISO_has_time_muon_sim_Sig_->Fill(0);
+      else meMuonISO_has_time_muon_sim_Sig_->Fill(1);
+
+      // pT_reco::muon - pT_tracker_muon
+      meMuonISO_pTdiff_reco_tracker_muon_Sig_->Fill(std::abs(muon.pt() - muon.track()->pt()));
+    }
+    else {
+      if(t0Pid[muon_SigTrkRef]!=0) meMuonISO_time_muon_reco_Bkg_->Fill(t0Pid[muon_SigTrkRef]);
+      meMuonISO_tErr_muon_reco_Bkg_->Fill(Sigmat0Pid[muon_SigTrkRef]);
+      meMuonISO_mva_muon_reco_Bkg_->Fill(mtdQualMVA[muon_SigTrkRef]);
+      // time_reco
+      if(t0Pid[muon_SigTrkRef]==0) meMuonISO_has_time_muon_reco_Bkg_->Fill(0);
+      else meMuonISO_has_time_muon_reco_Bkg_->Fill(1);
+      // tErr_reco
+      if(Sigmat0Pid[muon_SigTrkRef]==-1) meMuonISO_has_tErr_muon_reco_Bkg_->Fill(0);
+      else meMuonISO_has_tErr_muon_reco_Bkg_->Fill(1);
+      // mva_reco
+      if(mtdQualMVA[muon_SigTrkRef]==-1) meMuonISO_has_mva_muon_reco_Bkg_->Fill(0);
+      else meMuonISO_has_mva_muon_reco_Bkg_->Fill(1);
+
+      // time_sim
+      if(tsim_muon!=-1) meMuonISO_time_muon_sim_Bkg_->Fill(tsim_muon);
+      if(tsim_muon==-1) meMuonISO_has_time_muon_sim_Bkg_->Fill(0);
+      else meMuonISO_has_time_muon_sim_Bkg_->Fill(1);
+
+      // pT_reco::muon - pT_tracker_muon
+      meMuonISO_pTdiff_reco_tracker_muon_Bkg_->Fill(std::abs(muon.pt() - muon.track()->pt()));
+    }
+    // pT_sim
+    meMuonISO_pT_muon_sim_->Fill(muon_sim_pt);
+
 
     math::XYZVector MuonSigTrackMomentumAtVtx = muon.track()->momentum();
 
@@ -1227,35 +1328,37 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       meMuon_avg_error_SigTrk_check_->Fill(muon_sigTrkTimeErr);
 
       if (muon_Prompt) {
+	nmus_Sig++;
         // For signal (prompt)
         if (Barrel_muon) {
           // All selected muon information for efficiency plots later
-          meMuon_pt_tot_Sig_EB_->Fill(muon.pt());
-          meMuon_pt_sim_tot_Sig_EB_->Fill(muon_sim_pt);
-          meMuon_eta_tot_Sig_EB_->Fill(std::abs(muon.eta()));
-          meMuon_phi_tot_Sig_EB_->Fill(muon.phi());
+          meMuon_pt_tot_Sig_EB_->Fill(muon.track()->pt());
+          if(muon_sim_pt!=-1) meMuon_pt_sim_tot_Sig_EB_->Fill(muon_sim_pt);
+          meMuon_eta_tot_Sig_EB_->Fill(std::abs(muon.track()->eta()));
+          meMuon_phi_tot_Sig_EB_->Fill(muon.track()->phi());
           nmus_Sig_EB++;
         } else {
           // All selected muon information for efficiency plots later
-          meMuon_pt_tot_Sig_EE_->Fill(muon.pt());
-          meMuon_pt_sim_tot_Sig_EE_->Fill(muon_sim_pt);
-          meMuon_eta_tot_Sig_EE_->Fill(std::abs(muon.eta()));
-          meMuon_phi_tot_Sig_EE_->Fill(muon.phi());
+          meMuon_pt_tot_Sig_EE_->Fill(muon.track()->pt());
+          if(muon_sim_pt!=-1) meMuon_pt_sim_tot_Sig_EE_->Fill(muon_sim_pt);
+          meMuon_eta_tot_Sig_EE_->Fill(std::abs(muon.track()->eta()));
+          meMuon_phi_tot_Sig_EE_->Fill(muon.track()->phi());
           nmus_Sig_EE++;
         }
       } else {
         // For background (non-promt)
+	nmus_Bkg++;
         if (Barrel_muon) {
-          meMuon_pt_tot_Bkg_EB_->Fill(muon.pt());
-          meMuon_pt_sim_tot_Bkg_EB_->Fill(muon_sim_pt);
-          meMuon_eta_tot_Bkg_EB_->Fill(std::abs(muon.eta()));
-          meMuon_phi_tot_Bkg_EB_->Fill(muon.phi());
+          meMuon_pt_tot_Bkg_EB_->Fill(muon.track()->pt());
+          if(muon_sim_pt!=-1) meMuon_pt_sim_tot_Bkg_EB_->Fill(muon_sim_pt);
+          meMuon_eta_tot_Bkg_EB_->Fill(std::abs(muon.track()->eta()));
+          meMuon_phi_tot_Bkg_EB_->Fill(muon.track()->phi());
           nmus_Bkg_EB++;
         } else {
-          meMuon_pt_tot_Bkg_EE_->Fill(muon.pt());
-          meMuon_pt_sim_tot_Bkg_EE_->Fill(muon_sim_pt);
-          meMuon_eta_tot_Bkg_EE_->Fill(std::abs(muon.eta()));
-          meMuon_phi_tot_Bkg_EE_->Fill(muon.phi());
+          meMuon_pt_tot_Bkg_EE_->Fill(muon.track()->pt());
+          if(muon_sim_pt!=-1) meMuon_pt_sim_tot_Bkg_EE_->Fill(muon_sim_pt);
+          meMuon_eta_tot_Bkg_EE_->Fill(std::abs(muon.track()->eta()));
+          meMuon_phi_tot_Bkg_EE_->Fill(muon.track()->phi());
           nmus_Bkg_EE++;
         }
       }
@@ -1300,6 +1403,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       std::vector<int> N_tracks_sim_MTD_significance{0, 0, 0};
       std::vector<double> pT_sum_sim_MTD_significance{0, 0, 0};
       std::vector<double> rel_pT_sum_sim_MTD_significance{0, 0, 0};
+      // test
+      std::vector<double> pT_sum_gen_MTD_significance{0, 0, 0};
+      std::vector<double> rel_pT_sum_gen_MTD_significance{0, 0, 0};
 
       int general_index = 0;
 
@@ -1381,13 +1487,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
         if(!muon_Prompt && Barrel_muon)  Ntracks_Bkg_dRcut_EB++;
         if(!muon_Prompt && !Barrel_muon) Ntracks_Bkg_dRcut_EE++;
 
-//        cout << "track time reco: " << t0Pid[trackref_general] << endl;
-//        cout << "track MVA reco : " << mtdQualMVA[trackref_general] << endl;
-//        cout << "track tErr reco: " << Sigmat0Pid[trackref_general] << endl;
-	meMuonISO_time_trk_reco_->Fill(t0Pid[trackref_general]);
-	meMuonISO_mva_trk_reco_->Fill(mtdQualMVA[trackref_general]);
-	if(t0Pid[trackref_general]==0) meMuonISO_have_time_trk_reco_->Fill(0);
-	else meMuonISO_have_time_trk_reco_->Fill(1);
 
 
         // no MTD case
@@ -1402,13 +1501,15 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
         bool genMatched = false;
         if (TPmatched != r2s_->end()) {
           // reco track matched to a TP
+	  cout << "matched to a TP" << endl;
           const auto& tp = (TPmatched->val)[0];
           tsim_trk = (tp.first)->parentVertex()->position().t() * 1e9;
           trk_ptSim = (tp.first)->pt();
+//          cout << "[track](tp.first)->eventId().bunchCrossing(): " << (tp.first)->eventId().bunchCrossing() << endl;
+//          cout << "[track](tp.first)->eventId().event()        : " << (tp.first)->eventId().event() << endl;
           // check that the genParticle vector is not empty
           if (tp.first->status() != -99) {
-//            cout << "[track](tp.first)->eventId().bunchCrossing(): " << (tp.first)->eventId().bunchCrossing() << endl;
-//            cout << "[track](tp.first)->eventId().event()        : " << (tp.first)->eventId().event() << endl;
+            cout << "has genParticle" << endl;
             genMatched = true;
             meTrk_genMatch_check_->Fill(1);
 //	    cout << "track time sim : " << tsim_trk << endl;
@@ -1428,9 +1529,65 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
             if(!muon_Prompt && !Barrel_muon) {genMatch_Bkg_dRcut_EE = false; meTrk_genMatch_check_Bkg_dRcut_EE_->Fill(0);}
           }
         }
-	meMuonISO_time_trk_sim_->Fill(tsim_trk);
-	if(tsim_trk==-1) meMuonISO_have_time_trk_sim_->Fill(0);
-	else meMuonISO_have_time_trk_sim_->Fill(1);
+	cout << "genMatched: " << genMatched << ", trk_ptSim: " << trk_ptSim << ", trackGen.pt(): " << trackGen.pt() << endl;
+	cout << "muon_sim_pt: " << muon_sim_pt << ", Vtx_chosen.tError(): " << Vtx_chosen.tError() << endl;
+	cout << "muon_pt: " << muon.track()->pt() << endl;
+//        cout << "track time reco: " << t0Pid[trackref_general] << endl;
+//        cout << "track MVA reco : " << mtdQualMVA[trackref_general] << endl;
+//        cout << "track tErr reco: " << Sigmat0Pid[trackref_general] << endl;
+        // test
+        if(muon_Prompt) {
+	  if(t0Pid[trackref_general]!=0) meMuonISO_time_trk_reco_Sig_->Fill(t0Pid[trackref_general]);
+	  meMuonISO_tErr_trk_reco_Sig_->Fill(Sigmat0Pid[trackref_general]);
+	  meMuonISO_mva_trk_reco_Sig_->Fill(mtdQualMVA[trackref_general]);
+	  // time_reco
+	  if(t0Pid[trackref_general]==0) meMuonISO_has_time_trk_reco_Sig_->Fill(0);
+	  else meMuonISO_has_time_trk_reco_Sig_->Fill(1);
+          // tErr_reco
+	  if(Sigmat0Pid[trackref_general]==-1) meMuonISO_has_tErr_trk_reco_Sig_->Fill(0);
+	  else meMuonISO_has_tErr_trk_reco_Sig_->Fill(1);
+          // mva_reco
+          if(mtdQualMVA[trackref_general]==-1) meMuonISO_has_mva_trk_reco_Sig_->Fill(0);
+          else meMuonISO_has_mva_trk_reco_Sig_->Fill(1);
+
+          // time_sim
+          if(tsim_trk!=-1) meMuonISO_time_trk_sim_Sig_->Fill(tsim_trk);
+          if(tsim_trk==-1) meMuonISO_has_time_trk_sim_Sig_->Fill(0);
+          else meMuonISO_has_time_trk_sim_Sig_->Fill(1);
+
+          // genMatched
+	  meMuonISO_trk_genMatched_Sig_->Fill(genMatched);
+          if(std::abs(muon.track()->eta()) < 1.5) meMuonISO_trk_genMatched_Sig_EB_->Fill(genMatched);
+	  else meMuonISO_trk_genMatched_Sig_EE_->Fill(genMatched);
+
+	}
+	else {
+	  if(t0Pid[trackref_general]!=0) meMuonISO_time_trk_reco_Bkg_->Fill(t0Pid[trackref_general]);
+	  meMuonISO_tErr_trk_reco_Bkg_->Fill(Sigmat0Pid[trackref_general]);
+	  meMuonISO_mva_trk_reco_Bkg_->Fill(mtdQualMVA[trackref_general]);
+	  // time_reco
+	  if(t0Pid[trackref_general]==0) meMuonISO_has_time_trk_reco_Bkg_->Fill(0);
+	  else meMuonISO_has_time_trk_reco_Bkg_->Fill(1);
+          // tErr_reco
+	  if(Sigmat0Pid[trackref_general]==-1) meMuonISO_has_tErr_trk_reco_Bkg_->Fill(0);
+	  else meMuonISO_has_tErr_trk_reco_Bkg_->Fill(1);
+          // mva_reco
+          if(mtdQualMVA[trackref_general]==-1) meMuonISO_has_mva_trk_reco_Bkg_->Fill(0);
+          else meMuonISO_has_mva_trk_reco_Bkg_->Fill(1);
+
+          // time_sim
+          if(tsim_trk!=-1) meMuonISO_time_trk_sim_Bkg_->Fill(tsim_trk);
+          if(tsim_trk==-1) meMuonISO_has_time_trk_sim_Bkg_->Fill(0);
+          else meMuonISO_has_time_trk_sim_Bkg_->Fill(1);
+
+          // genMatched
+	  meMuonISO_trk_genMatched_Bkg_->Fill(genMatched);
+          if(std::abs(muon.track()->eta()) < 1.5) meMuonISO_trk_genMatched_Bkg_EB_->Fill(genMatched);
+	  else meMuonISO_trk_genMatched_Bkg_EE_->Fill(genMatched);
+
+	}
+        // pT_sim
+        meMuonISO_pT_trk_sim_->Fill(trk_ptSim);
 
         double TrkMTDTime = t0Pid[trackref_general];
         double TrkMTDMva = mtdQualMVA[trackref_general];
@@ -1450,8 +1607,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
         if (genMatch_Bkg_dRcut_EB)  Ntracks_gen_Bkg_dRcut_EB++;
         if (genMatch_Bkg_dRcut_EE)  Ntracks_gen_Bkg_dRcut_EE++;
 	
-	if((t0Pid[muon_SigTrkRef]!=0) && (t0Pid[trackref_general]!=0)) meMuonISO_dt_muon_trk_reco_1_->Fill(std::abs(t0Pid[trackref_general] - t0Pid[muon_SigTrkRef]));
-
         // dt with the track
         if (dt_sig_track_) {
           double dt_sigTrk = 0;
@@ -1460,12 +1615,21 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           double dt_sim_sigTrk_signif = 0;
 
           // MTD SIM CASE
-          if (std::abs(tsim_trk) > 0 && std::abs(tsim_muon) > 0 && trk_ptSim > 0) {
+          //if (std::abs(tsim_trk) > 0 && std::abs(tsim_muon) > 0 && trk_ptSim > 0) {
+          if (tsim_trk != -1 && tsim_muon != -1 && trk_ptSim > 0) {
             dt_sim_sigTrk = std::abs(tsim_trk - tsim_muon);
             dt_sim_sigTrk_signif = dt_sim_sigTrk / std::sqrt(avg_sim_PUtrack_t_err * avg_sim_PUtrack_t_err +
                                                              avg_sim_sigTrk_t_err * avg_sim_sigTrk_t_err);
-	    meMuonISO_dt_muon_trk_sim_->Fill(dt_sim_sigTrk);
-	    meMuonISO_dtSig_muon_trk_sim_->Fill(dt_sim_sigTrk_signif);
+	    if (muon_Prompt) {
+	      meMuonISO_dt_muon_trk_sim_Sig_->Fill(dt_sim_sigTrk);
+	      meMuonISO_dtSig_muon_trk_sim_Sig_->Fill(dt_sim_sigTrk_signif);
+	      if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Sig_->Fill(dt_sim_sigTrk_signif);
+	    }
+	    else {
+	      meMuonISO_dt_muon_trk_sim_Bkg_->Fill(dt_sim_sigTrk);
+	      meMuonISO_dtSig_muon_trk_sim_Bkg_->Fill(dt_sim_sigTrk_signif);
+	      if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Bkg_->Fill(dt_sim_sigTrk_signif);
+	    }
 
             if (optionalPlots_) {
               // absolute timing cuts
@@ -1481,6 +1645,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               if (dt_sim_sigTrk_signif < max_dt_significance_cut[i]) {
                 N_tracks_sim_MTD_significance[i]++;
                 pT_sum_sim_MTD_significance[i] += trk_ptSim;
+		// test
+		if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
               }
             }
 
@@ -1495,6 +1661,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
             for (long unsigned int i = 0; i < N_tracks_sim_MTD_significance.size(); i++) {
               N_tracks_sim_MTD_significance[i]++;
               pT_sum_sim_MTD_significance[i] += trk_ptSim;
+	      // test
+	      if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
             }
           }
 
@@ -1504,8 +1672,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
             dt_sigTrk_signif =
                 dt_sigTrk / std::sqrt(TrkMTDTimeErr * TrkMTDTimeErr + muon_sigTrkTimeErr * muon_sigTrkTimeErr);
 
-	    meMuonISO_dt_muon_trk_reco_2_->Fill(dt_sigTrk);
-	    meMuonISO_dtSig_muon_trk_reco_->Fill(dt_sigTrk_signif);
+	    if (muon_Prompt) {
+	      meMuonISO_dt_muon_trk_reco_Sig_->Fill(dt_sigTrk);
+	      meMuonISO_dtSig_muon_trk_reco_Sig_->Fill(dt_sigTrk_signif);
+	      if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Sig_->Fill(dt_sigTrk_signif);
+	    }
+	    else {
+	      meMuonISO_dt_muon_trk_reco_Bkg_->Fill(dt_sigTrk);
+	      meMuonISO_dtSig_muon_trk_reco_Bkg_->Fill(dt_sigTrk_signif);
+	      if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Bkg_->Fill(dt_sigTrk_signif);
+	    }
             meMuon_no_dt_check_->Fill(1);
 
             if (optionalPlots_) {
@@ -1543,7 +1719,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           if (optionalPlots_) {
             for (long unsigned int i = 0; i < (pT_bins_dt_distrb.size() - 1); i++) {
               //stuff general pT
-              if (muon.pt() > pT_bins_dt_distrb[i] && muon.pt() < pT_bins_dt_distrb[i + 1]) {
+              if (muon.track()->pt() > pT_bins_dt_distrb[i] && muon.track()->pt() < pT_bins_dt_distrb[i + 1]) {
                 general_pT_list[i]->Fill(dt_sigTrk);
                 general_pT_Signif_list[i]->Fill(dt_sigTrk_signif);
               }
@@ -1551,7 +1727,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
             for (long unsigned int i = 0; i < (eta_bins_dt_distrib.size() - 1); i++) {
               //stuff general eta
-              if (std::abs(muon.eta()) > eta_bins_dt_distrib[i] && std::abs(muon.eta()) < eta_bins_dt_distrib[i + 1]) {
+              if (std::abs(muon.track()->eta()) > eta_bins_dt_distrib[i] && std::abs(muon.track()->eta()) < eta_bins_dt_distrib[i + 1]) {
                 general_eta_list[i]->Fill(dt_sigTrk);
                 general_eta_Signif_list[i]->Fill(dt_sigTrk_signif);
               }
@@ -1568,10 +1744,21 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           double dt_sim_vtx_signif = 0;
 
           // MTD SIM case
-          if (std::abs(tsim_trk) > 0 && Vtx_chosen.tError() > 0 && trk_ptSim > 0) {
+          //if (std::abs(tsim_trk) > 0 && Vtx_chosen.tError() > 0 && trk_ptSim > 0) {
+          if (tsim_trk != -1 && Vtx_chosen.tError() > 0 && trk_ptSim > 0) {
             dt_sim_vtx = std::abs(tsim_trk - Vtx_chosen.t());
             dt_sim_vtx_signif = dt_sim_vtx / std::sqrt(avg_sim_PUtrack_t_err * avg_sim_PUtrack_t_err +
                                                        Vtx_chosen.tError() * Vtx_chosen.tError());
+	    if (muon_Prompt) {
+	      meMuonISO_dt_PV_trk_sim_Sig_->Fill(dt_sim_vtx);
+	      meMuonISO_dtSig_PV_trk_sim_Sig_->Fill(dt_sim_vtx_signif);
+	      if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Sig_->Fill(dt_sim_vtx_signif);
+	    }
+	    else {
+	      meMuonISO_dt_PV_trk_sim_Bkg_->Fill(dt_sim_vtx);
+	      meMuonISO_dtSig_PV_trk_sim_Bkg_->Fill(dt_sim_vtx_signif);
+	      if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Bkg_->Fill(dt_sim_vtx_signif);
+	    }
 
             if (optionalPlots_) {
               // absolute timing cuts
@@ -1587,6 +1774,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               if (dt_sim_vtx_signif < max_dt_significance_cut[i]) {
                 N_tracks_sim_MTD_significance[i]++;
                 pT_sum_sim_MTD_significance[i] += trk_ptSim;
+		// test
+		if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
               }
             }
           } else if (trk_ptSim > 0) {
@@ -1599,6 +1788,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
             for (long unsigned int i = 0; i < N_tracks_sim_MTD_significance.size(); i++) {
               N_tracks_sim_MTD_significance[i]++;
               pT_sum_sim_MTD_significance[i] += trk_ptSim;
+	      // test
+	      if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
             }
           }
 
@@ -1607,6 +1798,17 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
             dt_vtx = std::abs(TrkMTDTime - Vtx_chosen.t());
             dt_vtx_signif =
                 dt_vtx / std::sqrt(TrkMTDTimeErr * TrkMTDTimeErr + Vtx_chosen.tError() * Vtx_chosen.tError());
+
+	    if (muon_Prompt) {
+	      meMuonISO_dt_PV_trk_reco_Sig_->Fill(dt_vtx);
+	      meMuonISO_dtSig_PV_trk_reco_Sig_->Fill(dt_vtx_signif);
+	      if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Sig_->Fill(dt_vtx_signif);
+	    }
+	    else {
+	      meMuonISO_dt_PV_trk_reco_Bkg_->Fill(dt_vtx);
+	      meMuonISO_dtSig_PV_trk_reco_Bkg_->Fill(dt_vtx_signif);
+	      if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Bkg_->Fill(dt_vtx_signif);
+	    }
 
             meMuon_no_dt_check_->Fill(1);
             meMuon_avg_error_vtx_check_->Fill(Vtx_chosen.tError());
@@ -1645,7 +1847,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           if (optionalPlots_) {
             for (long unsigned int i = 0; i < (pT_bins_dt_distrb.size() - 1); i++) {
               //stuff general pT
-              if (muon.pt() > pT_bins_dt_distrb[i] && muon.pt() < pT_bins_dt_distrb[i + 1]) {
+              if (muon.track()->pt() > pT_bins_dt_distrb[i] && muon.track()->pt() < pT_bins_dt_distrb[i + 1]) {
                 general_pT_list[i]->Fill(dt_vtx);
                 general_pT_Signif_list[i]->Fill(dt_vtx_signif);
               }
@@ -1653,7 +1855,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
             for (long unsigned int i = 0; i < (eta_bins_dt_distrib.size() - 1); i++) {
               //stuff general eta
-              if (std::abs(muon.eta()) > eta_bins_dt_distrib[i] && std::abs(muon.eta()) < eta_bins_dt_distrib[i + 1]) {
+              if (std::abs(muon.track()->eta()) > eta_bins_dt_distrib[i] && std::abs(muon.track()->eta()) < eta_bins_dt_distrib[i + 1]) {
                 general_eta_list[i]->Fill(dt_vtx);
                 general_eta_Signif_list[i]->Fill(dt_vtx_signif);
               }
@@ -1667,17 +1869,18 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       if (optionalPlots_) {
         for (long unsigned int i = 0; i < N_tracks_MTD.size(); i++) {
           rel_pT_sum_MTD[i] = pT_sum_MTD[i] / muon.track()->pt();
-          rel_pT_sum_sim_MTD[i] = pT_sum_sim_MTD[i] / muon_sim_pt;
+          if(muon_sim_pt!=-1) rel_pT_sum_sim_MTD[i] = pT_sum_sim_MTD[i] / muon_sim_pt;
         }
         // now compute the isolation
         rel_pT_sum_noMTD = pT_sum_noMTD / muon.track()->pt();
 
-        rel_pT_sum_gen = pT_sum_gen / muon_sim_pt;
+        if(muon_sim_pt!=-1) rel_pT_sum_gen = pT_sum_gen / muon_sim_pt;
       }
 
       for (long unsigned int i = 0; i < N_tracks_MTD_significance.size(); i++) {
         rel_pT_sum_MTD_significance[i] = pT_sum_MTD_significance[i] / muon.track()->pt();
-        rel_pT_sum_sim_MTD_significance[i] = pT_sum_sim_MTD_significance[i] / muon_sim_pt;
+        if(muon_sim_pt!=-1) rel_pT_sum_sim_MTD_significance[i] = pT_sum_sim_MTD_significance[i] / muon_sim_pt;
+        if(muon_sim_pt!=-1) rel_pT_sum_gen_MTD_significance[i] = pT_sum_gen_MTD_significance[i] / muon_sim_pt;
       }
 
       if (muon_Prompt) {  // promt part
@@ -1717,26 +1920,28 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               Ntracks_sim_EB_list_Significance_Sig[j]->Fill(N_tracks_sim_MTD_significance[j]);
               ch_iso_sim_EB_list_Significance_Sig[j]->Fill(pT_sum_sim_MTD_significance[j]);
               rel_ch_iso_sim_EB_list_Significance_Sig[j]->Fill(rel_pT_sum_sim_MTD_significance[j]);
+              ch_iso_gen_EB_list_Significance_Sig[j]->Fill(pT_sum_gen_MTD_significance[j]);
+	      rel_ch_iso_gen_EB_list_Significance_Sig[j]->Fill(rel_pT_sum_gen_MTD_significance[j]);
             }
           }
 
           if (rel_pT_sum_noMTD < rel_iso_cut_) {  // filling hists for iso efficiency calculations
-            meMuon_pt_noMTD_Sig_EB_->Fill(muon.pt());
-            meMuon_eta_noMTD_Sig_EB_->Fill(std::abs(muon.eta()));
-            meMuon_phi_noMTD_Sig_EB_->Fill(muon.phi());
+            meMuon_pt_noMTD_Sig_EB_->Fill(muon.track()->pt());
+            meMuon_eta_noMTD_Sig_EB_->Fill(std::abs(muon.track()->eta()));
+            meMuon_phi_noMTD_Sig_EB_->Fill(muon.track()->phi());
           }
           if (optionalPlots_) {
             for (long unsigned int k = 0; k < Ntracks_EB_list_Sig.size(); k++) {
               if (rel_pT_sum_MTD[k] < rel_iso_cut_) {
-                Muon_pT_MTD_EB_list_Sig[k]->Fill(muon.pt());
-                Muon_eta_MTD_EB_list_Sig[k]->Fill(std::abs(muon.eta()));
-                Muon_phi_MTD_EB_list_Sig[k]->Fill(muon.phi());
+                Muon_pT_MTD_EB_list_Sig[k]->Fill(muon.track()->pt());
+                Muon_eta_MTD_EB_list_Sig[k]->Fill(std::abs(muon.track()->eta()));
+                Muon_phi_MTD_EB_list_Sig[k]->Fill(muon.track()->phi());
 
-                Muon_pT_sim_MTD_EB_list_Sig[k]->Fill(muon_sim_pt);
+                if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EB_list_Sig[k]->Fill(muon_sim_pt);
               }
             }
             if (rel_pT_sum_gen < rel_iso_cut_) {
-              meMuon_pt_gen_Sig_EB_->Fill(muon_sim_pt);
+              if(muon_sim_pt!=-1) meMuon_pt_gen_Sig_EB_->Fill(muon_sim_pt);
               meMuon_eta_gen_Sig_EB_->Fill(std::abs(muon_sim_eta));
               meMuon_phi_gen_Sig_EB_->Fill(muon_sim_phi);
             }
@@ -1744,12 +1949,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
           for (long unsigned int k = 0; k < Ntracks_EB_list_Significance_Sig.size(); k++) {
             if (rel_pT_sum_MTD_significance[k] < rel_iso_cut_) {
-              Muon_pT_MTD_EB_list_Significance_Sig[k]->Fill(muon.pt());
-              Muon_eta_MTD_EB_list_Significance_Sig[k]->Fill(std::abs(muon.eta()));
-              Muon_phi_MTD_EB_list_Significance_Sig[k]->Fill(muon.phi());
+              Muon_pT_MTD_EB_list_Significance_Sig[k]->Fill(muon.track()->pt());
+              Muon_eta_MTD_EB_list_Significance_Sig[k]->Fill(std::abs(muon.track()->eta()));
+              Muon_phi_MTD_EB_list_Significance_Sig[k]->Fill(muon.track()->phi());
             }
-            if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_)
-              Muon_pT_sim_MTD_EB_list_Significance_Sig[k]->Fill(muon_sim_pt);
+            if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_) {
+              if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EB_list_Significance_Sig[k]->Fill(muon_sim_pt);
+	    }
+	    if (optionalPlots_ and rel_pT_sum_gen_MTD_significance[k] < rel_iso_cut_) {
+	      if(muon_sim_pt!=-1) Muon_pT_gen_MTD_EB_list_Significance_Sig[k]->Fill(muon_sim_pt);
+	    }
           }
 
         } else {  // for endcap
@@ -1785,39 +1994,44 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               Ntracks_sim_EE_list_Significance_Sig[j]->Fill(N_tracks_sim_MTD_significance[j]);
               ch_iso_sim_EE_list_Significance_Sig[j]->Fill(pT_sum_sim_MTD_significance[j]);
               rel_ch_iso_sim_EE_list_Significance_Sig[j]->Fill(rel_pT_sum_sim_MTD_significance[j]);
+              ch_iso_gen_EE_list_Significance_Sig[j]->Fill(pT_sum_gen_MTD_significance[j]);
+              rel_ch_iso_gen_EE_list_Significance_Sig[j]->Fill(rel_pT_sum_gen_MTD_significance[j]);
             }
           }
 
           if (rel_pT_sum_noMTD < rel_iso_cut_) {  // filling hists for iso efficiency calculations
-            meMuon_pt_noMTD_Sig_EE_->Fill(muon.pt());
-            meMuon_eta_noMTD_Sig_EE_->Fill(std::abs(muon.eta()));
-            meMuon_phi_noMTD_Sig_EE_->Fill(muon.phi());
+            meMuon_pt_noMTD_Sig_EE_->Fill(muon.track()->pt());
+            meMuon_eta_noMTD_Sig_EE_->Fill(std::abs(muon.track()->eta()));
+            meMuon_phi_noMTD_Sig_EE_->Fill(muon.track()->phi());
           }
           if (optionalPlots_) {
             for (long unsigned int k = 0; k < Ntracks_EE_list_Sig.size(); k++) {
               if (rel_pT_sum_MTD[k] < rel_iso_cut_) {
-                Muon_pT_MTD_EE_list_Sig[k]->Fill(muon.pt());
-                Muon_eta_MTD_EE_list_Sig[k]->Fill(std::abs(muon.eta()));
-                Muon_phi_MTD_EE_list_Sig[k]->Fill(muon.phi());
+                Muon_pT_MTD_EE_list_Sig[k]->Fill(muon.track()->pt());
+                Muon_eta_MTD_EE_list_Sig[k]->Fill(std::abs(muon.track()->eta()));
+                Muon_phi_MTD_EE_list_Sig[k]->Fill(muon.track()->phi());
 
-                Muon_pT_sim_MTD_EE_list_Sig[k]->Fill(muon_sim_pt);
+                if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EE_list_Sig[k]->Fill(muon_sim_pt);
               }
             }
             if (rel_pT_sum_gen < rel_iso_cut_) {
-              meMuon_pt_gen_Sig_EE_->Fill(muon_sim_pt);
+              if(muon_sim_pt!=-1) meMuon_pt_gen_Sig_EE_->Fill(muon_sim_pt);
               meMuon_eta_gen_Sig_EE_->Fill(std::abs(muon_sim_eta));
               meMuon_phi_gen_Sig_EE_->Fill(muon_sim_phi);
             }
           }
           for (long unsigned int k = 0; k < Ntracks_EE_list_Significance_Sig.size(); k++) {
             if (rel_pT_sum_MTD_significance[k] < rel_iso_cut_) {
-              Muon_pT_MTD_EE_list_Significance_Sig[k]->Fill(muon.pt());
-              Muon_eta_MTD_EE_list_Significance_Sig[k]->Fill(std::abs(muon.eta()));
-              Muon_phi_MTD_EE_list_Significance_Sig[k]->Fill(muon.phi());
-
-              if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_)
-                Muon_pT_sim_MTD_EE_list_Significance_Sig[k]->Fill(muon_sim_pt);
-            }
+              Muon_pT_MTD_EE_list_Significance_Sig[k]->Fill(muon.track()->pt());
+              Muon_eta_MTD_EE_list_Significance_Sig[k]->Fill(std::abs(muon.track()->eta()));
+              Muon_phi_MTD_EE_list_Significance_Sig[k]->Fill(muon.track()->phi());
+	    }
+            if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_) {
+              if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EE_list_Significance_Sig[k]->Fill(muon_sim_pt);
+	    }
+	    if (optionalPlots_ and rel_pT_sum_gen_MTD_significance[k] < rel_iso_cut_) {
+	      if(muon_sim_pt!=-1) Muon_pT_gen_MTD_EE_list_Significance_Sig[k]->Fill(muon_sim_pt);
+	    }
           }
         }
       } else {  // non-promt part
@@ -1857,39 +2071,45 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               Ntracks_sim_EB_list_Significance_Bkg[j]->Fill(N_tracks_sim_MTD_significance[j]);
               ch_iso_sim_EB_list_Significance_Bkg[j]->Fill(pT_sum_sim_MTD_significance[j]);
               rel_ch_iso_sim_EB_list_Significance_Bkg[j]->Fill(rel_pT_sum_sim_MTD_significance[j]);
+              ch_iso_gen_EB_list_Significance_Bkg[j]->Fill(pT_sum_gen_MTD_significance[j]);
+              rel_ch_iso_gen_EB_list_Significance_Bkg[j]->Fill(rel_pT_sum_gen_MTD_significance[j]);
             }
           }
 
           if (rel_pT_sum_noMTD < rel_iso_cut_) {  // filling hists for iso efficiency calculations
-            meMuon_pt_noMTD_Bkg_EB_->Fill(muon.pt());
-            meMuon_eta_noMTD_Bkg_EB_->Fill(std::abs(muon.eta()));
-            meMuon_phi_noMTD_Bkg_EB_->Fill(muon.phi());
+            meMuon_pt_noMTD_Bkg_EB_->Fill(muon.track()->pt());
+            meMuon_eta_noMTD_Bkg_EB_->Fill(std::abs(muon.track()->eta()));
+            meMuon_phi_noMTD_Bkg_EB_->Fill(muon.track()->phi());
           }
           if (optionalPlots_) {
             for (long unsigned int k = 0; k < Ntracks_EB_list_Bkg.size(); k++) {
               if (rel_pT_sum_MTD[k] < rel_iso_cut_) {
-                Muon_pT_MTD_EB_list_Bkg[k]->Fill(muon.pt());
-                Muon_eta_MTD_EB_list_Bkg[k]->Fill(std::abs(muon.eta()));
-                Muon_phi_MTD_EB_list_Bkg[k]->Fill(muon.phi());
+                Muon_pT_MTD_EB_list_Bkg[k]->Fill(muon.track()->pt());
+                Muon_eta_MTD_EB_list_Bkg[k]->Fill(std::abs(muon.track()->eta()));
+                Muon_phi_MTD_EB_list_Bkg[k]->Fill(muon.track()->phi());
 
-                Muon_pT_sim_MTD_EB_list_Bkg[k]->Fill(muon_sim_pt);
+                if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EB_list_Bkg[k]->Fill(muon_sim_pt);
               }
             }
             if (rel_pT_sum_gen < rel_iso_cut_) {
-              meMuon_pt_gen_Bkg_EB_->Fill(muon_sim_pt);
+              if(muon_sim_pt!=-1) meMuon_pt_gen_Bkg_EB_->Fill(muon_sim_pt);
               meMuon_eta_gen_Bkg_EB_->Fill(std::abs(muon_sim_eta));
               meMuon_phi_gen_Bkg_EB_->Fill(muon_sim_phi);
             }
           }
           for (long unsigned int k = 0; k < Ntracks_EB_list_Significance_Bkg.size(); k++) {
             if (rel_pT_sum_MTD_significance[k] < rel_iso_cut_) {
-              Muon_pT_MTD_EB_list_Significance_Bkg[k]->Fill(muon.pt());
-              Muon_eta_MTD_EB_list_Significance_Bkg[k]->Fill(std::abs(muon.eta()));
-              Muon_phi_MTD_EB_list_Significance_Bkg[k]->Fill(muon.phi());
+              Muon_pT_MTD_EB_list_Significance_Bkg[k]->Fill(muon.track()->pt());
+              Muon_eta_MTD_EB_list_Significance_Bkg[k]->Fill(std::abs(muon.track()->eta()));
+              Muon_phi_MTD_EB_list_Significance_Bkg[k]->Fill(muon.track()->phi());
+	    }
 
-              if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_)
-                Muon_pT_sim_MTD_EB_list_Significance_Bkg[k]->Fill(muon_sim_pt);
-            }
+            if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_) {
+              if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EB_list_Significance_Bkg[k]->Fill(muon_sim_pt);
+	    }
+	    if (optionalPlots_ and rel_pT_sum_gen_MTD_significance[k] < rel_iso_cut_) {
+	      if(muon_sim_pt!=-1) Muon_pT_gen_MTD_EB_list_Significance_Bkg[k]->Fill(muon_sim_pt);
+	    }
           }
 
         } else {  // for endcap
@@ -1924,26 +2144,28 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               Ntracks_sim_EE_list_Significance_Bkg[j]->Fill(N_tracks_sim_MTD_significance[j]);
               ch_iso_sim_EE_list_Significance_Bkg[j]->Fill(pT_sum_sim_MTD_significance[j]);
               rel_ch_iso_sim_EE_list_Significance_Bkg[j]->Fill(rel_pT_sum_sim_MTD_significance[j]);
+              ch_iso_gen_EE_list_Significance_Bkg[j]->Fill(pT_sum_gen_MTD_significance[j]);
+              rel_ch_iso_gen_EE_list_Significance_Bkg[j]->Fill(rel_pT_sum_gen_MTD_significance[j]);
             }
           }
 
           if (rel_pT_sum_noMTD < rel_iso_cut_) {  // filling hists for iso efficiency calculations
-            meMuon_pt_noMTD_Bkg_EE_->Fill(muon.pt());
-            meMuon_eta_noMTD_Bkg_EE_->Fill(std::abs(muon.eta()));
-            meMuon_phi_noMTD_Bkg_EE_->Fill(muon.phi());
+            meMuon_pt_noMTD_Bkg_EE_->Fill(muon.track()->pt());
+            meMuon_eta_noMTD_Bkg_EE_->Fill(std::abs(muon.track()->eta()));
+            meMuon_phi_noMTD_Bkg_EE_->Fill(muon.track()->phi());
           }
           if (optionalPlots_) {
             for (long unsigned int k = 0; k < Ntracks_EE_list_Bkg.size(); k++) {
               if (rel_pT_sum_MTD[k] < rel_iso_cut_) {
-                Muon_pT_MTD_EE_list_Bkg[k]->Fill(muon.pt());
-                Muon_eta_MTD_EE_list_Bkg[k]->Fill(std::abs(muon.eta()));
-                Muon_phi_MTD_EE_list_Bkg[k]->Fill(muon.phi());
+                Muon_pT_MTD_EE_list_Bkg[k]->Fill(muon.track()->pt());
+                Muon_eta_MTD_EE_list_Bkg[k]->Fill(std::abs(muon.track()->eta()));
+                Muon_phi_MTD_EE_list_Bkg[k]->Fill(muon.track()->phi());
 
-                Muon_pT_sim_MTD_EE_list_Bkg[k]->Fill(muon_sim_pt);
+                if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EE_list_Bkg[k]->Fill(muon_sim_pt);
               }
             }
             if (rel_pT_sum_gen < rel_iso_cut_) {
-              meMuon_pt_gen_Bkg_EE_->Fill(muon_sim_pt);
+              if(muon_sim_pt!=-1) meMuon_pt_gen_Bkg_EE_->Fill(muon_sim_pt);
               meMuon_eta_gen_Bkg_EE_->Fill(std::abs(muon_sim_eta));
               meMuon_phi_gen_Bkg_EE_->Fill(muon_sim_phi);
             }
@@ -1951,13 +2173,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
           for (long unsigned int k = 0; k < Ntracks_EE_list_Significance_Bkg.size(); k++) {
             if (rel_pT_sum_MTD_significance[k] < rel_iso_cut_) {
-              Muon_pT_MTD_EE_list_Significance_Bkg[k]->Fill(muon.pt());
-              Muon_eta_MTD_EE_list_Significance_Bkg[k]->Fill(std::abs(muon.eta()));
-              Muon_phi_MTD_EE_list_Significance_Bkg[k]->Fill(muon.phi());
-
-              if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_)
-                Muon_pT_sim_MTD_EE_list_Significance_Bkg[k]->Fill(muon_sim_pt);
-            }
+              Muon_pT_MTD_EE_list_Significance_Bkg[k]->Fill(muon.track()->pt());
+              Muon_eta_MTD_EE_list_Significance_Bkg[k]->Fill(std::abs(muon.track()->eta()));
+              Muon_phi_MTD_EE_list_Significance_Bkg[k]->Fill(muon.track()->phi());
+	    }
+            if (optionalPlots_ and rel_pT_sum_sim_MTD_significance[k] < rel_iso_cut_) {
+              if(muon_sim_pt!=-1) Muon_pT_sim_MTD_EE_list_Significance_Bkg[k]->Fill(muon_sim_pt);
+	    }
+	    if (optionalPlots_ and rel_pT_sum_gen_MTD_significance[k] < rel_iso_cut_) {
+	      if(muon_sim_pt!=-1) Muon_pT_gen_MTD_EE_list_Significance_Bkg[k]->Fill(muon_sim_pt);
+	    }
           }
         }
       }
@@ -1966,6 +2191,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 //  cout << "genmatched: " << ntrk_genmatched << endl;
 //  cout << "notgenmatched: " << ntrk_notgenmatched << endl;
 //  cout << "nosiminfo: " << ntrk_nosiminfo << endl;
+  meMuonISO_Nmus_Sig_->Fill(nmus_Sig);
+  meMuonISO_Nmus_Bkg_->Fill(nmus_Bkg);
   if(nmus_Sig_EB!=0) meMuonISO_Nmus_Sig_EB_->Fill(nmus_Sig_EB);
   if(nmus_Sig_EE!=0) meMuonISO_Nmus_Sig_EE_->Fill(nmus_Sig_EE);
   if(nmus_Bkg_EB!=0) meMuonISO_Nmus_Bkg_EB_->Fill(nmus_Bkg_EB);
@@ -2390,6 +2617,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
 
   meMuon_pt_tot_Sig_EB_ =
       ibook.book1D("Muon_pT_tot_Sig_EB", "Muon pT tot - Signal Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+      //ibook.book1D("Muon_pT_tot_Sig_EB", "Muon pT tot - Signal Barrel;p_{T} (GeV);Counts", 500, 0, 5000); //FIXME
   meMuon_pt_noMTD_Sig_EB_ =
       ibook.book1D("Muon_pT_noMTD_Sig_EB", "Muon pT noMTD - Signal Barrel;p_{T} (GeV);Counts", 30, 10, 100);
 
@@ -4410,106 +4638,613 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                               10);
 
   // test
-  meMuonISO_time_muon_reco_ = ibook.book1D("Muon_Iso_time_muon_reco",
+    // GEN CASE
+  meMuon_pt_gen_MTD_2sigma_Sig_EB_ =
+      ibook.book1D("Muon_pT_gen_MTD_2sigma_Sig_EB",
+                   "Muon pT MTD GEN - 2 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_3sigma_Sig_EB_ =
+      ibook.book1D("Muon_pT_gen_MTD_3sigma_Sig_EB",
+                   "Muon pT MTD GEN - 3 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_4sigma_Sig_EB_ =
+      ibook.book1D("Muon_pT_gen_MTD_4sigma_Sig_EB",
+                   "Muon pT MTD GEN - 4 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_2sigma_Sig_EE_ =
+      ibook.book1D("Muon_pT_gen_MTD_2sigma_Sig_EE",
+                   "Muon pT MTD GEN - 2 sigma compatibility - Signal Endcap;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_3sigma_Sig_EE_ =
+      ibook.book1D("Muon_pT_gen_MTD_3sigma_Sig_EE",
+                   "Muon pT MTD GEN - 3 sigma compatibility - Signal Endcap;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_4sigma_Sig_EE_ =
+      ibook.book1D("Muon_pT_gen_MTD_4sigma_Sig_EE",
+                   "Muon pT MTD GEN - 4 sigma compatibility - Signal Endcap;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_2sigma_Bkg_EB_ =
+      ibook.book1D("Muon_pT_gen_MTD_2sigma_Bkg_EB",
+                   "Muon pT MTD GEN - 2 sigma compatibility - Background Barrel;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_3sigma_Bkg_EB_ =
+      ibook.book1D("Muon_pT_gen_MTD_3sigma_Bkg_EB",
+                   "Muon pT MTD GEN - 3 sigma compatibility - Background Barrel;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_4sigma_Bkg_EB_ =
+      ibook.book1D("Muon_pT_gen_MTD_4sigma_Bkg_EB",
+                   "Muon pT MTD GEN - 4 sigma compatibility - Background Barrel;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_2sigma_Bkg_EE_ =
+      ibook.book1D("Muon_pT_gen_MTD_2sigma_Bkg_EE",
+                   "Muon pT MTD GEN - 2 sigma compatibility - Background Endcap;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_3sigma_Bkg_EE_ =
+      ibook.book1D("Muon_pT_gen_MTD_3sigma_Bkg_EE",
+                   "Muon pT MTD GEN - 3 sigma compatibility - Background Endcap;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+  meMuon_pt_gen_MTD_4sigma_Bkg_EE_ =
+      ibook.book1D("Muon_pT_gen_MTD_4sigma_Bkg_EE",
+                   "Muon pT MTD GEN - 4 sigma compatibility - Background Endcap;p_{T} (GeV);Counts",
+                   30,
+                   10,
+                   100);
+
+  meMuonISO_chIso_MTD_gen_2sigma_Sig_EB_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_2sigma_Sig_EB",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 2 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_3sigma_Sig_EB_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Sig_EB",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 3 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_4sigma_Sig_EB_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Sig_EB",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 4 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_2sigma_Sig_EE_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_2sigma_Sig_EE",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 2 sigma compatibiliy - Signal Endcap;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_3sigma_Sig_EE_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Sig_EE",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 3 sigma compatibiliy - Signal Endcap;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_4sigma_Sig_EE_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Sig_EE",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 4 sigma compatibiliy - Signal Endcap;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_2sigma_Bkg_EB_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_2sigma_Bkg_EB",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 2 sigma compatibiliy - Background Barrel;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_3sigma_Bkg_EB_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Bkg_EB",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 3 sigma compatibiliy - Background Barrel;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_4sigma_Bkg_EB_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Bkg_EB",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 4 sigma compatibiliy - Background Barrel;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_2sigma_Bkg_EE_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_2sigma_Bkg_EE",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 2 sigma compatibiliy - Background Endcap;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_3sigma_Bkg_EE_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Bkg_EE",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 3 sigma compatibiliy - Background Endcap;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_chIso_MTD_gen_4sigma_Bkg_EE_ =
+      ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Bkg_EE",
+                   "Track pT sum in isolation cone around muon track after "
+                   "basic cuts with MTD - 4 sigma compatibiliy - Background Endcap;p_{T} (GeV);Counts",
+                   nbin_2,
+                   0,
+                   50);
+  meMuonISO_rel_chIso_MTD_gen_2sigma_Sig_EB_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_2sigma_Sig_EB",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
+      "compatibiliy - Signal Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_3sigma_Sig_EB_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_3sigma_Sig_EB",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 3 sigma "
+      "compatibiliy - Signal Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_4sigma_Sig_EB_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_4sigma_Sig_EB",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 4 sigma "
+      "compatibiliy - Signal Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_2sigma_Bkg_EB_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_2sigma_Bkg_EB",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
+      "compatibiliy - Background Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_3sigma_Bkg_EB_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_3sigma_Bkg_EB",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 3 sigma "
+      "compatibiliy - Background Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_4sigma_Bkg_EB_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_4sigma_Bkg_EB",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 4 sigma "
+      "compatibiliy - Background Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_2sigma_Sig_EE_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_2sigma_Sig_EE",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
+      "compatibiliy - Signal Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_3sigma_Sig_EE_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_3sigma_Sig_EE",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 3 sigma "
+      "compatibiliy - Signal Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_4sigma_Sig_EE_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_4sigma_Sig_EE",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 4 sigma "
+      "compatibiliy - Signal Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_2sigma_Bkg_EE_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_2sigma_Bkg_EE",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
+      "compatibiliy - Background Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_3sigma_Bkg_EE_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_3sigma_Bkg_EE",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 3 sigma "
+      "compatibiliy - Background Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+  meMuonISO_rel_chIso_MTD_gen_4sigma_Bkg_EE_ = ibook.book1D(
+      "Muon_rel_chIso_sum_MTD_gen_4sigma_Bkg_EE",
+      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 4 sigma "
+      "compatibiliy - Background Barrel;Isolation;Counts",
+      nbin_1,
+      0,
+      4);
+
+  // Several tests
+  meMuonISO_trk_genMatched_Sig_ = ibook.book1D(
+      "Muon_Iso_track_genMatched_Sig", "Check on tracks matched with a GenParticle (matched=1, non matched=0) - Signal", 2, 0, 2);
+  meMuonISO_trk_genMatched_Sig_EB_ = ibook.book1D(
+      "Muon_Iso_track_genMatched_Sig_EB", "Check on tracks matched with a GenParticle (matched=1, non matched=0) - Signal Barrel", 2, 0, 2);
+  meMuonISO_trk_genMatched_Sig_EE_ = ibook.book1D(
+      "Muon_Iso_track_genMatched_Sig_EE", "Check on tracks matched with a GenParticle (matched=1, non matched=0) - Signal Endcap", 2, 0, 2);
+  meMuonISO_trk_genMatched_Bkg_ = ibook.book1D(
+      "Muon_Iso_track_genMatched_Bkg", "Check on tracks matched with a GenParticle (matched=1, non matched=0) - Background", 2, 0, 2);
+  meMuonISO_trk_genMatched_Bkg_EB_ = ibook.book1D(
+      "Muon_Iso_track_genMatched_Bkg_EB", "Check on tracks matched with a GenParticle (matched=1, non matched=0) - Background Barrel", 2, 0, 2);
+  meMuonISO_trk_genMatched_Bkg_EE_ = ibook.book1D(
+      "Muon_Iso_track_genMatched_Bkg_EE", "Check on tracks matched with a GenParticle (matched=1, non matched=0) - Background Endcap", 2, 0, 2);
+
+  meMuonISO_pTdiff_reco_tracker_muon_Sig_ = ibook.book1D("Muon_Iso_pTdiff_reco_tracker_muon_Sig",
+                                                "pT difference between reco and tracker muons - Signal;pT (GeV);Counts",
+                                                200,
+                                                0,
+                                                1000);
+  meMuonISO_pTdiff_reco_tracker_muon_Bkg_ = ibook.book1D("Muon_Iso_pTdiff_reco_tracker_muon_Bkg",
+                                                "pT difference between reco and tracker muons - Background;pT (GeV);Counts",
+                                                200,
+                                                0,
+                                                1000);
+
+  meMuonISO_pT_muon_sim_ = ibook.book1D("Muon_Iso_pT_muon_sim",
+                                                "pT of sim muon ;pT (GeV);Counts",
+                                                11,
+                                                -1,
+                                                100);
+  meMuonISO_pT_trk_sim_ = ibook.book1D("Muon_Iso_pT_track_sim",
+                                                "pT of sim track ;pT (GeV);Counts",
+                                                11,
+                                                -1,
+                                                100);
+  meMuonISO_dz_muon_ = ibook.book1D("Muon_Iso_dz_muon_reco",
+                                                "dz (muon, PV) distribution for reco muons ;dz (cm);Counts",
+                                                40,
+                                                0,
+                                                2);
+  meMuonISO_dxy_muon_ = ibook.book1D("Muon_Iso_dxy_muon_reco",
+                                                "dxy (muon, PV) distribution for reco muons ;dxy (cm);Counts",
+                                                40,
+                                                0,
+                                                2);
+  meMuonISO_time_muon_reco_Sig_ = ibook.book1D("Muon_Iso_time_muon_reco_Sig",
                                                 "Time distribution for reco muons ;t^{reco}_{muon} (ns);Counts",
-                                                2000,
-                                                -10,
-                                                10);
-  meMuonISO_time_trk_reco_ = ibook.book1D("Muon_Iso_time_track_reco",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_time_muon_reco_Bkg_ = ibook.book1D("Muon_Iso_time_muon_reco_Bkg",
+                                                "Time distribution for reco muons ;t^{reco}_{muon} (ns);Counts",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_time_trk_reco_Sig_ = ibook.book1D("Muon_Iso_time_track_reco_Sig",
                                                 "Time distribution for reco tracks ;t^{reco}_{track} (ns);Counts",
-                                                2000,
-                                                -10,
-                                                10);
-  meMuonISO_time_muon_sim_ = ibook.book1D("Muon_Iso_time_muon_sim",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_time_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_time_track_reco_Bkg",
+                                                "Time distribution for reco tracks ;t^{reco}_{track} (ns);Counts",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_tErr_muon_reco_Sig_ = ibook.book1D("Muon_Iso_tErr_muon_reco_Sig",
+                                                "Error of time distribution for reco muons ;t^{reco}_{muon} (ns);Counts",
+                                                60,
+                                                -1,
+                                                2);
+  meMuonISO_tErr_muon_reco_Bkg_ = ibook.book1D("Muon_Iso_tErr_muon_reco_Bkg",
+                                                "Error of time distribution for reco muons ;t^{reco}_{muon} (ns);Counts",
+                                                60,
+                                                -1,
+                                                2);
+  meMuonISO_tErr_trk_reco_Sig_ = ibook.book1D("Muon_Iso_tErr_track_reco_Sig",
+                                                "Error of time distribution for reco tracks ;t^{reco}_{track} (ns);Counts",
+                                                60,
+                                                -1,
+                                                2);
+  meMuonISO_tErr_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_tErr_track_reco_Bkg",
+                                                "Error of time distribution for reco tracks ;t^{reco}_{track} (ns);Counts",
+                                                60,
+                                                -1,
+                                                2);
+  meMuonISO_time_muon_sim_Sig_ = ibook.book1D("Muon_Iso_time_muon_sim_Sig",
                                                 "Time distribution for sim muons ;t^{sim}_{muon} (ns);Counts",
-                                                2000,
-                                                -10,
-                                                10);
-  meMuonISO_time_trk_sim_ = ibook.book1D("Muon_Iso_time_track_sim",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_time_muon_sim_Bkg_ = ibook.book1D("Muon_Iso_time_muon_sim_Bkg",
+                                                "Time distribution for sim muons ;t^{sim}_{muon} (ns);Counts",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_time_trk_sim_Sig_ = ibook.book1D("Muon_Iso_time_track_sim_Sig",
                                                 "Time distribution for sim tracks ;t^{sim}_{track} (ns);Counts",
-                                                2000,
-                                                -10,
-                                                10);
-  meMuonISO_have_time_muon_reco_ = ibook.book1D("Muon_Iso_whether_muon_have_reco_time",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_time_trk_sim_Bkg_ = ibook.book1D("Muon_Iso_time_track_sim_Bkg",
+                                                "Time distribution for sim tracks ;t^{sim}_{track} (ns);Counts",
+                                                80,
+                                                -2,
+                                                2);
+  meMuonISO_has_time_muon_reco_Sig_ = ibook.book1D("Muon_Iso_whether_muon_has_time_reco_Sig",
                                                 "Check on whether reco muon has timing information",
                                                 2,
                                                 0,
                                                 2);
-  meMuonISO_have_time_trk_reco_ = ibook.book1D("Muon_Iso_whether_track_have_reco_time",
+  meMuonISO_has_time_muon_reco_Bkg_ = ibook.book1D("Muon_Iso_whether_muon_has_time_reco_Bkg",
+                                                "Check on whether reco muon has timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_time_trk_reco_Sig_ = ibook.book1D("Muon_Iso_whether_track_has_time_reco_Sig",
                                                 "Check on whether reco track has timing information",
                                                 2,
                                                 0,
                                                 2);
-  meMuonISO_have_time_muon_sim_ = ibook.book1D("Muon_Iso_whether_muon_have_sim_time",
+  meMuonISO_has_time_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_whether_track_has_time_reco_Bkg",
+                                                "Check on whether reco track has timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_tErr_muon_reco_Sig_ = ibook.book1D("Muon_Iso_whether_muon_has_tErr_reco_Sig",
+                                                "Check on whether reco muon has error of timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_tErr_muon_reco_Bkg_ = ibook.book1D("Muon_Iso_whether_muon_has_tErr_reco_Bkg",
+                                                "Check on whether reco muon has error of timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_tErr_trk_reco_Sig_ = ibook.book1D("Muon_Iso_whether_track_has_tErr_reco_Sig",
+                                                "Check on whether reco track has error of timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_tErr_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_whether_track_has_tErr_reco_Bkg",
+                                                "Check on whether reco track has error of timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_mva_muon_reco_Sig_ = ibook.book1D("Muon_Iso_whether_muon_has_mva_reco_Sig",
+                                                "Check on whether reco muon track has mva score",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_mva_muon_reco_Bkg_ = ibook.book1D("Muon_Iso_whether_muon_has_mva_reco_Bkg",
+                                                "Check on whether reco muon track has mva score",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_mva_trk_reco_Sig_ = ibook.book1D("Muon_Iso_whether_track_has_mva_reco_Sig",
+                                                "Check on whether reco track has mva score",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_mva_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_whether_track_has_mva_reco_Bkg",
+                                                "Check on whether reco track has mva score",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_time_muon_sim_Sig_ = ibook.book1D("Muon_Iso_whether_muon_has_time_sim_Sig",
                                                 "Check on whether sim muon has timing information",
                                                 2,
                                                 0,
                                                 2);
-  meMuonISO_have_time_trk_sim_ = ibook.book1D("Muon_Iso_whether_track_have_sim_time",
+  meMuonISO_has_time_muon_sim_Bkg_ = ibook.book1D("Muon_Iso_whether_muon_has_time_sim_Bkg",
+                                                "Check on whether sim muon has timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_has_time_trk_sim_Sig_ = ibook.book1D("Muon_Iso_whether_track_has_time_sim_Sig",
                                                 "Check on whether sim track has timing information",
                                                 2,
                                                 0,
                                                 2);
-  meMuonISO_dt_muon_trk_reco_1_ = ibook.book1D("Muon_Iso_dt_muon_track_reco_1",
+  meMuonISO_has_time_trk_sim_Bkg_ = ibook.book1D("Muon_Iso_whether_track_has_time_sim_Bkg",
+                                                "Check on whether sim track has timing information",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dt_muon_trk_reco_Sig_ = ibook.book1D("Muon_Iso_dt_muon_track_reco_Sig",
                                                 "dt distribution for reco track and reco muon ;|t^{reco}_{track}-t^{reco}_{muon}| (ns);Counts",
-                                                2000,
-                                                -10,
-                                                10);
-  meMuonISO_dt_muon_trk_reco_2_ = ibook.book1D("Muon_Iso_dt_muon_track_reco_2",
+                                                30,
+                                                0,
+                                                3);
+  meMuonISO_dt_muon_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_dt_muon_track_reco_Bkg",
                                                 "dt distribution for reco track and reco muon ;|t^{reco}_{track}-t^{reco}_{muon}| (ns);Counts",
-                                                2000,
-                                                -10,
-                                                10);
-  meMuonISO_dt_muon_trk_sim_ = ibook.book1D("Muon_Iso_dt_muon_track_sim",
+                                                30,
+                                                0,
+                                                3);
+  meMuonISO_dt_muon_trk_sim_Sig_ = ibook.book1D("Muon_Iso_dt_muon_track_sim_Sig",
                                                 "dt distribution for sim track and sim muon ;|t^{sim}_{track}-t^{sim}_{muon}| (ns);Counts",
-                                                2000,
-                                                -10,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco",
+                                                30,
+                                                0,
+                                                3);
+  meMuonISO_dt_muon_trk_sim_Bkg_ = ibook.book1D("Muon_Iso_dt_muon_track_sim_Bkg",
+                                                "dt distribution for sim track and sim muon ;|t^{sim}_{track}-t^{sim}_{muon}| (ns);Counts",
+                                                30,
+                                                0,
+                                                3);
+  meMuonISO_dt_PV_trk_reco_Sig_ = ibook.book1D("Muon_Iso_dt_PV_track_reco_Sig",
+                                                "dt distribution for reco track and PV ;|t^{reco}_{track}-t_{PV}| (ns);Counts",
+                                                30,
+                                                0,
+                                                3);
+  meMuonISO_dt_PV_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_dt_PV_track_reco_Bkg",
+                                                "dt distribution for reco track and PV ;|t^{reco}_{track}-t_{PV}| (ns);Counts",
+                                                30,
+                                                0,
+                                                30);
+  meMuonISO_dt_PV_trk_sim_Sig_ = ibook.book1D("Muon_Iso_dt_PV_track_sim_Sig",
+                                                "dt distribution for sim track and PV ;|t^{sim}_{track}-t_{PV}| (ns);Counts",
+                                                30,
+                                                0,
+                                                3);
+  meMuonISO_dt_PV_trk_sim_Bkg_ = ibook.book1D("Muon_Iso_dt_PV_track_sim_Bkg",
+                                                "dt distribution for sim track and PV ;|t^{sim}_{track}-t_{PV}| (ns);Counts",
+                                                30,
+                                                0,
+                                                3);
+
+  meMuonISO_dtSig_muon_trk_reco_Sig_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_Sig",
                                                 "dtSig distribution for reco track and reco muon ;#sigma;Counts",
-                                                2000,
-                                                -10,
+                                                10,
+                                                0,
                                                 10);
-  meMuonISO_dtSig_muon_trk_sim_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim",
+  meMuonISO_dtSig_muon_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_Bkg",
+                                                "dtSig distribution for reco track and reco muon ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_muon_trk_sim_Sig_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_Sig",
                                                 "dtSig distribution for sim track and sim muon ;#sigma;Counts",
-                                                2000,
-                                                -10,
+                                                10,
+                                                0,
                                                 10);
-  meMuonISO_mva_muon_reco_ = ibook.book1D("Muon_Iso_mva_muon_reco",
+  meMuonISO_dtSig_muon_trk_sim_Bkg_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_Bkg",
+                                                "dtSig distribution for sim track and sim muon ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_muon_trk_reco_genMatched_Sig_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_genMatched_Sig",
+                                                "dtSig distribution for genMatched reco track and reco muon ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_muon_trk_reco_genMatched_Bkg_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_genMatched_Bkg",
+                                                "dtSig distribution for genMatched reco track and reco muon ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_muon_trk_sim_genMatched_Sig_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_genMatched_Sig",
+                                                "dtSig distribution for genMatched sim track and sim muon ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_muon_trk_sim_genMatched_Bkg_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_genMatched_Bkg",
+                                                "dtSig distribution for genMatched sim track and sim muon ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_reco_Sig_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_Sig",
+                                                "dtSig distribution for reco track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_Bkg",
+                                                "dtSig distribution for reco track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_sim_Sig_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_Sig",
+                                                "dtSig distribution for sim track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_sim_Bkg_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_Bkg",
+                                                "dtSig distribution for sim track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_reco_genMatched_Sig_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_genMatched_Sig",
+                                                "dtSig distribution for genMatched reco track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_reco_genMatched_Bkg_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_genMatched_Bkg",
+                                                "dtSig distribution for genMatched reco track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_sim_genMatched_Sig_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_genMatched_Sig",
+                                                "dtSig distribution for genMatched sim track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meMuonISO_dtSig_PV_trk_sim_genMatched_Bkg_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_genMatched_Bkg",
+                                                "dtSig distribution for genMatched sim track and PV ;#sigma;Counts",
+                                                10,
+                                                0,
+                                                10);
+
+  meMuonISO_mva_muon_reco_Sig_ = ibook.book1D("Muon_Iso_mva_muon_reco_Sig",
                                                 "MVA score of reco muons ;MVA Score;Counts",
-                                                200,
-                                                -1,
+                                                100,
+                                                0,
                                                 1);
-  meMuonISO_mva_trk_reco_ = ibook.book1D("Muon_Iso_mva_track_reco",
+  meMuonISO_mva_muon_reco_Bkg_ = ibook.book1D("Muon_Iso_mva_muon_reco_Bkg",
+                                                "MVA score of reco muons ;MVA Score;Counts",
+                                                100,
+                                                0,
+                                                1);
+  meMuonISO_mva_trk_reco_Sig_ = ibook.book1D("Muon_Iso_mva_track_reco_Sig",
                                                 "MVA score of reco tracks ;MVA Score;Counts",
-                                                200,
-                                                -1,
+                                                100,
+                                                0,
+                                                1);
+  meMuonISO_mva_trk_reco_Bkg_ = ibook.book1D("Muon_Iso_mva_track_reco_Bkg",
+                                                "MVA score of reco tracks ;MVA Score;Counts",
+                                                100,
+                                                0,
                                                 1);
 
+  meMuonISO_Nmus_Sig_ = ibook.book1D("Muon_Iso_Nmus_Sig",
+                                                "Number of muons after basic "
+                                                "cuts - Signal;Number of muons;Counts",
+                                                5,
+                                                0,
+                                                5);
   meMuonISO_Nmus_Sig_EB_ = ibook.book1D("Muon_Iso_Nmus_Sig_EB",
                                                 "Number of muons after basic "
                                                 "cuts - Signal Barrel;Number of muons;Counts",
-                                                10,
+                                                5,
                                                 0,
-                                                10);
+                                                5);
   meMuonISO_Nmus_Sig_EE_ = ibook.book1D("Muon_Iso_Nmus_Sig_EE",
                                                 "Number of muons after basic "
                                                 "cuts - Signal Endcap;Number of muons;Counts",
-                                                10,
+                                                5,
                                                 0,
-                                                10);
+                                                5);
+  meMuonISO_Nmus_Bkg_ = ibook.book1D("Muon_Iso_Nmus_Bkg",
+                                                "Number of muons after basic "
+                                                "cuts - Background;Number of muons;Counts",
+                                                5,
+                                                0,
+                                                5);
   meMuonISO_Nmus_Bkg_EB_ = ibook.book1D("Muon_Iso_Nmus_Bkg_EB",
                                                 "Number of muons after basic "
                                                 "cuts - Background Barrel;Number of muons;Counts",
-                                                10,
+                                                5,
                                                 0,
-                                                10);
+                                                5);
   meMuonISO_Nmus_Bkg_EE_ = ibook.book1D("Muon_Iso_Nmus_Bkg_EE",
                                                 "Number of muons after basic "
                                                 "cuts - Background Endcap;Number of muons;Counts",
-                                                10,
+                                                5,
                                                 0,
-                                                10);
+                                                5);
   meMuonISO_Ntracks_Sig_nodRcut_tot_ = ibook.book1D("Muon_Iso_Ntracks_Sig_nodRcut_tot",
                                                 "Total number of tracks after basic "
                                                 "cuts without dR cut - Signal Barrel+Endcap;Number of tracks;Counts",
@@ -4892,6 +5627,42 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
     Muon_pT_sim_MTD_EE_list_Significance_Sig = {
         meMuon_pt_sim_MTD_4sigma_Sig_EE_, meMuon_pt_sim_MTD_3sigma_Sig_EE_, meMuon_pt_sim_MTD_2sigma_Sig_EE_};
   }
+  // test
+  // For GEN CASE
+    Muon_pT_gen_MTD_EB_list_Significance_Sig = {
+        meMuon_pt_gen_MTD_4sigma_Sig_EB_, meMuon_pt_gen_MTD_3sigma_Sig_EB_, meMuon_pt_gen_MTD_2sigma_Sig_EB_};
+    Muon_pT_gen_MTD_EE_list_Significance_Sig = {
+        meMuon_pt_gen_MTD_4sigma_Sig_EE_, meMuon_pt_gen_MTD_3sigma_Sig_EE_, meMuon_pt_gen_MTD_2sigma_Sig_EE_};
+    Muon_pT_gen_MTD_EB_list_Significance_Bkg = {
+        meMuon_pt_gen_MTD_4sigma_Bkg_EB_, meMuon_pt_gen_MTD_3sigma_Bkg_EB_, meMuon_pt_gen_MTD_2sigma_Bkg_EB_};
+    Muon_pT_gen_MTD_EE_list_Significance_Bkg = {
+        meMuon_pt_gen_MTD_4sigma_Bkg_EE_, meMuon_pt_gen_MTD_3sigma_Bkg_EE_, meMuon_pt_gen_MTD_2sigma_Bkg_EE_};
+
+    ch_iso_gen_EB_list_Significance_Sig = {meMuonISO_chIso_MTD_gen_4sigma_Sig_EB_,
+                                           meMuonISO_chIso_MTD_gen_3sigma_Sig_EB_,
+                                           meMuonISO_chIso_MTD_gen_2sigma_Sig_EB_};
+    rel_ch_iso_gen_EB_list_Significance_Sig = {meMuonISO_rel_chIso_MTD_gen_4sigma_Sig_EB_,
+                                               meMuonISO_rel_chIso_MTD_gen_3sigma_Sig_EB_,
+                                               meMuonISO_rel_chIso_MTD_gen_2sigma_Sig_EB_};
+    ch_iso_gen_EE_list_Significance_Sig = {meMuonISO_chIso_MTD_gen_4sigma_Sig_EE_,
+                                           meMuonISO_chIso_MTD_gen_3sigma_Sig_EE_,
+                                           meMuonISO_chIso_MTD_gen_2sigma_Sig_EE_};
+    rel_ch_iso_gen_EE_list_Significance_Sig = {meMuonISO_rel_chIso_MTD_gen_4sigma_Sig_EE_,
+                                               meMuonISO_rel_chIso_MTD_gen_3sigma_Sig_EE_,
+                                               meMuonISO_rel_chIso_MTD_gen_2sigma_Sig_EE_};
+    ch_iso_gen_EB_list_Significance_Bkg = {meMuonISO_chIso_MTD_gen_4sigma_Bkg_EB_,
+                                           meMuonISO_chIso_MTD_gen_3sigma_Bkg_EB_,
+                                           meMuonISO_chIso_MTD_gen_2sigma_Bkg_EB_};
+    rel_ch_iso_gen_EB_list_Significance_Bkg = {meMuonISO_rel_chIso_MTD_gen_4sigma_Bkg_EB_,
+                                               meMuonISO_rel_chIso_MTD_gen_3sigma_Bkg_EB_,
+                                               meMuonISO_rel_chIso_MTD_gen_2sigma_Bkg_EB_};
+    ch_iso_gen_EE_list_Significance_Bkg = {meMuonISO_chIso_MTD_gen_4sigma_Bkg_EE_,
+                                           meMuonISO_chIso_MTD_gen_3sigma_Bkg_EE_,
+                                           meMuonISO_chIso_MTD_gen_2sigma_Bkg_EE_};
+    rel_ch_iso_gen_EE_list_Significance_Bkg = {meMuonISO_rel_chIso_MTD_gen_4sigma_Bkg_EE_,
+                                               meMuonISO_rel_chIso_MTD_gen_3sigma_Bkg_EE_,
+                                               meMuonISO_rel_chIso_MTD_gen_2sigma_Bkg_EE_};
+    // test end
 
   // Non-promt part
   if (optionalPlots_) {
@@ -5160,8 +5931,8 @@ void MtdMuonIsoValidation::fillDescriptions(edm::ConfigurationDescriptions& desc
   desc.add<double>("rel_iso_cut", 0.08);
   //desc.add<bool>("optionTrackMatchToPV", true);
   desc.add<bool>("optionTrackMatchToPV", false);
-  //desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
-  desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
+  desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
+  //desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
   desc.add<bool>("option_plots", true);
   desc.add<double>("min_dR_cut", 0.01);
   desc.add<double>("max_dR_cut", 0.3);
