@@ -1268,10 +1268,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   int nmuons_Sig=0, nmuons_Sig_EB=0, nmuons_Sig_EE=0;
   int nmuons_Bkg=0, nmuons_Bkg_EB=0, nmuons_Bkg_EE=0;
 
-  int ntrk_genmatched=0;
-  int ntrk_notgenmatched=0;
-  int ntrk_nosiminfo=0;
-
   for (const auto& muon : localMuonCollection) {
     bool muon_Prompt = false;
     float muon_track_source_dz = std::abs(muon.track()->dz(Vtx_chosen.position()));
@@ -1523,18 +1519,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           }
         }
 
-        const reco::TrackBaseRef trkrefBase2(trackref_general);
-        auto TPmatched2 = r2s_->find(trkrefBase2);
-        if (TPmatched2 != r2s_->end()) {
-          const auto& tp2 = (TPmatched2->val)[0];
-          if (tp2.first->status() != -99) {
-	    ntrk_genmatched++;
-          } else {
-	    ntrk_notgenmatched++;
-          }
-        }
-	else {ntrk_nosiminfo++;}
-      
         double dR = reco::deltaR(trackGen.momentum(), MuonSigTrackMomentumAtVtx);
 
         // restrict to tracks in the isolation cone
@@ -1716,10 +1700,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           pT_sum_gen += trk_ptSim;
         }
 
-	// test for checking the type of tracks
-	TPmatched = r2s_->find(trkrefBase);
-	const auto& tp = (TPmatched->val)[0];
-
+        //const reco::TrackBaseRef trkrefBase(trackref_general);
+        //auto TPmatched = r2s_->find(trkrefBase);
 	
         // dt with the track
         if (dt_sig_track_) {
@@ -1740,13 +1722,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
-		  }
-		  else meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
+		    }
+		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
+	          }
+	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 	        }
-	        else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_muon_trk_sim_Sig_EE_->Fill(dt_sim_sigTrk);
@@ -1754,13 +1739,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Sig_EE_->Fill(dt_sim_sigTrk_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
-		  }
-		  else meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
-	        }
-	        else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
+		    }
+		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
+	          }
+	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
+		}
 	      }
 	    }
 	    else {
@@ -1770,13 +1758,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
-		  }
-		  else meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
+		    }
+		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
+	          }
+	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 	        }
-	        else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_muon_trk_sim_Bkg_EE_->Fill(dt_sim_sigTrk);
@@ -1784,13 +1775,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
-		  }
-		  else meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
-	        }
-	        else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
+		    }
+		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
+	          }
+	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
+		}
 	      }
 	    }
 
@@ -1852,13 +1846,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Sig_EB_->Fill(dt_sigTrk_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_->Fill(dt_sigTrk_signif);
-  		  }
-  		  else meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EB_->Fill(dt_sigTrk_signif);
-  	        }
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_->Fill(dt_sigTrk_signif);
+  		    }
+  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EB_->Fill(dt_sigTrk_signif);
+  	          }
   	        else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EB_->Fill(dt_sigTrk_signif);
+	        }
 	      }
 	      else {
 	        meMuonISO_dt_muon_trk_reco_Sig_EE_->Fill(dt_sigTrk);
@@ -1866,13 +1863,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Sig_EE_->Fill(dt_sigTrk_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
-  		  }
-  		  else meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
-  	        }
-  	        else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_->Fill(dt_sigTrk_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
+  		    }
+  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
+  	          }
+  	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_->Fill(dt_sigTrk_signif);
+		}
 	      }
 	    }
 	    else { // Non-prompt
@@ -1882,13 +1882,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Bkg_EB_->Fill(dt_sigTrk_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
-  		  }
-  		  else meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
-  	        }
-  	        else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
+  		    }
+  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
+  	          }
+  	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
+		}
 	      }
 	      else {
 	        meMuonISO_dt_muon_trk_reco_Bkg_EE_->Fill(dt_sigTrk);
@@ -1896,13 +1899,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Bkg_EE_->Fill(dt_sigTrk_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
-  		  }
-  		  else meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
-  	        }
-  	        else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
+  		    }
+  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
+  	          }
+  	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
+		}
 	      }
 	    }
             meMuon_no_dt_check_->Fill(1);
@@ -1987,13 +1993,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Sig_EB_->Fill(dt_sim_vtx_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
-		  }
-		  else meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
-	        }
-	        else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
+		    }
+		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
+	          }
+	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
+		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_PV_trk_sim_Sig_EE_->Fill(dt_sim_vtx);
@@ -2001,13 +2010,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Sig_EE_->Fill(dt_sim_vtx_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
-		  }
-		  else meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
-	        }
-	        else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
+		    }
+		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
+	          }
+	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
+		}
 	      }
 	    }
 	    else {
@@ -2017,13 +2029,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Bkg_EB_->Fill(dt_sim_vtx_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
-		  }
-		  else meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
-	        }
-	        else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
+		    }
+		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
+	          }
+	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
+		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_PV_trk_sim_Bkg_EE_->Fill(dt_sim_vtx);
@@ -2031,13 +2046,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Bkg_EE_->Fill(dt_sim_vtx_signif);
 
 	        // test for checking the type of tracks
-	        if (genMatched) {
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
-		  }
-		  else meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
-	        }
-	        else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+	          if (genMatched) {
+	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
+		    }
+		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
+	          }
+	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
+		}
 	      }
 	    }
 
@@ -2097,13 +2115,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Sig_EB_->Fill(dt_vtx_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_->Fill(dt_vtx_signif);
-  		  }
-  		  else meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EB_->Fill(dt_vtx_signif);
-  	        }
-  	        else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_->Fill(dt_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_->Fill(dt_vtx_signif);
+  		    }
+  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EB_->Fill(dt_vtx_signif);
+  	          }
+  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_->Fill(dt_vtx_signif);
+		}
 	      }
 	      else {
 	        meMuonISO_dt_PV_trk_reco_Sig_EE_->Fill(dt_vtx);
@@ -2111,13 +2132,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Sig_EE_->Fill(dt_vtx_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_->Fill(dt_vtx_signif);
-  		  }
-  		  else meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EE_->Fill(dt_vtx_signif);
-  	        }
-  	        else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_->Fill(dt_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_->Fill(dt_vtx_signif);
+  		    }
+  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EE_->Fill(dt_vtx_signif);
+  	          }
+  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_->Fill(dt_vtx_signif);
+		}
 	      }
 	    }
 	    else { // Non-prompt
@@ -2127,13 +2151,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Bkg_EB_->Fill(dt_vtx_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EB_->Fill(dt_vtx_signif);
-  		  }
-  		  else meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EB_->Fill(dt_vtx_signif);
-  	        }
-  	        else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_->Fill(dt_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EB_->Fill(dt_vtx_signif);
+  		    }
+  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EB_->Fill(dt_vtx_signif);
+  	          }
+  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_->Fill(dt_vtx_signif);
+		}
 	      }
 	      else {
 	        meMuonISO_dt_PV_trk_reco_Bkg_EE_->Fill(dt_vtx);
@@ -2141,13 +2168,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Bkg_EE_->Fill(dt_vtx_signif);
 
 	        // test for checking the type of tracks
-  	        if (genMatched) {
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EE_->Fill(dt_vtx_signif);
-  		  }
-  		  else meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EE_->Fill(dt_vtx_signif);
-  	        }
-  	        else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EE_->Fill(dt_vtx_signif);
+		if (TPmatched != r2s_->end()) {
+		  const auto& tp = (TPmatched->val)[0];
+  	          if (genMatched) {
+  		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
+  		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EE_->Fill(dt_vtx_signif);
+  		    }
+  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EE_->Fill(dt_vtx_signif);
+  	          }
+  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EE_->Fill(dt_vtx_signif);
+		}
 	      }
 	    }
             meMuon_no_dt_check_->Fill(1);
@@ -5857,8 +5887,8 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
       "Muon_Iso_track_type_Sig_EE", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Signal Endcap", 4, 0, 4);
   meMuonISO_trk_type_Bkg_EB_ = ibook.book1D(
       "Muon_Iso_track_type_Bkg_EB", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Background Barrel", 4, 0, 4);
-  meMuonISO_trk_type_Sig_EE_ = ibook.book1D(
-      "Muon_Iso_track_type_Sig_EE", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Background Endcap", 4, 0, 4);
+  meMuonISO_trk_type_Bkg_EE_ = ibook.book1D(
+      "Muon_Iso_track_type_Bkg_EE", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Background Endcap", 4, 0, 4);
 
   meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PVtrk_Sig_EB",
                                                 "dtSig distribution for reco PV track and reco muon - Signal Barrel;#sigma;Counts",
@@ -6746,8 +6776,8 @@ void MtdMuonIsoValidation::fillDescriptions(edm::ConfigurationDescriptions& desc
   desc.add<double>("rel_iso_cut", 0.08);
   //desc.add<bool>("optionTrackMatchToPV", true);
   desc.add<bool>("optionTrackMatchToPV", false);
-  desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
-  //desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
+  //desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
+  desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
   desc.add<bool>("option_plots", true);
   desc.add<double>("min_dR_cut", 0.01);
   desc.add<double>("max_dR_cut", 0.3);
