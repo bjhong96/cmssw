@@ -193,10 +193,6 @@ private:
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EB_;
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_;
@@ -214,10 +210,6 @@ private:
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_;
@@ -235,10 +227,6 @@ private:
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_;
@@ -256,10 +244,6 @@ private:
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_;
@@ -1555,12 +1539,12 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	// test to checking the type of tracks
 	if (TPmatched == r2s_->end()) {
 	  if (muon_Prompt) {
-	    if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(3);
-	    else meMuonISO_trk_type_Sig_EE_->Fill(3);
+	    if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(2);
+	    else meMuonISO_trk_type_Sig_EE_->Fill(2);
 	  }
 	  else {
-	    if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(3);
-	    else meMuonISO_trk_type_Bkg_EE_->Fill(3);
+	    if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(2);
+	    else meMuonISO_trk_type_Bkg_EE_->Fill(2);
 	  }
 	}
 	else if (TPmatched != r2s_->end()) {
@@ -1578,30 +1562,23 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(0);
 		else meMuonISO_trk_type_Sig_EE_->Fill(0);
 	      }
-	      else {
-		if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(1);
-		else meMuonISO_trk_type_Sig_EE_->Fill(1);
-	      }
+	      // there are no else cases
 	    }
 	    else {
 	      if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
                 if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(0);
 		else meMuonISO_trk_type_Bkg_EE_->Fill(0);
               }
-              else {
-		if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(1);
-		else meMuonISO_trk_type_Bkg_EE_->Fill(1);
-	      }
 	    }
           } else {
             meTrk_genMatch_check_->Fill(0);
 	    if (muon_Prompt) {
-	      if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(2);
-	      else meMuonISO_trk_type_Sig_EE_->Fill(2);
+	      if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(1);
+	      else meMuonISO_trk_type_Sig_EE_->Fill(1);
 	    }
 	    else {
-	      if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(2);
-	      else meMuonISO_trk_type_Bkg_EE_->Fill(2);
+	      if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(1);
+	      else meMuonISO_trk_type_Bkg_EE_->Fill(1);
 	    }
           }
         }
@@ -1744,7 +1721,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 		    }
-		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 	        }
@@ -1764,7 +1740,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
 		    }
-		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
 		}
@@ -1786,7 +1761,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 		    }
-		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 	        }
@@ -1806,7 +1780,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
 		    }
-		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
 		}
@@ -1880,7 +1853,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_->Fill(dt_sigTrk_signif);
   		    }
-  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EB_->Fill(dt_sigTrk_signif);
   	          }
   	        else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EB_->Fill(dt_sigTrk_signif);
 	        }
@@ -1900,7 +1872,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
   		    }
-  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
   	          }
   	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_->Fill(dt_sigTrk_signif);
 		}
@@ -1922,7 +1893,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
   		    }
-  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
   	          }
   	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
 		}
@@ -1942,7 +1912,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
   		    }
-  		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
   	          }
   	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
 		}
@@ -2039,7 +2008,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
 		    }
-		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
 		}
@@ -2059,7 +2027,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
 		    }
-		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
 		}
@@ -2081,7 +2048,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
 		    }
-		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
 		}
@@ -2101,7 +2067,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	            if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
 		      meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
 		    }
-		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
 		}
@@ -2173,7 +2138,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_->Fill(dt_vtx_signif);
   		    }
-  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EB_->Fill(dt_vtx_signif);
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_->Fill(dt_vtx_signif);
 		}
@@ -2193,7 +2157,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_->Fill(dt_vtx_signif);
   		    }
-  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EE_->Fill(dt_vtx_signif);
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_->Fill(dt_vtx_signif);
 		}
@@ -2215,7 +2178,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EB_->Fill(dt_vtx_signif);
   		    }
-  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EB_->Fill(dt_vtx_signif);
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_->Fill(dt_vtx_signif);
 		}
@@ -2235,7 +2197,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
   		      meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EE_->Fill(dt_vtx_signif);
   		    }
-  		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EE_->Fill(dt_vtx_signif);
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EE_->Fill(dt_vtx_signif);
 		}
@@ -5946,13 +5907,13 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 1);
     // test to checking the type of tracks
   meMuonISO_trk_type_Sig_EB_ = ibook.book1D(
-      "Muon_Iso_track_type_Sig_EB", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Signal Barrel", 4, 0, 4);
+      "Muon_Iso_track_type_Sig_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Signal Barrel", 3, 0, 3);
   meMuonISO_trk_type_Sig_EE_ = ibook.book1D(
-      "Muon_Iso_track_type_Sig_EE", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Signal Endcap", 4, 0, 4);
+      "Muon_Iso_track_type_Sig_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Signal Endcap", 3, 0, 3);
   meMuonISO_trk_type_Bkg_EB_ = ibook.book1D(
-      "Muon_Iso_track_type_Bkg_EB", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Background Barrel", 4, 0, 4);
+      "Muon_Iso_track_type_Bkg_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Background Barrel", 3, 0, 3);
   meMuonISO_trk_type_Bkg_EE_ = ibook.book1D(
-      "Muon_Iso_track_type_Bkg_EE", "Check the type of tracks (from PV=0, from SV=1, from PU=2, fake=3) - Background Endcap", 4, 0, 4);
+      "Muon_Iso_track_type_Bkg_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Background Endcap", 3, 0, 3);
 
   meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PVtrk_Sig_EB",
                                                 "dtSig distribution for reco PV track and reco muon - Signal Barrel;#sigma;Counts",
@@ -5971,26 +5932,6 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10);
   meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PVtrk_Bkg_EE",
                                                 "dtSig distribution for reco PV track and reco muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_SVtrk_Sig_EB",
-                                                "dtSig distribution for reco SV track and reco muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_SVtrk_Sig_EE",
-                                                "dtSig distribution for reco SV track and reco muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_SVtrk_Bkg_EB",
-                                                "dtSig distribution for reco SV track and reco muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_SVtrk_Bkg_EE",
-                                                "dtSig distribution for reco SV track and reco muon - Background Endcap;#sigma;Counts",
                                                 10,
                                                 0,
                                                 10);
@@ -6076,26 +6017,6 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10,
                                                 0,
                                                 10);
-  meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_SVtrk_Sig_EB",
-                                                "dtSig distribution for sim SV track and sim muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_SVtrk_Sig_EE",
-                                                "dtSig distribution for sim SV track and sim muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_SVtrk_Bkg_EB",
-                                                "dtSig distribution for sim SV track and sim muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_SVtrk_Bkg_EE",
-                                                "dtSig distribution for sim SV track and sim muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
   meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PUtrk_Sig_EB",
                                                 "dtSig distribution for sim PU track and sim muon - Signal Barrel;#sigma;Counts",
                                                 10,
@@ -6178,26 +6099,6 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10,
                                                 0,
                                                 10);
-  meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_SVtrk_Sig_EB",
-                                                "dtSig distribution for reco SV track and reco muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_SVtrk_Sig_EE",
-                                                "dtSig distribution for reco SV track and reco muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_SVtrk_Bkg_EB",
-                                                "dtSig distribution for reco SV track and reco muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_SVtrk_Bkg_EE",
-                                                "dtSig distribution for reco SV track and reco muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
   meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PUtrk_Sig_EB",
                                                 "dtSig distribution for reco PU track and reco muon - Signal Barrel;#sigma;Counts",
                                                 10,
@@ -6277,26 +6178,6 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10);
   meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PVtrk_Bkg_EE",
                                                 "dtSig distribution for sim PV track and sim muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_SVtrk_Sig_EB",
-                                                "dtSig distribution for sim SV track and sim muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_SVtrk_Sig_EE",
-                                                "dtSig distribution for sim SV track and sim muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_SVtrk_Bkg_EB",
-                                                "dtSig distribution for sim SV track and sim muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_SVtrk_Bkg_EE",
-                                                "dtSig distribution for sim SV track and sim muon - Background Endcap;#sigma;Counts",
                                                 10,
                                                 0,
                                                 10);
@@ -6920,8 +6801,8 @@ void MtdMuonIsoValidation::fillDescriptions(edm::ConfigurationDescriptions& desc
   desc.add<double>("rel_iso_cut", 0.08);
   //desc.add<bool>("optionTrackMatchToPV", true);
   desc.add<bool>("optionTrackMatchToPV", false);
-  //desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
-  desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
+  desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
+  //desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
   desc.add<bool>("option_plots", true);
   desc.add<double>("min_dR_cut", 0.01);
   desc.add<double>("max_dR_cut", 0.3);
