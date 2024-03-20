@@ -205,6 +205,10 @@ private:
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EE_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EB_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EE_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EB_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EE_;
 
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_;
@@ -222,6 +226,10 @@ private:
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EE_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EB_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EE_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EB_;
+  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EE_;
 
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_;
@@ -239,6 +247,10 @@ private:
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EE_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EB_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EE_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EB_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EE_;
 
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_;
@@ -256,6 +268,10 @@ private:
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EE_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EB_;
   MonitorElement* meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EE_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EB_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EE_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EB_;
+  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EE_;
   
   //////////
   
@@ -1732,6 +1748,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 	        }
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EB_->Fill(1);
+		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_muon_trk_sim_Sig_EE_->Fill(dt_sim_sigTrk);
@@ -1748,6 +1767,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
+		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -1768,6 +1790,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 	        }
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EB_->Fill(1);
+		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_muon_trk_sim_Bkg_EE_->Fill(dt_sim_sigTrk);
@@ -1784,6 +1809,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 		    else meMuonISO_dtSig_muon_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
 	          }
 	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
+		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -1816,12 +1844,12 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 		
 		// test for checking the type of tracks
 		if (muon_Prompt) {
-		  if (Barrel_muon) meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EB_->Fill(1);
-		  else meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EE_->Fill(1);
+		  if (Barrel_muon) meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EB_->Fill(1);
+		  else meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EE_->Fill(1);
 		}
 		else {
-		  if (Barrel_muon) meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EB_->Fill(1);
-		  else meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EE_->Fill(1);
+		  if (Barrel_muon) meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EB_->Fill(1);
+		  else meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EE_->Fill(1);
 		}
               }
             }
@@ -1856,6 +1884,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   	          }
   	        else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EB_->Fill(dt_sigTrk_signif);
 	        }
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EB_->Fill(1);
+		}
 	      }
 	      else {
 	        meMuonISO_dt_muon_trk_reco_Sig_EE_->Fill(dt_sigTrk);
@@ -1872,6 +1903,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
   	          }
   	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_->Fill(dt_sigTrk_signif);
+		}
+		else {
+		  meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -1892,6 +1926,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   	          }
   	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
 		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EB_->Fill(1);
+		}
 	      }
 	      else {
 	        meMuonISO_dt_muon_trk_reco_Bkg_EE_->Fill(dt_sigTrk);
@@ -1908,6 +1945,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    else meMuonISO_dtSig_muon_trk_reco_SVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
   	          }
   	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
+		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -1940,12 +1980,12 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	      
 	      // test for checking the type of tracks
 	      if (muon_Prompt) {
-		if (Barrel_muon) meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EB_->Fill(1);
-		else meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EE_->Fill(1);
+		if (Barrel_muon) meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EB_->Fill(1);
+		else meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EE_->Fill(1);
 	      }
 	      else {
-		if (Barrel_muon) meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EB_->Fill(1);
-		else meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EE_->Fill(1);
+		if (Barrel_muon) meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EB_->Fill(1);
+		else meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EE_->Fill(1);
 	      }
             }
             for (long unsigned int i = 0; i < N_tracks_MTD_significance.size(); i++) {
@@ -2003,6 +2043,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
 		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EB_->Fill(1);
+		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_PV_trk_sim_Sig_EE_->Fill(dt_sim_vtx);
@@ -2019,6 +2062,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
+		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -2039,6 +2085,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
 		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EB_->Fill(1);
+		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_PV_trk_sim_Bkg_EE_->Fill(dt_sim_vtx);
@@ -2055,6 +2104,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 		    else meMuonISO_dtSig_PV_trk_sim_SVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
 	          }
 	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
+		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -2085,12 +2137,12 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
 		// test for checking the type of tracks
                 if (muon_Prompt) {
-		  if (Barrel_muon) meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EB_->Fill(1);
-		  else meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EE_->Fill(1);
+		  if (Barrel_muon) meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EB_->Fill(1);
+		  else meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EE_->Fill(1);
 		}
                 else {
-		  if (Barrel_muon) meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EB_->Fill(1);
-		  else meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EE_->Fill(1);
+		  if (Barrel_muon) meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EB_->Fill(1);
+		  else meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EE_->Fill(1);
 		}
               }
             }
@@ -2125,6 +2177,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_->Fill(dt_vtx_signif);
 		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EB_->Fill(1);
+		}
 	      }
 	      else {
 	        meMuonISO_dt_PV_trk_reco_Sig_EE_->Fill(dt_vtx);
@@ -2141,6 +2196,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Sig_EE_->Fill(dt_vtx_signif);
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_->Fill(dt_vtx_signif);
+		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -2161,6 +2219,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_->Fill(dt_vtx_signif);
 		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EB_->Fill(1);
+		}
 	      }
 	      else {
 	        meMuonISO_dt_PV_trk_reco_Bkg_EE_->Fill(dt_vtx);
@@ -2177,6 +2238,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   		    else meMuonISO_dtSig_PV_trk_reco_SVtrk_Bkg_EE_->Fill(dt_vtx_signif);
   	          }
   	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EE_->Fill(dt_vtx_signif);
+		}
+		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
+		  meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EE_->Fill(1);
 		}
 	      }
 	    }
@@ -2208,12 +2272,12 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
 	      // test for checking the type of tracks
               if (muon_Prompt) {
-		if (Barrel_muon) meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EB_->Fill(1);
-		else meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EE_->Fill(1);
+		if (Barrel_muon) meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EB_->Fill(1);
+		else meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EE_->Fill(1);
 	      }
               else {
-		if (Barrel_muon) meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EB_->Fill(1);
-		else meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EE_->Fill(1);
+		if (Barrel_muon) meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EB_->Fill(1);
+		else meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EE_->Fill(1);
               }
             }
             for (long unsigned int i = 0; i < N_tracks_MTD_significance.size(); i++) {
@@ -2601,7 +2665,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
       "Track pT sum in isolation cone around muon track after basic cuts - Signal Barrel;p_{T} (GeV);Counts",
       nbin_2,
       0,
-      50);
+      20);
 
   meMuonISO_rel_chIso_Sig_EB_ = ibook.book1D(
       "Muon_rel_chIso_sum_Sig_EB",
@@ -2622,7 +2686,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_1_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_1_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2642,7 +2706,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                               "using genInfo - Signal Barrel;p_{T} (GeV);Counts",
                                               nbin_2,
                                               0,
-                                              50);
+                                              20);
 
     meMuonISO_rel_chIso_gen_Sig_EB_ = ibook.book1D("Muon_rel_chIso_sum_gen_Sig_EB",
                                                   "Track relative pT sum in isolation cone around muon track after "
@@ -2663,7 +2727,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_2_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_2_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2682,7 +2746,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_3_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_3_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2701,7 +2765,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_4_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_4_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2720,7 +2784,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_5_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_5_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2739,7 +2803,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_6_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_6_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2758,7 +2822,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_7_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_7_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2778,7 +2842,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_1_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_1_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2798,7 +2862,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_2_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_2_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2817,7 +2881,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_3_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_3_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2836,7 +2900,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_4_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_4_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2855,7 +2919,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_5_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_5_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2874,7 +2938,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_6_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_6_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2893,7 +2957,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_7_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_7_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -2914,7 +2978,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 4 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_4sigma_Sig_EB_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_4sigma_Sig_EB",
                    "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 4 sigma "
@@ -2936,7 +3000,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 3 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_3sigma_Sig_EB_ = ibook.book1D("Muon_rel_chIso_sum_MTD_3sigma_Sig_EB",
                                                        "Track relative pT sum in isolation cone around muon track "
                                                        "after basic cuts with MTD - 3 sigma;Isolation;Counts"
@@ -2958,7 +3022,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 2 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_2sigma_Sig_EB_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_2sigma_Sig_EB",
                    "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
@@ -2968,13 +3032,13 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    4);
 
   meMuon_pt_tot_Sig_EB_ =
-      ibook.book1D("Muon_pT_tot_Sig_EB", "Muon pT tot - Signal Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_tot_Sig_EB", "Muon pT tot - Signal Barrel;p_{T} (GeV);Counts", 9, 10, 100);
       //ibook.book1D("Muon_pT_tot_Sig_EB", "Muon pT tot - Signal Barrel;p_{T} (GeV);Counts", 500, 0, 5000); //FIXME
   meMuon_pt_noMTD_Sig_EB_ =
-      ibook.book1D("Muon_pT_noMTD_Sig_EB", "Muon pT noMTD - Signal Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_noMTD_Sig_EB", "Muon pT noMTD - Signal Barrel;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_pt_sim_tot_Sig_EB_ =
-      ibook.book1D("Muon_pT_sim_tot_Sig_EB", "Muon SIM pT tot - Signal Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_sim_tot_Sig_EB", "Muon SIM pT tot - Signal Barrel;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_eta_tot_Sig_EB_ =
       ibook.book1D("Muon_eta_tot_Sig_EB", "Muon eta tot - Signal Barrel;#eta;Counts", 64, 0., 3.2);
@@ -3000,7 +3064,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD - 4 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_4sigma_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_4sigma_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 4 sigma "
@@ -3022,7 +3086,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD - 3 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_3sigma_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_3sigma_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 3 sigma "
@@ -3044,7 +3108,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD - 2 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_2sigma_Sig_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_2sigma_Sig_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
@@ -3054,60 +3118,60 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         4);
 
     meMuon_pt_gen_Sig_EB_ =
-        ibook.book1D("Muon_pT_gen_Sig_EB", "Muon pT genInfo - Signal Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_gen_Sig_EB", "Muon pT genInfo - Signal Barrel;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_gen_Sig_EB_ =
         ibook.book1D("Muon_eta_gen_Sig_EB", "Muon eta genInfo - Signal Barrel;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_gen_Sig_EB_ =
         ibook.book1D("Muon_phi_gen_Sig_EB", "Muon phi genInfo - Signal Barrel;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_1_Sig_EB_ = ibook.book1D("Muon_pT_MTD_1_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_1_Sig_EB_ = ibook.book1D("Muon_pT_MTD_1_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_1_Sig_EB_ = ibook.book1D("Muon_eta_MTD_1_Sig_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_1_Sig_EB_ = ibook.book1D("Muon_phi_MTD_1_Sig_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_2_Sig_EB_ = ibook.book1D("Muon_pT_MTD_2_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_2_Sig_EB_ = ibook.book1D("Muon_pT_MTD_2_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_2_Sig_EB_ = ibook.book1D("Muon_eta_MTD_2_Sig_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_2_Sig_EB_ = ibook.book1D("Muon_phi_MTD_2_Sig_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_3_Sig_EB_ = ibook.book1D("Muon_pT_MTD_3_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_3_Sig_EB_ = ibook.book1D("Muon_pT_MTD_3_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_3_Sig_EB_ = ibook.book1D("Muon_eta_MTD_3_Sig_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_3_Sig_EB_ = ibook.book1D("Muon_phi_MTD_3_Sig_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_4_Sig_EB_ = ibook.book1D("Muon_pT_MTD_4_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_4_Sig_EB_ = ibook.book1D("Muon_pT_MTD_4_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_4_Sig_EB_ = ibook.book1D("Muon_eta_MTD_4_Sig_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_4_Sig_EB_ = ibook.book1D("Muon_phi_MTD_4_Sig_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_5_Sig_EB_ = ibook.book1D("Muon_pT_MTD_5_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_5_Sig_EB_ = ibook.book1D("Muon_pT_MTD_5_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_5_Sig_EB_ = ibook.book1D("Muon_eta_MTD_5_Sig_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_5_Sig_EB_ = ibook.book1D("Muon_phi_MTD_5_Sig_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_6_Sig_EB_ = ibook.book1D("Muon_pT_MTD_6_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_6_Sig_EB_ = ibook.book1D("Muon_pT_MTD_6_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_6_Sig_EB_ = ibook.book1D("Muon_eta_MTD_6_Sig_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_6_Sig_EB_ = ibook.book1D("Muon_phi_MTD_6_Sig_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_7_Sig_EB_ = ibook.book1D("Muon_pT_MTD_7_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_7_Sig_EB_ = ibook.book1D("Muon_pT_MTD_7_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_7_Sig_EB_ = ibook.book1D("Muon_eta_MTD_7_Sig_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_7_Sig_EB_ = ibook.book1D("Muon_phi_MTD_7_Sig_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
     meMuon_pt_sim_MTD_1_Sig_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_1_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_1_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_2_Sig_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_2_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_2_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_3_Sig_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_3_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_3_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_4_Sig_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_4_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_4_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_5_Sig_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_5_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_5_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_6_Sig_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_6_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_6_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_7_Sig_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_7_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_7_Sig_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
   }
 
   meMuon_pt_MTD_4sigma_Sig_EB_ =
       ibook.book1D("Muon_pT_MTD_4sigma_Sig_EB",
                    "Muon pT MTD - 4 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_eta_MTD_4sigma_Sig_EB_ = ibook.book1D(
@@ -3121,7 +3185,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
   meMuon_pt_MTD_3sigma_Sig_EB_ =
       ibook.book1D("Muon_pT_MTD_3sigma_Sig_EB",
                    "Muon pT MTD - 3 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_eta_MTD_3sigma_Sig_EB_ = ibook.book1D(
@@ -3135,7 +3199,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
   meMuon_pt_MTD_2sigma_Sig_EB_ =
       ibook.book1D("Muon_pT_MTD_2sigma_Sig_EB",
                    "Muon pT MTD - 2 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_eta_MTD_2sigma_Sig_EB_ = ibook.book1D(
@@ -3157,7 +3221,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
       "Track pT sum in isolation cone around muon track after basic cuts - Signal Endcap;p_{T} (GeV);Counts",
       nbin_2,
       0,
-      50);
+      20);
   meMuonISO_rel_chIso_Sig_EE_ = ibook.book1D(
       "Muon_rel_chIso_sum_Sig_EE",
       "Track relative pT sum in isolation cone around muon track after basic cuts - Signal Endcap;Isolation;Counts",
@@ -3169,19 +3233,19 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
     meMuon_pt_sim_MTD_4sigma_Sig_EB_ =
         ibook.book1D("Muon_pT_sim_MTD_4sigma_Sig_EB",
                      "Muon pT MTD SIM - 4 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_3sigma_Sig_EB_ =
         ibook.book1D("Muon_pT_sim_MTD_3sigma_Sig_EB",
                      "Muon pT MTD SIM - 3 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_2sigma_Sig_EB_ =
         ibook.book1D("Muon_pT_sim_MTD_2sigma_Sig_EB",
                      "Muon pT MTD SIM - 2 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
 
@@ -3196,7 +3260,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_1_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_1_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3215,7 +3279,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_2_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_2_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3253,7 +3317,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_3_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_3_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3272,7 +3336,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_4_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_4_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3291,7 +3355,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_5_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_5_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3310,7 +3374,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_6_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_6_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3329,7 +3393,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_7_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_7_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3348,7 +3412,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_1_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_1_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3367,7 +3431,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_2_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_2_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3386,7 +3450,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_3_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_3_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3405,7 +3469,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_4_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_4_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3424,7 +3488,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_5_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_5_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3443,7 +3507,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_6_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_6_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3462,7 +3526,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_7_Sig_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_7_Sig_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3483,7 +3547,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 4 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_4sigma_Sig_EE_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_4sigma_Sig_EE",
                    "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 4 sigma "
@@ -3505,7 +3569,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 3 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_3sigma_Sig_EE_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_3sigma_Sig_EE",
                    "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 3 sigma "
@@ -3527,7 +3591,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 2 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_2sigma_Sig_EE_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_2sigma_Sig_EE",
                    "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
@@ -3537,12 +3601,12 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    4);
 
   meMuon_pt_tot_Sig_EE_ =
-      ibook.book1D("Muon_pT_tot_Sig_EE", "Muon pT tot - Signal Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_tot_Sig_EE", "Muon pT tot - Signal Endcap;p_{T} (GeV);Counts", 9, 10, 100);
   meMuon_pt_noMTD_Sig_EE_ =
-      ibook.book1D("Muon_pT_noMTD_Sig_EE", "Muon pT noMTD - Signal Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_noMTD_Sig_EE", "Muon pT noMTD - Signal Endcap;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_pt_sim_tot_Sig_EE_ =
-      ibook.book1D("Muon_pT_sim_tot_Sig_EE", "Muon pT tot - Signal Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_sim_tot_Sig_EE", "Muon pT tot - Signal Endcap;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_eta_tot_Sig_EE_ =
       ibook.book1D("Muon_eta_tot_Sig_EE", "Muon eta tot - Signal Endcap;#eta;Counts", 64, 0., 3.2);
@@ -3568,7 +3632,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 4 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_4sigma_Sig_EE_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_4sigma_Sig_EE",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 4 "
@@ -3590,7 +3654,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 3 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_3sigma_Sig_EE_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_3sigma_Sig_EE",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 3 "
@@ -3612,7 +3676,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 2 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_2sigma_Sig_EE_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_2sigma_Sig_EE",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 2 "
@@ -3621,71 +3685,71 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      0,
                      4);
 
-    meMuon_pt_MTD_1_Sig_EE_ = ibook.book1D("Muon_pT_MTD_1_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_1_Sig_EE_ = ibook.book1D("Muon_pT_MTD_1_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_1_Sig_EE_ = ibook.book1D("Muon_eta_MTD_1_Sig_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_1_Sig_EE_ = ibook.book1D("Muon_phi_MTD_1_Sig_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
     meMuon_pt_gen_Sig_EE_ =
-        ibook.book1D("Muon_pT_gen_Sig_EE", "Muon pT genInfo - Signal Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_gen_Sig_EE", "Muon pT genInfo - Signal Endcap;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_gen_Sig_EE_ =
         ibook.book1D("Muon_eta_gen_Sig_EE", "Muon eta genInfo - Signal Endcap;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_gen_Sig_EE_ =
         ibook.book1D("Muon_phi_gen_Sig_EE", "Muon phi genInfo - Signal Endcap;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_2_Sig_EE_ = ibook.book1D("Muon_pT_MTD_2_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_2_Sig_EE_ = ibook.book1D("Muon_pT_MTD_2_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_2_Sig_EE_ = ibook.book1D("Muon_eta_MTD_2_Sig_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_2_Sig_EE_ = ibook.book1D("Muon_phi_MTD_2_Sig_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_3_Sig_EE_ = ibook.book1D("Muon_pT_MTD_3_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_3_Sig_EE_ = ibook.book1D("Muon_pT_MTD_3_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_3_Sig_EE_ = ibook.book1D("Muon_eta_MTD_3_Sig_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_3_Sig_EE_ = ibook.book1D("Muon_phi_MTD_3_Sig_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_4_Sig_EE_ = ibook.book1D("Muon_pT_MTD_4_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_4_Sig_EE_ = ibook.book1D("Muon_pT_MTD_4_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_4_Sig_EE_ = ibook.book1D("Muon_eta_MTD_4_Sig_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_4_Sig_EE_ = ibook.book1D("Muon_phi_MTD_4_Sig_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_5_Sig_EE_ = ibook.book1D("Muon_pT_MTD_5_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_5_Sig_EE_ = ibook.book1D("Muon_pT_MTD_5_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_5_Sig_EE_ = ibook.book1D("Muon_eta_MTD_5_Sig_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_5_Sig_EE_ = ibook.book1D("Muon_phi_MTD_5_Sig_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_6_Sig_EE_ = ibook.book1D("Muon_pT_MTD_6_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_6_Sig_EE_ = ibook.book1D("Muon_pT_MTD_6_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_6_Sig_EE_ = ibook.book1D("Muon_eta_MTD_6_Sig_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_6_Sig_EE_ = ibook.book1D("Muon_phi_MTD_6_Sig_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_7_Sig_EE_ = ibook.book1D("Muon_pT_MTD_7_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_7_Sig_EE_ = ibook.book1D("Muon_pT_MTD_7_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_7_Sig_EE_ = ibook.book1D("Muon_eta_MTD_7_Sig_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_7_Sig_EE_ = ibook.book1D("Muon_phi_MTD_7_Sig_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
     meMuon_pt_sim_MTD_1_Sig_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_1_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_1_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_2_Sig_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_2_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_2_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_3_Sig_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_3_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_3_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_4_Sig_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_4_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_4_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_5_Sig_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_5_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_5_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_6_Sig_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_6_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_6_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_7_Sig_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_7_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_7_Sig_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
 
     meMuon_pt_sim_MTD_4sigma_Sig_EE_ =
         ibook.book1D("Muon_pT_sim_MTD_4sigma_Sig_EE",
                      "Muon pT MTD SIM - 4 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_3sigma_Sig_EE_ =
         ibook.book1D("Muon_pT_sim_MTD_3sigma_Sig_EE",
                      "Muon pT MTD SIM - 3 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_2sigma_Sig_EE_ =
         ibook.book1D("Muon_pT_sim_MTD_2sigma_Sig_EE",
                      "Muon pT MTD SIM - 2 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
   }
@@ -3693,7 +3757,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
   meMuon_pt_MTD_4sigma_Sig_EE_ =
       ibook.book1D("Muon_pT_MTD_4sigma_Sig_EE",
                    "Muon pT MTD - 4 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_eta_MTD_4sigma_Sig_EE_ = ibook.book1D(
@@ -3704,7 +3768,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
   meMuon_pt_MTD_3sigma_Sig_EE_ =
       ibook.book1D("Muon_pT_MTD_3sigma_Sig_EE",
                    "Muon pT MTD - 3 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_eta_MTD_3sigma_Sig_EE_ = ibook.book1D(
@@ -3715,7 +3779,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
   meMuon_pt_MTD_2sigma_Sig_EE_ =
       ibook.book1D("Muon_pT_MTD_2sigma_Sig_EE",
                    "Muon pT MTD - 2 sigma significance - Signal Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_eta_MTD_2sigma_Sig_EE_ = ibook.book1D(
@@ -3735,7 +3799,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
       "Track pT sum in isolation cone around muon track after basic cuts - Bkg Barrel;p_{T} (GeV);Counts",
       nbin_2,
       0,
-      50);
+      20);
   meMuonISO_rel_chIso_Bkg_EB_ = ibook.book1D(
       "Muon_rel_chIso_sum_Bkg_EB",
       "Track relative pT sum in isolation cone around muon track after basic cuts - Bkg Barrel;Isolation;Counts",
@@ -3754,7 +3818,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_1_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_1_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3773,7 +3837,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_2_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_2_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3791,7 +3855,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                               "using genInfo - Bkg Barrel;p_{T} (GeV);Counts",
                                               nbin_2,
                                               0,
-                                              50);
+                                              20);
     meMuonISO_rel_chIso_gen_Bkg_EB_ = ibook.book1D("Muon_rel_chIso_sum_gen_Bkg_EB",
                                                   "Track relative pT sum in isolation cone around muon track after "
                                                   "basic cuts using genInfo - Bkg Barrel;Isolation;Counts",
@@ -3809,7 +3873,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_3_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_3_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3828,7 +3892,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_4_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_4_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3847,7 +3911,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_5_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_5_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3866,7 +3930,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_6_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_6_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3885,7 +3949,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_7_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_7_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3904,7 +3968,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_1_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_1_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3923,7 +3987,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_2_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_2_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3942,7 +4006,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_3_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_3_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3961,7 +4025,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_4_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_4_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3980,7 +4044,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_5_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_5_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -3999,7 +4063,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_6_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_6_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4018,7 +4082,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_7_Bkg_EB_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_7_Bkg_EB",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4039,7 +4103,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 4 sigma significance - Bkg Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_4sigma_Bkg_EB_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_4sigma_Bkg_EB",
                    "Track relative pT sum in isolation cone around muon track "
@@ -4061,7 +4125,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 3 sigma significance - Bkg Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_3sigma_Bkg_EB_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_3sigma_Bkg_EB",
                    "Track relative pT sum in isolation cone around muon track "
@@ -4083,7 +4147,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 2 sigma significance - Bkg Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_2sigma_Bkg_EB_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_2sigma_Bkg_EB",
                    "Track relative pT sum in isolation cone around muon track "
@@ -4093,12 +4157,12 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    4);
 
   meMuon_pt_tot_Bkg_EB_ =
-      ibook.book1D("Muon_pT_tot_Bkg_EB", "Muon pT tot - Bkg Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_tot_Bkg_EB", "Muon pT tot - Bkg Barrel;p_{T} (GeV);Counts", 9, 10, 100);
   meMuon_pt_noMTD_Bkg_EB_ =
-      ibook.book1D("Muon_pT_noMTD_Bkg_EB", "Muon pT noMTD - Bkg Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_noMTD_Bkg_EB", "Muon pT noMTD - Bkg Barrel;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_pt_sim_tot_Bkg_EB_ =
-      ibook.book1D("Muon_pT_sim_tot_Bkg_EB", "Muon pT tot - Bkg Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_sim_tot_Bkg_EB", "Muon pT tot - Bkg Barrel;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_eta_tot_Bkg_EB_ =
       ibook.book1D("Muon_eta_tot_Bkg_EB", "Muon eta tot - Bkg Barrel;#eta;Counts", 64, 0., 3.2);
@@ -4124,7 +4188,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 4 sigma significance - Bkg Barrel;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_4sigma_Bkg_EB_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_4sigma_Bkg_EB",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 4 "
@@ -4146,7 +4210,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 3 sigma significance - Bkg Barrel;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_3sigma_Bkg_EB_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_3sigma_Bkg_EB",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 3 "
@@ -4168,7 +4232,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 2 sigma significance - Bkg Barrel;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_2sigma_Bkg_EB_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_2sigma_Bkg_EB",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 2 "
@@ -4177,58 +4241,58 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      0,
                      4);
 
-    meMuon_pt_MTD_1_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_1_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_1_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_1_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_1_Bkg_EB_ = ibook.book1D("Muon_eta_MTD_1_Bkg_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_1_Bkg_EB_ = ibook.book1D("Muon_phi_MTD_1_Bkg_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
     meMuon_pt_gen_Bkg_EB_ =
-        ibook.book1D("Muon_pT_gen_Bkg_EB", "Muon pT genInfo - Bkg Barrel;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_gen_Bkg_EB", "Muon pT genInfo - Bkg Barrel;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_gen_Bkg_EB_ =
         ibook.book1D("Muon_eta_gen_Bkg_EB", "Muon eta genInfo - Bkg Barrel;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_gen_Bkg_EB_ =
         ibook.book1D("Muon_phi_gen_Bkg_EB", "Muon phi genInfo - Bkg Barrel;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_2_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_2_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_2_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_2_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_2_Bkg_EB_ = ibook.book1D("Muon_eta_MTD_2_Bkg_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_2_Bkg_EB_ = ibook.book1D("Muon_phi_MTD_2_Bkg_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_3_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_3_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_3_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_3_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_3_Bkg_EB_ = ibook.book1D("Muon_eta_MTD_3_Bkg_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_3_Bkg_EB_ = ibook.book1D("Muon_phi_MTD_3_Bkg_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_4_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_4_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_4_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_4_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_4_Bkg_EB_ = ibook.book1D("Muon_eta_MTD_4_Bkg_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_4_Bkg_EB_ = ibook.book1D("Muon_phi_MTD_4_Bkg_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_5_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_5_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_5_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_5_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_5_Bkg_EB_ = ibook.book1D("Muon_eta_MTD_5_Bkg_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_5_Bkg_EB_ = ibook.book1D("Muon_phi_MTD_5_Bkg_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_6_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_6_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_6_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_6_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_6_Bkg_EB_ = ibook.book1D("Muon_eta_MTD_6_Bkg_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_6_Bkg_EB_ = ibook.book1D("Muon_phi_MTD_6_Bkg_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_7_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_7_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_7_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_7_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_7_Bkg_EB_ = ibook.book1D("Muon_eta_MTD_7_Bkg_EB", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_7_Bkg_EB_ = ibook.book1D("Muon_phi_MTD_7_Bkg_EB", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
     meMuon_pt_sim_MTD_1_Bkg_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_1_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_1_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_2_Bkg_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_2_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_2_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_3_Bkg_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_3_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_3_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_4_Bkg_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_4_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_4_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_5_Bkg_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_5_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_5_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_6_Bkg_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_6_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_6_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_7_Bkg_EB_ =
-        ibook.book1D("Muon_pT_sim_MTD_7_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_7_Bkg_EB", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
   }
   meMuon_pt_MTD_4sigma_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_4sigma_Bkg_EB",
                                              "Muon pT MTD - 4 sigma compatibility - Bkg Barrel;p_{T} (GeV);Counts",
-                                             30,
+                                             9,
                                              10,
                                              100);
   meMuon_eta_MTD_4sigma_Bkg_EB_ = ibook.book1D(
@@ -4238,7 +4302,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
 
   meMuon_pt_MTD_3sigma_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_3sigma_Bkg_EB",
                                              "Muon pT MTD - 3 sigma compatibility - Bkg Barrel;p_{T} (GeV);Counts",
-                                             30,
+                                             9,
                                              10,
                                              100);
   meMuon_eta_MTD_3sigma_Bkg_EB_ = ibook.book1D(
@@ -4248,7 +4312,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
 
   meMuon_pt_MTD_2sigma_Bkg_EB_ = ibook.book1D("Muon_pT_MTD_2sigma_Bkg_EB",
                                              "Muon pT MTD - 2 sigma compatibility - Bkg Barrel;p_{T} (GeV);Counts",
-                                             30,
+                                             9,
                                              10,
                                              100);
   meMuon_eta_MTD_2sigma_Bkg_EB_ = ibook.book1D(
@@ -4267,7 +4331,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
       "Track pT sum in isolation cone around muon track after basic cuts - Bkg Endcap;p_{T} (GeV);Counts",
       nbin_2,
       0,
-      50);
+      20);
   meMuonISO_rel_chIso_Bkg_EE_ = ibook.book1D(
       "Muon_rel_chIso_sum_Bkg_EE",
       "Track relative pT sum in isolation cone around muon track after basic cuts - Bkg Endcap;Isolation;Counts",
@@ -4278,19 +4342,19 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
     meMuon_pt_sim_MTD_4sigma_Bkg_EB_ =
         ibook.book1D("Muon_pT_sim_MTD_4sigma_Bkg_EB",
                      "Muon pT MTD SIM - 4 sigma compatibility - Bkg Barrel;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_3sigma_Bkg_EB_ =
         ibook.book1D("Muon_pT_sim_MTD_3sigma_Bkg_EB",
                      "Muon pT MTD SIM - 3 sigma compatibility - Bkg Barrel;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_2sigma_Bkg_EB_ =
         ibook.book1D("Muon_pT_sim_MTD_2sigma_Bkg_EB",
                      "Muon pT MTD SIM - 2 sigma compatibility - Bkg Barrel;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
 
@@ -4305,7 +4369,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_1_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_1_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4324,7 +4388,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_2_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_2_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4342,7 +4406,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                               "using genInfo - Bkg Endcap;p_{T} (GeV);Counts",
                                               nbin_2,
                                               0,
-                                              50);
+                                              20);
     meMuonISO_rel_chIso_gen_Bkg_EE_ = ibook.book1D("Muon_rel_chIso_sum_gen_Bkg_EE",
                                                   "Track relative pT sum in isolation cone around muon track after "
                                                   "basic cuts using genInfo - Bkg Endcap;Isolation;Counts",
@@ -4361,7 +4425,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_3_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_3_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4380,7 +4444,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_4_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_4_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4399,7 +4463,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_5_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_5_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4418,7 +4482,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_6_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_6_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4437,7 +4501,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_7_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_7_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4456,7 +4520,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_1_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_1_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4475,7 +4539,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_2_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_2_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4494,7 +4558,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_3_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_3_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4513,7 +4577,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_4_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_4_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4532,7 +4596,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_5_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_5_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4551,7 +4615,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_6_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_6_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4570,7 +4634,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
         "Track pT sum in isolation cone around muon track after basic cuts with MTD;p_{T} (GeV);Counts",
         nbin_2,
         0,
-        50);
+        20);
     meMuonISO_rel_chIso_MTD_sim_7_Bkg_EE_ = ibook.book1D(
         "Muon_rel_chIso_sum_MTD_sim_7_Bkg_EE",
         "Track relative pT sum in isolation cone around muon track after basic cuts with MTD;Isolation;Counts",
@@ -4591,7 +4655,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 4 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_4sigma_Bkg_EE_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_4sigma_Bkg_EE",
                    "Track relative pT sum in isolation cone around muon track "
@@ -4613,7 +4677,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 3 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_3sigma_Bkg_EE_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_3sigma_Bkg_EE",
                    "Track relative pT sum in isolation cone around muon track "
@@ -4635,7 +4699,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "cuts with MTD - 2 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_2sigma_Bkg_EE_ =
       ibook.book1D("Muon_rel_chIso_sum_MTD_2sigma_Bkg_EE",
                    "Track relative pT sum in isolation cone around muon track "
@@ -4645,12 +4709,12 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    4);
 
   meMuon_pt_tot_Bkg_EE_ =
-      ibook.book1D("Muon_pT_tot_Bkg_EE", "Muon pT tot - Bkg Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_tot_Bkg_EE", "Muon pT tot - Bkg Endcap;p_{T} (GeV);Counts", 9, 10, 100);
   meMuon_pt_noMTD_Bkg_EE_ =
-      ibook.book1D("Muon_pT_noMTD_Bkg_EE", "Muon pT noMTD - Bkg Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_noMTD_Bkg_EE", "Muon pT noMTD - Bkg Endcap;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_pt_sim_tot_Bkg_EE_ =
-      ibook.book1D("Muon_pT_sim_tot_Bkg_EE", "Muon pT tot - Bkg Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+      ibook.book1D("Muon_pT_sim_tot_Bkg_EE", "Muon pT tot - Bkg Endcap;p_{T} (GeV);Counts", 9, 10, 100);
 
   meMuon_eta_tot_Bkg_EE_ =
       ibook.book1D("Muon_eta_tot_Bkg_EE", "Muon eta tot - Bkg Endcap;#eta;Counts", 64, 0., 3.2);
@@ -4675,7 +4739,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 4 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_4sigma_Bkg_EE_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_4sigma_Bkg_EE",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 4 "
@@ -4697,7 +4761,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 3 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_3sigma_Bkg_EE_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_3sigma_Bkg_EE",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 3 "
@@ -4719,7 +4783,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      "basic cuts with MTD SIM - 2 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
                      nbin_2,
                      0,
-                     50);
+                     20);
     meMuonISO_rel_chIso_MTD_sim_2sigma_Bkg_EE_ =
         ibook.book1D("Muon_rel_chIso_sum_MTD_sim_2sigma_Bkg_EE",
                      "Track relative pT sum in isolation cone around muon track after basic cuts with MTD SIM - 2 "
@@ -4728,59 +4792,59 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                      0,
                      4);
 
-    meMuon_pt_MTD_1_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_1_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_1_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_1_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_1_Bkg_EE_ = ibook.book1D("Muon_eta_MTD_1_Bkg_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_1_Bkg_EE_ = ibook.book1D("Muon_phi_MTD_1_Bkg_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
     meMuon_pt_gen_Bkg_EE_ =
-        ibook.book1D("Muon_pT_gen_Bkg_EE", "Muon pT genInfo - Bkg Endcap;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_gen_Bkg_EE", "Muon pT genInfo - Bkg Endcap;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_gen_Bkg_EE_ =
         ibook.book1D("Muon_eta_gen_Bkg_EE", "Muon eta genInfo - Bkg Endcap;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_gen_Bkg_EE_ =
         ibook.book1D("Muon_phi_gen_Bkg_EE", "Muon phi genInfo - Bkg Endcap;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_2_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_2_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_2_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_2_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_2_Bkg_EE_ = ibook.book1D("Muon_eta_MTD_2_Bkg_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_2_Bkg_EE_ = ibook.book1D("Muon_phi_MTD_2_Bkg_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_3_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_3_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_3_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_3_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_3_Bkg_EE_ = ibook.book1D("Muon_eta_MTD_3_Bkg_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_3_Bkg_EE_ = ibook.book1D("Muon_phi_MTD_3_Bkg_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_4_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_4_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_4_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_4_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_4_Bkg_EE_ = ibook.book1D("Muon_eta_MTD_4_Bkg_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_4_Bkg_EE_ = ibook.book1D("Muon_phi_MTD_4_Bkg_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_5_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_5_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_5_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_5_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_5_Bkg_EE_ = ibook.book1D("Muon_eta_MTD_5_Bkg_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_5_Bkg_EE_ = ibook.book1D("Muon_phi_MTD_5_Bkg_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_6_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_6_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_6_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_6_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_6_Bkg_EE_ = ibook.book1D("Muon_eta_MTD_6_Bkg_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_6_Bkg_EE_ = ibook.book1D("Muon_phi_MTD_6_Bkg_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
-    meMuon_pt_MTD_7_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_7_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+    meMuon_pt_MTD_7_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_7_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_eta_MTD_7_Bkg_EE_ = ibook.book1D("Muon_eta_MTD_7_Bkg_EE", "Muon eta MTD;#eta;Counts", 64, 0., 3.2);
     meMuon_phi_MTD_7_Bkg_EE_ = ibook.book1D("Muon_phi_MTD_7_Bkg_EE", "Muon phi MTD;#phi;Counts", 64, -3.2, 3.2);
 
     meMuon_pt_sim_MTD_1_Bkg_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_1_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_1_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_2_Bkg_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_2_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_2_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_3_Bkg_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_3_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_3_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_4_Bkg_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_4_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_4_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_5_Bkg_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_5_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_5_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_6_Bkg_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_6_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_6_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
     meMuon_pt_sim_MTD_7_Bkg_EE_ =
-        ibook.book1D("Muon_pT_sim_MTD_7_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 30, 10, 100);
+        ibook.book1D("Muon_pT_sim_MTD_7_Bkg_EE", "Muon pT MTD;p_{T} (GeV);Counts", 9, 10, 100);
   }
 
   meMuon_pt_MTD_4sigma_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_4sigma_Bkg_EE",
                                              "Muon pT MTD - 4 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
-                                             30,
+                                             9,
                                              10,
                                              100);
   meMuon_eta_MTD_4sigma_Bkg_EE_ = ibook.book1D(
@@ -4790,7 +4854,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
 
   meMuon_pt_MTD_3sigma_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_3sigma_Bkg_EE",
                                              "Muon pT MTD - 3 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
-                                             30,
+                                             9,
                                              10,
                                              100);
   meMuon_eta_MTD_3sigma_Bkg_EE_ = ibook.book1D(
@@ -4800,7 +4864,7 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
 
   meMuon_pt_MTD_2sigma_Bkg_EE_ = ibook.book1D("Muon_pT_MTD_2sigma_Bkg_EE",
                                              "Muon pT MTD - 2 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
-                                             30,
+                                             9,
                                              10,
                                              100);
   meMuon_eta_MTD_2sigma_Bkg_EE_ = ibook.book1D(
@@ -4812,19 +4876,19 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
     meMuon_pt_sim_MTD_4sigma_Bkg_EE_ =
         ibook.book1D("Muon_pT_sim_MTD_4sigma_Bkg_EE",
                      "Muon pT MTD SIM - 4 sigma compatibility - Bkg Endcap;p_{T} (GeV);Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_3sigma_Bkg_EE_ =
         ibook.book1D("Muon_pT_sim_MTD_3sigma_Bkg_EE",
                      "Muon pT MTD SIM - 3 sigma compatibility - Bkg Endcap;#eta;Counts",
-                     30,
+                     9,
                      10,
                      100);
     meMuon_pt_sim_MTD_2sigma_Bkg_EE_ =
         ibook.book1D("Muon_pT_sim_MTD_2sigma_Bkg_EE",
                      "Muon pT MTD SIM - 2 sigma compatibility - Bkg Endcap;#phi;Counts",
-                     30,
+                     9,
                      10,
                      100);
   }
@@ -4994,73 +5058,73 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
   meMuon_pt_gen_MTD_2sigma_Sig_EB_ =
       ibook.book1D("Muon_pT_gen_MTD_2sigma_Sig_EB",
                    "Muon pT MTD GEN - 2 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_3sigma_Sig_EB_ =
       ibook.book1D("Muon_pT_gen_MTD_3sigma_Sig_EB",
                    "Muon pT MTD GEN - 3 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_4sigma_Sig_EB_ =
       ibook.book1D("Muon_pT_gen_MTD_4sigma_Sig_EB",
                    "Muon pT MTD GEN - 4 sigma compatibility - Signal Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_2sigma_Sig_EE_ =
       ibook.book1D("Muon_pT_gen_MTD_2sigma_Sig_EE",
                    "Muon pT MTD GEN - 2 sigma compatibility - Signal Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_3sigma_Sig_EE_ =
       ibook.book1D("Muon_pT_gen_MTD_3sigma_Sig_EE",
                    "Muon pT MTD GEN - 3 sigma compatibility - Signal Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_4sigma_Sig_EE_ =
       ibook.book1D("Muon_pT_gen_MTD_4sigma_Sig_EE",
                    "Muon pT MTD GEN - 4 sigma compatibility - Signal Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_2sigma_Bkg_EB_ =
       ibook.book1D("Muon_pT_gen_MTD_2sigma_Bkg_EB",
                    "Muon pT MTD GEN - 2 sigma compatibility - Background Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_3sigma_Bkg_EB_ =
       ibook.book1D("Muon_pT_gen_MTD_3sigma_Bkg_EB",
                    "Muon pT MTD GEN - 3 sigma compatibility - Background Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_4sigma_Bkg_EB_ =
       ibook.book1D("Muon_pT_gen_MTD_4sigma_Bkg_EB",
                    "Muon pT MTD GEN - 4 sigma compatibility - Background Barrel;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_2sigma_Bkg_EE_ =
       ibook.book1D("Muon_pT_gen_MTD_2sigma_Bkg_EE",
                    "Muon pT MTD GEN - 2 sigma compatibility - Background Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_3sigma_Bkg_EE_ =
       ibook.book1D("Muon_pT_gen_MTD_3sigma_Bkg_EE",
                    "Muon pT MTD GEN - 3 sigma compatibility - Background Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
   meMuon_pt_gen_MTD_4sigma_Bkg_EE_ =
       ibook.book1D("Muon_pT_gen_MTD_4sigma_Bkg_EE",
                    "Muon pT MTD GEN - 4 sigma compatibility - Background Endcap;p_{T} (GeV);Counts",
-                   30,
+                   9,
                    10,
                    100);
 
@@ -5070,84 +5134,84 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                    "basic cuts with MTD - 2 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_3sigma_Sig_EB_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Sig_EB",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 3 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_4sigma_Sig_EB_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Sig_EB",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 4 sigma compatibiliy - Signal Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_2sigma_Sig_EE_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_2sigma_Sig_EE",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 2 sigma compatibiliy - Signal Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_3sigma_Sig_EE_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Sig_EE",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 3 sigma compatibiliy - Signal Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_4sigma_Sig_EE_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Sig_EE",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 4 sigma compatibiliy - Signal Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_2sigma_Bkg_EB_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_2sigma_Bkg_EB",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 2 sigma compatibiliy - Background Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_3sigma_Bkg_EB_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Bkg_EB",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 3 sigma compatibiliy - Background Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_4sigma_Bkg_EB_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Bkg_EB",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 4 sigma compatibiliy - Background Barrel;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_2sigma_Bkg_EE_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_2sigma_Bkg_EE",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 2 sigma compatibiliy - Background Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_3sigma_Bkg_EE_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_3sigma_Bkg_EE",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 3 sigma compatibiliy - Background Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_chIso_MTD_gen_4sigma_Bkg_EE_ =
       ibook.book1D("Muon_chIso_sum_MTD_gen_4sigma_Bkg_EE",
                    "Track pT sum in isolation cone around muon track after "
                    "basic cuts with MTD - 4 sigma compatibiliy - Background Endcap;p_{T} (GeV);Counts",
                    nbin_2,
                    0,
-                   50);
+                   20);
   meMuonISO_rel_chIso_MTD_gen_2sigma_Sig_EB_ = ibook.book1D(
       "Muon_rel_chIso_sum_MTD_gen_2sigma_Sig_EB",
       "Track relative pT sum in isolation cone around muon track after basic cuts with MTD - 2 sigma "
@@ -5632,12 +5696,12 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 "dt distribution for reco track and PV - Background Barrel;|t^{reco}_{track}-t_{PV}| (ns);Counts",
                                                 30,
                                                 0,
-                                                30);
+                                                3);
   meMuonISO_dt_PV_trk_reco_Bkg_EE_ = ibook.book1D("Muon_Iso_dt_PV_track_reco_Bkg_EE",
                                                 "dt distribution for reco track and PV - Background Endcap;|t^{reco}_{track}-t_{PV}| (ns);Counts",
                                                 30,
                                                 0,
-                                                30);
+                                                3);
   meMuonISO_dt_PV_trk_sim_Sig_EB_ = ibook.book1D("Muon_Iso_dt_PV_track_sim_Sig_EB",
                                                 "dt distribution for sim track and PV - Signal Barrel;|t^{sim}_{track}-t_{PV}| (ns);Counts",
                                                 30,
@@ -5952,25 +6016,45 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10);
   // FIXME the name of histograms below need to be changed (it is not about signif)
   meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Sig_EB",
-                                                "dtSig distribution for reco fake track and reco muon - Signal Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Sig_EE",
-                                                "dtSig distribution for reco fake track and reco muon - Signal Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Bkg_EB",
-                                                "dtSig distribution for reco fake track and reco muon - Background Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Bkg_EE",
-                                                "dtSig distribution for reco fake track and reco muon - Background Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
+  meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Sig_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Sig_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Bkg_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Bkg_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
 
   meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PVtrk_Sig_EB",
                                                 "dtSig distribution for sim PV track and sim muon - Signal Barrel;#sigma;Counts",
@@ -6034,25 +6118,45 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10);
   // FIXME the name of histograms below need to be changed (it is not about signif)
   meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Sig_EB",
-                                                "dtSig distribution for sim fake track and sim muon - Signal Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Sig_EE",
-                                                "dtSig distribution for sim fake track and sim muon - Signal Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Bkg_EB",
-                                                "dtSig distribution for sim fake track and sim muon - Background Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Bkg_EE",
-                                                "dtSig distribution for sim fake track and sim muon - Background Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
+  meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Sig_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Sig_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Bkg_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Bkg_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
 
   meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PVtrk_Sig_EB",
                                                 "dtSig distribution for reco PV track and reco muon - Signal Barrel;#sigma;Counts",
@@ -6116,25 +6220,45 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10);
   // FIXME the name of histograms below need to be changed (it is not about signif)
   meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Sig_EB",
-                                                "dtSig distribution for reco fake track and reco muon - Signal Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Sig_EE",
-                                                "dtSig distribution for reco fake track and reco muon - Signal Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Bkg_EB",
-                                                "dtSig distribution for reco fake track and reco muon - Background Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Bkg_EE",
-                                                "dtSig distribution for reco fake track and reco muon - Background Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
+  meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Sig_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Sig_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Bkg_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Bkg_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
 
   meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PVtrk_Sig_EB",
                                                 "dtSig distribution for sim PV track and sim muon - Signal Barrel;#sigma;Counts",
@@ -6198,25 +6322,45 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 10);
   // FIXME the name of histograms below need to be changed (it is not about signif)
   meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Sig_EB",
-                                                "dtSig distribution for sim fake track and sim muon - Signal Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Sig_EE",
-                                                "dtSig distribution for sim fake track and sim muon - Signal Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Bkg_EB",
-                                                "dtSig distribution for sim fake track and sim muon - Background Barrel;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
   meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Bkg_EE",
-                                                "dtSig distribution for sim fake track and sim muon - Background Endcap;#sigma;Counts",
-                                                1,
+                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
+                                                2,
                                                 0,
-                                                1);
+                                                2);
+  meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Sig_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Sig_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Bkg_EB",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
+  meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Bkg_EE",
+                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
+                                                2,
+                                                0,
+                                                2);
 
 
 
