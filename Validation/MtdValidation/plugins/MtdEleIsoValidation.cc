@@ -115,6 +115,61 @@ private:
 
   edm::EDGetTokenT<reco::RecoToSimCollection> recoToSimAssociationToken_;
 
+  // histograms for testing
+  
+  MonitorElement* meEleISO_Nels_Sig_EB_;
+  MonitorElement* meEleISO_Nels_Sig_EE_;
+  MonitorElement* meEleISO_Nels_Bkg_EB_;
+  MonitorElement* meEleISO_Nels_Bkg_EE_;
+  
+  MonitorElement* meEleISO_Ntracks_Sig_nodRcut_tot_;
+  MonitorElement* meEleISO_Ntracks_Bkg_nodRcut_tot_;
+
+  MonitorElement* meEleISO_Ntracks_Sig_nodRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_Sig_nodRcut_EE_;
+  MonitorElement* meEleISO_Ntracks_Bkg_nodRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_Bkg_nodRcut_EE_;
+
+  MonitorElement* meEleISO_Ntracks_Sig_dRcut_tot_;
+  MonitorElement* meEleISO_Ntracks_Bkg_dRcut_tot_;
+
+  MonitorElement* meEleISO_Ntracks_Sig_dRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_Sig_dRcut_EE_;
+  MonitorElement* meEleISO_Ntracks_Bkg_dRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_Bkg_dRcut_EE_;
+
+  MonitorElement* meEleISO_Ntracks_gen_Sig_nodRcut_tot_;
+  MonitorElement* meEleISO_Ntracks_gen_Bkg_nodRcut_tot_;
+
+  MonitorElement* meEleISO_Ntracks_gen_Sig_nodRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_gen_Sig_nodRcut_EE_;
+  MonitorElement* meEleISO_Ntracks_gen_Bkg_nodRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_gen_Bkg_nodRcut_EE_;
+
+  MonitorElement* meEleISO_Ntracks_gen_Sig_dRcut_tot_;
+  MonitorElement* meEleISO_Ntracks_gen_Bkg_dRcut_tot_;
+
+  MonitorElement* meEleISO_Ntracks_gen_Sig_dRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_gen_Sig_dRcut_EE_;
+  MonitorElement* meEleISO_Ntracks_gen_Bkg_dRcut_EB_;
+  MonitorElement* meEleISO_Ntracks_gen_Bkg_dRcut_EE_;
+
+  MonitorElement* meTrk_genMatch_check_Sig_nodRcut_tot_;
+  MonitorElement* meTrk_genMatch_check_Bkg_nodRcut_tot_;
+
+  MonitorElement* meTrk_genMatch_check_Sig_nodRcut_EB_;
+  MonitorElement* meTrk_genMatch_check_Sig_nodRcut_EE_;
+  MonitorElement* meTrk_genMatch_check_Bkg_nodRcut_EB_;
+  MonitorElement* meTrk_genMatch_check_Bkg_nodRcut_EE_;
+
+  MonitorElement* meTrk_genMatch_check_Sig_dRcut_tot_;
+  MonitorElement* meTrk_genMatch_check_Bkg_dRcut_tot_;
+
+  MonitorElement* meTrk_genMatch_check_Sig_dRcut_EB_;
+  MonitorElement* meTrk_genMatch_check_Sig_dRcut_EE_;
+  MonitorElement* meTrk_genMatch_check_Bkg_dRcut_EB_;
+  MonitorElement* meTrk_genMatch_check_Bkg_dRcut_EE_;
+
   // Signal histograms
 
   MonitorElement* meEle_no_dt_check_;
@@ -125,6 +180,7 @@ private:
   MonitorElement* meEle_avg_error_vtx_check_;
 
   // Adding histograms for barrel electrons
+
   MonitorElement* meEleISO_Ntracks_Sig_EB_;
   MonitorElement* meEleISO_chIso_Sig_EB_;
   MonitorElement* meEleISO_rel_chIso_Sig_EB_;
@@ -841,6 +897,45 @@ private:
 
   std::vector<MonitorElement*> general_pT_Signif_list;
   std::vector<MonitorElement*> general_eta_Signif_list;
+
+///
+  // histograms for dt distributions in pT/eta bins
+
+  MonitorElement* meEle_dt_general_pT_1;
+  MonitorElement* meEle_dt_general_pT_2;
+  MonitorElement* meEle_dt_general_pT_3;
+  MonitorElement* meEle_dt_general_pT_4;
+  MonitorElement* meEle_dt_general_pT_5;
+  MonitorElement* meEle_dt_general_pT_6;
+  MonitorElement* meEle_dt_general_pT_7;
+  MonitorElement* meEle_dt_general_pT_8;
+  MonitorElement* meEle_dt_general_pT_9;
+
+  MonitorElement* meEle_dtSignif_general_pT_1;
+  MonitorElement* meEle_dtSignif_general_pT_2;
+  MonitorElement* meEle_dtSignif_general_pT_3;
+  MonitorElement* meEle_dtSignif_general_pT_4;
+  MonitorElement* meEle_dtSignif_general_pT_5;
+  MonitorElement* meEle_dtSignif_general_pT_6;
+  MonitorElement* meEle_dtSignif_general_pT_7;
+  MonitorElement* meEle_dtSignif_general_pT_8;
+  MonitorElement* meEle_dtSignif_general_pT_9;
+
+  MonitorElement* meEle_dt_general_eta_1;
+  MonitorElement* meEle_dt_general_eta_2;
+  MonitorElement* meEle_dt_general_eta_3;
+  MonitorElement* meEle_dt_general_eta_4;
+  MonitorElement* meEle_dt_general_eta_5;
+  MonitorElement* meEle_dt_general_eta_6;
+  MonitorElement* meEle_dt_general_eta_7;
+
+  MonitorElement* meEle_dtSignif_general_eta_1;
+  MonitorElement* meEle_dtSignif_general_eta_2;
+  MonitorElement* meEle_dtSignif_general_eta_3;
+  MonitorElement* meEle_dtSignif_general_eta_4;
+  MonitorElement* meEle_dtSignif_general_eta_5;
+  MonitorElement* meEle_dtSignif_general_eta_6;
+  MonitorElement* meEle_dtSignif_general_eta_7;
 };
 
 // ------------ constructor and destructor --------------
@@ -937,6 +1032,9 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
     return (pdg == 23 or pdg == 24 or pdg == 15 or pdg == 11);  // some electrons are mothers to themselves?
   };
 
+  int nels_Sig_EB=0, nels_Sig_EE=0;
+  int nels_Bkg_EB=0, nels_Bkg_EE=0;
+
   for (const auto& ele : localEleCollection) {
     bool ele_Promt = false;
 
@@ -1005,12 +1103,14 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           meEle_pt_sim_tot_Sig_EB_->Fill(ele_sim_pt);
           meEle_eta_tot_Sig_EB_->Fill(std::abs(ele.eta()));
           meEle_phi_tot_Sig_EB_->Fill(ele.phi());
+          nels_Sig_EB++;
         } else {
           // All selected electron information for efficiency plots later
           meEle_pt_tot_Sig_EE_->Fill(ele.pt());
           meEle_pt_sim_tot_Sig_EE_->Fill(ele_sim_pt);
           meEle_eta_tot_Sig_EE_->Fill(std::abs(ele.eta()));
           meEle_phi_tot_Sig_EE_->Fill(ele.phi());
+          nels_Sig_EE++;
         }
       } else {
         // For background (non-promt)
@@ -1019,13 +1119,34 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           meEle_pt_sim_tot_Bkg_EB_->Fill(ele_sim_pt);
           meEle_eta_tot_Bkg_EB_->Fill(std::abs(ele.eta()));
           meEle_phi_tot_Bkg_EB_->Fill(ele.phi());
+          nels_Bkg_EB++;
         } else {
           meEle_pt_tot_Bkg_EE_->Fill(ele.pt());
           meEle_pt_sim_tot_Bkg_EE_->Fill(ele_sim_pt);
           meEle_eta_tot_Bkg_EE_->Fill(std::abs(ele.eta()));
           meEle_phi_tot_Bkg_EE_->Fill(ele.phi());
+          nels_Bkg_EE++;
         }
       }
+
+      int Ntracks_Sig_nodRcut_tot=0, Ntracks_Bkg_nodRcut_tot=0;
+      int Ntracks_Sig_nodRcut_EB=0,  Ntracks_Sig_nodRcut_EE=0;
+      int Ntracks_Bkg_nodRcut_EB=0,  Ntracks_Bkg_nodRcut_EE=0;
+      int Ntracks_Sig_dRcut_tot=0,  Ntracks_Bkg_dRcut_tot=0;
+      int Ntracks_Sig_dRcut_EB=0,  Ntracks_Sig_dRcut_EE=0;
+      int Ntracks_Bkg_dRcut_EB=0,  Ntracks_Bkg_dRcut_EE=0;
+      int Ntracks_gen_Sig_nodRcut_tot=0,  Ntracks_gen_Bkg_nodRcut_tot=0;
+      int Ntracks_gen_Sig_nodRcut_EB=0,  Ntracks_gen_Sig_nodRcut_EE=0;
+      int Ntracks_gen_Bkg_nodRcut_EB=0,  Ntracks_gen_Bkg_nodRcut_EE=0;
+      int Ntracks_gen_Sig_dRcut_tot=0,  Ntracks_gen_Bkg_dRcut_tot=0;
+      int Ntracks_gen_Sig_dRcut_EB=0,  Ntracks_gen_Sig_dRcut_EE=0;
+      int Ntracks_gen_Bkg_dRcut_EB=0,  Ntracks_gen_Bkg_dRcut_EE=0;
+      bool genMatch_Sig_nodRcut_tot=false, genMatch_Bkg_nodRcut_tot=false;
+      bool genMatch_Sig_nodRcut_EB=false, genMatch_Sig_nodRcut_EE=false;
+      bool genMatch_Bkg_nodRcut_EB=false, genMatch_Bkg_nodRcut_EE=false;
+      bool genMatch_Sig_dRcut_tot=false, genMatch_Bkg_dRcut_tot=false;
+      bool genMatch_Sig_dRcut_EB=false, genMatch_Sig_dRcut_EE=false;
+      bool genMatch_Bkg_dRcut_EB=false, genMatch_Bkg_dRcut_EE=false;
 
       int N_tracks_noMTD = 0;
       double pT_sum_noMTD = 0;
@@ -1072,6 +1193,40 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           }
         }
 
+        if(ele_Promt) 		      Ntracks_Sig_nodRcut_tot++;
+        if(!ele_Promt) 		      Ntracks_Bkg_nodRcut_tot++;
+        if(ele_Promt  && Barrel_ele)  Ntracks_Sig_nodRcut_EB++;
+        if(ele_Promt  && !Barrel_ele) Ntracks_Sig_nodRcut_EE++;
+        if(!ele_Promt && Barrel_ele)  Ntracks_Bkg_nodRcut_EB++;
+        if(!ele_Promt && !Barrel_ele) Ntracks_Bkg_nodRcut_EE++;
+
+        const reco::TrackBaseRef trkrefBase2(trackref_general);
+        auto TPmatched2 = r2s_->find(trkrefBase2);
+        if (TPmatched2 != r2s_->end()) {
+          const auto& tp2 = (TPmatched2->val)[0];
+          if (tp2.first->status() != -99) {
+            if(ele_Promt)                 {genMatch_Sig_nodRcut_tot = true; meTrk_genMatch_check_Sig_nodRcut_tot_->Fill(1);}
+            if(!ele_Promt)                {genMatch_Bkg_nodRcut_tot = true; meTrk_genMatch_check_Bkg_nodRcut_tot_->Fill(1);}
+            if(ele_Promt && Barrel_ele)   {genMatch_Sig_nodRcut_EB = true; meTrk_genMatch_check_Sig_nodRcut_EB_->Fill(1);}
+            if(ele_Promt && !Barrel_ele)  {genMatch_Sig_nodRcut_EE = true; meTrk_genMatch_check_Sig_nodRcut_EE_->Fill(1);}
+            if(!ele_Promt && Barrel_ele)  {genMatch_Bkg_nodRcut_EB = true; meTrk_genMatch_check_Bkg_nodRcut_EB_->Fill(1);}
+            if(!ele_Promt && !Barrel_ele) {genMatch_Bkg_nodRcut_EE = true; meTrk_genMatch_check_Bkg_nodRcut_EE_->Fill(1);}
+          } else {
+            if(ele_Promt)                 {genMatch_Sig_nodRcut_tot = false; meTrk_genMatch_check_Sig_nodRcut_tot_->Fill(0);}
+            if(!ele_Promt)                {genMatch_Bkg_nodRcut_tot = false; meTrk_genMatch_check_Bkg_nodRcut_tot_->Fill(0);}
+            if(ele_Promt && Barrel_ele)   {genMatch_Sig_nodRcut_EB = false; meTrk_genMatch_check_Sig_nodRcut_EB_->Fill(0);}
+            if(ele_Promt && !Barrel_ele)  {genMatch_Sig_nodRcut_EE = false; meTrk_genMatch_check_Sig_nodRcut_EE_->Fill(0);}
+            if(!ele_Promt && Barrel_ele)  {genMatch_Bkg_nodRcut_EB = false; meTrk_genMatch_check_Bkg_nodRcut_EB_->Fill(0);}
+            if(!ele_Promt && !Barrel_ele) {genMatch_Bkg_nodRcut_EE = false; meTrk_genMatch_check_Bkg_nodRcut_EE_->Fill(0);}
+          }
+        }
+        if (genMatch_Sig_nodRcut_tot) Ntracks_gen_Sig_nodRcut_tot++;
+        if (genMatch_Bkg_nodRcut_tot) Ntracks_gen_Bkg_nodRcut_tot++;
+        if (genMatch_Sig_nodRcut_EB)  Ntracks_gen_Sig_nodRcut_EB++;
+        if (genMatch_Sig_nodRcut_EE)  Ntracks_gen_Sig_nodRcut_EE++;
+        if (genMatch_Bkg_nodRcut_EB)  Ntracks_gen_Bkg_nodRcut_EB++;
+        if (genMatch_Bkg_nodRcut_EE)  Ntracks_gen_Bkg_nodRcut_EE++;
+
         double dR = reco::deltaR(trackGen.momentum(), EleSigTrackMomentumAtVtx);
         double deta = std::abs(trackGen.eta() - EleSigTrackEtaAtVtx);
 
@@ -1079,9 +1234,17 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
         if (dR < min_dR_cut || dR > max_dR_cut || deta < min_strip_cut)
           continue;
 
+        if(ele_Promt) 		      Ntracks_Sig_dRcut_tot++;
+        if(!ele_Promt) 		      Ntracks_Bkg_dRcut_tot++;
+        if(ele_Promt  && Barrel_ele)  Ntracks_Sig_dRcut_EB++;
+        if(ele_Promt  && !Barrel_ele) Ntracks_Sig_dRcut_EE++;
+        if(!ele_Promt && Barrel_ele)  Ntracks_Bkg_dRcut_EB++;
+        if(!ele_Promt && !Barrel_ele) Ntracks_Bkg_dRcut_EE++;
+
         // no MTD case
         ++N_tracks_noMTD;
         pT_sum_noMTD += trackGen.pt();
+
 
         // MTD case
         const reco::TrackBaseRef trkrefBase(trackref_general);
@@ -1098,8 +1261,20 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           if (tp.first->status() != -99) {
             genMatched = true;
             meTrk_genMatch_check_->Fill(1);
+            if(ele_Promt) 		  {genMatch_Sig_dRcut_tot = true; meTrk_genMatch_check_Sig_dRcut_tot_->Fill(1);}
+            if(!ele_Promt) 		  {genMatch_Bkg_dRcut_tot = true; meTrk_genMatch_check_Bkg_dRcut_tot_->Fill(1);}
+            if(ele_Promt && Barrel_ele)   {genMatch_Sig_dRcut_EB = true; meTrk_genMatch_check_Sig_dRcut_EB_->Fill(1);}
+            if(ele_Promt && !Barrel_ele)  {genMatch_Sig_dRcut_EE = true; meTrk_genMatch_check_Sig_dRcut_EE_->Fill(1);}
+            if(!ele_Promt && Barrel_ele)  {genMatch_Bkg_dRcut_EB = true; meTrk_genMatch_check_Bkg_dRcut_EB_->Fill(1);}
+            if(!ele_Promt && !Barrel_ele) {genMatch_Bkg_dRcut_EE = true; meTrk_genMatch_check_Bkg_dRcut_EE_->Fill(1);}
           } else {
             meTrk_genMatch_check_->Fill(0);
+            if(ele_Promt) 		  {genMatch_Sig_dRcut_tot = false; meTrk_genMatch_check_Sig_dRcut_tot_->Fill(0);}
+            if(!ele_Promt) 		  {genMatch_Bkg_dRcut_tot = false; meTrk_genMatch_check_Bkg_dRcut_tot_->Fill(0);}
+            if(ele_Promt && Barrel_ele)   {genMatch_Sig_dRcut_EB = false; meTrk_genMatch_check_Sig_dRcut_EB_->Fill(0);}
+            if(ele_Promt && !Barrel_ele)  {genMatch_Sig_dRcut_EE = false; meTrk_genMatch_check_Sig_dRcut_EE_->Fill(0);}
+            if(!ele_Promt && Barrel_ele)  {genMatch_Bkg_dRcut_EB = false; meTrk_genMatch_check_Bkg_dRcut_EB_->Fill(0);}
+            if(!ele_Promt && !Barrel_ele) {genMatch_Bkg_dRcut_EE = false; meTrk_genMatch_check_Bkg_dRcut_EE_->Fill(0);}
           }
         }
 
@@ -1114,6 +1289,13 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           N_tracks_gen++;
           pT_sum_gen += trk_ptSim;
         }
+        if (genMatch_Sig_dRcut_tot) Ntracks_gen_Sig_dRcut_tot++;
+        if (genMatch_Bkg_dRcut_tot) Ntracks_gen_Bkg_dRcut_tot++;
+        if (genMatch_Sig_dRcut_EB)  Ntracks_gen_Sig_dRcut_EB++;
+        if (genMatch_Sig_dRcut_EE)  Ntracks_gen_Sig_dRcut_EE++;
+        if (genMatch_Bkg_dRcut_EB)  Ntracks_gen_Bkg_dRcut_EB++;
+        if (genMatch_Bkg_dRcut_EE)  Ntracks_gen_Bkg_dRcut_EE++;
+
 
         // dt with the track
         if (dt_sig_track_) {
@@ -1145,7 +1327,7 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
               }
             }
 
-          } else {
+          } else if (trk_ptSim > 0) {
             // if there is no error for MTD information, we count the MTD isolation case same as noMTD
             if (optionalPlots_) {
               for (long unsigned int i = 0; i < N_tracks_sim_MTD.size(); i++) {
@@ -1245,7 +1427,7 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
                 pT_sum_sim_MTD_significance[i] += trk_ptSim;
               }
             }
-          } else {
+          } else if (trk_ptSim > 0) {
             if (optionalPlots_) {
               for (long unsigned int i = 0; i < N_tracks_sim_MTD.size(); i++) {
                 N_tracks_sim_MTD[i] = N_tracks_sim_MTD[i] + 1;      // N_tracks_noMTD
@@ -1316,6 +1498,7 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           }  // End of optional dt distributions plots
         }
       }
+
       rel_pT_sum_noMTD = pT_sum_noMTD / ele.gsfTrack()->pt();  // rel_ch_iso calculation
       if (optionalPlots_) {
         for (long unsigned int i = 0; i < N_tracks_MTD.size(); i++) {
@@ -1325,7 +1508,7 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
         // now compute the isolation
         rel_pT_sum_noMTD = pT_sum_noMTD / ele.gsfTrack()->pt();
 
-        rel_pT_sum_gen = pT_sum_gen / ele.gsfTrack()->pt();
+        rel_pT_sum_gen = pT_sum_gen / ele_sim_pt;
       }
 
       for (long unsigned int i = 0; i < N_tracks_MTD_significance.size(); i++) {
@@ -1334,10 +1517,18 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
       }
 
       if (ele_Promt) {  // promt part
+        meEleISO_Ntracks_Sig_nodRcut_tot_->Fill(Ntracks_Sig_nodRcut_tot);
+        meEleISO_Ntracks_Sig_dRcut_tot_->Fill(Ntracks_Sig_dRcut_tot);
+        meEleISO_Ntracks_gen_Sig_nodRcut_tot_->Fill(Ntracks_gen_Sig_nodRcut_tot);
+        meEleISO_Ntracks_gen_Sig_dRcut_tot_->Fill(Ntracks_gen_Sig_dRcut_tot);
         if (Barrel_ele) {
           meEleISO_Ntracks_Sig_EB_->Fill(N_tracks_noMTD);
           meEleISO_chIso_Sig_EB_->Fill(pT_sum_noMTD);
           meEleISO_rel_chIso_Sig_EB_->Fill(rel_pT_sum_noMTD);
+          meEleISO_Ntracks_Sig_nodRcut_EB_->Fill(Ntracks_Sig_nodRcut_EB);
+          meEleISO_Ntracks_Sig_dRcut_EB_->Fill(Ntracks_Sig_dRcut_EB);
+          meEleISO_Ntracks_gen_Sig_nodRcut_EB_->Fill(Ntracks_gen_Sig_nodRcut_EB);
+          meEleISO_Ntracks_gen_Sig_dRcut_EB_->Fill(Ntracks_gen_Sig_dRcut_EB);
           if (optionalPlots_) {
             for (long unsigned int j = 0; j < Ntracks_EB_list_Sig.size(); j++) {
               Ntracks_EB_list_Sig[j]->Fill(N_tracks_MTD[j]);
@@ -1402,6 +1593,10 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           meEleISO_Ntracks_Sig_EE_->Fill(N_tracks_noMTD);
           meEleISO_chIso_Sig_EE_->Fill(pT_sum_noMTD);
           meEleISO_rel_chIso_Sig_EE_->Fill(rel_pT_sum_noMTD);
+          meEleISO_Ntracks_Sig_nodRcut_EE_->Fill(Ntracks_Sig_nodRcut_EE);
+          meEleISO_Ntracks_Sig_dRcut_EE_->Fill(Ntracks_Sig_dRcut_EE);
+          meEleISO_Ntracks_gen_Sig_nodRcut_EE_->Fill(Ntracks_gen_Sig_nodRcut_EE);
+          meEleISO_Ntracks_gen_Sig_dRcut_EE_->Fill(Ntracks_gen_Sig_dRcut_EE);
           if (optionalPlots_) {
             for (long unsigned int j = 0; j < Ntracks_EE_list_Sig.size(); j++) {
               Ntracks_EE_list_Sig[j]->Fill(N_tracks_MTD[j]);
@@ -1462,10 +1657,18 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           }
         }
       } else {  // non-promt part
+        meEleISO_Ntracks_Bkg_nodRcut_tot_->Fill(Ntracks_Bkg_nodRcut_tot);
+        meEleISO_Ntracks_Bkg_dRcut_tot_->Fill(Ntracks_Bkg_dRcut_tot);
+        meEleISO_Ntracks_gen_Bkg_nodRcut_tot_->Fill(Ntracks_gen_Bkg_nodRcut_tot);
+        meEleISO_Ntracks_gen_Bkg_dRcut_tot_->Fill(Ntracks_gen_Bkg_dRcut_tot);
         if (Barrel_ele) {
           meEleISO_Ntracks_Bkg_EB_->Fill(N_tracks_noMTD);
           meEleISO_chIso_Bkg_EB_->Fill(pT_sum_noMTD);
           meEleISO_rel_chIso_Bkg_EB_->Fill(rel_pT_sum_noMTD);
+          meEleISO_Ntracks_Bkg_nodRcut_EB_->Fill(Ntracks_Bkg_nodRcut_EB);
+          meEleISO_Ntracks_Bkg_dRcut_EB_->Fill(Ntracks_Bkg_dRcut_EB);
+          meEleISO_Ntracks_gen_Bkg_nodRcut_EB_->Fill(Ntracks_gen_Bkg_nodRcut_EB);
+          meEleISO_Ntracks_gen_Bkg_dRcut_EB_->Fill(Ntracks_gen_Bkg_dRcut_EB);
           if (optionalPlots_) {
             for (long unsigned int j = 0; j < Ntracks_EB_list_Bkg.size(); j++) {
               Ntracks_EB_list_Bkg[j]->Fill(N_tracks_MTD[j]);
@@ -1529,6 +1732,10 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
           meEleISO_Ntracks_Bkg_EE_->Fill(N_tracks_noMTD);
           meEleISO_chIso_Bkg_EE_->Fill(pT_sum_noMTD);
           meEleISO_rel_chIso_Bkg_EE_->Fill(rel_pT_sum_noMTD);
+          meEleISO_Ntracks_Bkg_nodRcut_EE_->Fill(Ntracks_Bkg_nodRcut_EE);
+          meEleISO_Ntracks_Bkg_dRcut_EE_->Fill(Ntracks_Bkg_dRcut_EE);
+          meEleISO_Ntracks_gen_Bkg_nodRcut_EE_->Fill(Ntracks_gen_Bkg_nodRcut_EE);
+          meEleISO_Ntracks_gen_Bkg_dRcut_EE_->Fill(Ntracks_gen_Bkg_dRcut_EE);
           if (optionalPlots_) {
             for (long unsigned int j = 0; j < Ntracks_EE_list_Bkg.size(); j++) {
               Ntracks_EE_list_Bkg[j]->Fill(N_tracks_MTD[j]);
@@ -1592,6 +1799,11 @@ void MtdEleIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSetu
       }
     }  // electron matched to a track
   }    // electron collection inside single event
+  if(nels_Sig_EB!=0) meEleISO_Nels_Sig_EB_->Fill(nels_Sig_EB);
+  if(nels_Sig_EE!=0) meEleISO_Nels_Sig_EE_->Fill(nels_Sig_EE);
+  if(nels_Bkg_EB!=0) meEleISO_Nels_Bkg_EB_->Fill(nels_Bkg_EB);
+  if(nels_Bkg_EE!=0) meEleISO_Nels_Bkg_EE_->Fill(nels_Bkg_EE);
+
 }
 
 // ------------ method for histogram booking ------------
@@ -1599,8 +1811,8 @@ void MtdEleIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run cons
   ibook.setCurrentFolder(folder_);
 
   // for regular Validation use a reduced binning, for detailed analysis and ROC curves use the larger one
-  int nbin_1 = 40;
-  int nbin_2 = 40;
+  int nbin_1 = 1000;
+  int nbin_2 = 2000;
   if (optionalPlots_) {
     nbin_1 = 1000;
     nbin_2 = 2000;
@@ -3866,6 +4078,363 @@ void MtdEleIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run cons
                      10,
                      100);
   }
+  meEle_dt_general_pT_1 = ibook.book1D("Iso_track_dt_general_pT_10_20",
+                                       "Iso cone track dt distribution in pT bin 10-20 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_2 = ibook.book1D("Iso_track_dt_general_pT_20_30",
+                                       "Iso cone track dt distribution in pT bin 20-30 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_3 = ibook.book1D("Iso_track_dt_general_pT_30_40",
+                                       "Iso cone track dt distribution in pT bin 30-40 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_4 = ibook.book1D("Iso_track_dt_general_pT_40_50",
+                                       "Iso cone track dt distribution in pT bin 40-50 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_5 = ibook.book1D("Iso_track_dt_general_pT_50_60",
+                                       "Iso cone track dt distribution in pT bin 50-60 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_6 = ibook.book1D("Iso_track_dt_general_pT_60_70",
+                                       "Iso cone track dt distribution in pT bin 60-70 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_7 = ibook.book1D("Iso_track_dt_general_pT_70_80",
+                                       "Iso cone track dt distribution in pT bin 70-80 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_8 = ibook.book1D("Iso_track_dt_general_pT_80_90",
+                                       "Iso cone track dt distribution in pT bin 80-90 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+  meEle_dt_general_pT_9 = ibook.book1D("Iso_track_dt_general_pT_90_100",
+                                       "Iso cone track dt distribution in pT bin 90-100 GeV ;Time (ns);Counts",
+                                       100,
+                                       0,
+                                       1);
+
+  meEle_dtSignif_general_pT_1 = ibook.book1D("Iso_track_dtSignif_general_pT_10_20",
+                                             "Iso cone track dt distribution in pT bin 10-20 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_2 = ibook.book1D("Iso_track_dtSignif_general_pT_20_30",
+                                             "Iso cone track dt distribution in pT bin 20-30 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_3 = ibook.book1D("Iso_track_dtSignif_general_pT_30_40",
+                                             "Iso cone track dt distribution in pT bin 30-40 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_4 = ibook.book1D("Iso_track_dtSignif_general_pT_40_50",
+                                             "Iso cone track dt distribution in pT bin 40-50 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_5 = ibook.book1D("Iso_track_dtSignif_general_pT_50_60",
+                                             "Iso cone track dt distribution in pT bin 50-60 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_6 = ibook.book1D("Iso_track_dtSignif_general_pT_60_70",
+                                             "Iso cone track dt distribution in pT bin 60-70 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_7 = ibook.book1D("Iso_track_dtSignif_general_pT_70_80",
+                                             "Iso cone track dt distribution in pT bin 70-80 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_8 = ibook.book1D("Iso_track_dtSignif_general_pT_80_90",
+                                             "Iso cone track dt distribution in pT bin 80-90 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+  meEle_dtSignif_general_pT_9 = ibook.book1D("Iso_track_dtSignif_general_pT_90_100",
+                                             "Iso cone track dt distribution in pT bin 90-100 GeV ;Time (ns);Counts",
+                                             nbin_1,
+                                             0,
+                                             10);
+
+  meEle_dt_general_eta_1 = ibook.book1D(
+      "Iso_track_dt_general_eta_0_05", "Iso cone track dt distribution in eta bin 0.0-0.5 ;Time (ns);Counts", 100, 0, 1);
+  meEle_dt_general_eta_2 = ibook.book1D("Iso_track_dt_general_eta_05_10",
+                                        "Iso cone track dt distribution in eta bin 0.5-1.0 ;Time (ns);Counts",
+                                        100,
+                                        0,
+                                        1);
+  meEle_dt_general_eta_3 = ibook.book1D("Iso_track_dt_general_eta_10_15",
+                                        "Iso cone track dt distribution in eta bin 1.0-1.5 ;Time (ns);Counts",
+                                        100,
+                                        0,
+                                        1);
+  meEle_dt_general_eta_4 = ibook.book1D("Iso_track_dt_general_eta_15_20",
+                                        "Iso cone track dt distribution in eta bin 1.5-2.0 ;Time (ns);Counts",
+                                        100,
+                                        0,
+                                        1);
+  meEle_dt_general_eta_5 = ibook.book1D("Iso_track_dt_general_eta_20_24",
+                                        "Iso cone track dt distribution in eta bin 2.0-2.4 ;Time (ns);Counts",
+                                        100,
+                                        0,
+                                        1);
+  meEle_dt_general_eta_6 = ibook.book1D("Iso_track_dt_general_eta_24_27",
+                                        "Iso cone track dt distribution in eta bin 2.4-2.7 ;Time (ns);Counts",
+                                        100,
+                                        0,
+                                        1);
+  meEle_dt_general_eta_7 = ibook.book1D("Iso_track_dt_general_eta_27_30",
+                                        "Iso cone track dt distribution in eta bin 2.7-3.0 ;Time (ns);Counts",
+                                        100,
+                                        0,
+                                        1);
+
+  meEle_dtSignif_general_eta_1 = ibook.book1D("Iso_track_dtSignif_general_eta_0_05",
+                                              "Iso cone track dt distribution in eta bin 0.0-0.5 ;Time (ns);Counts",
+                                              nbin_1,
+                                              0,
+                                              10);
+  meEle_dtSignif_general_eta_2 = ibook.book1D("Iso_track_dtSignif_general_eta_05_10",
+                                              "Iso cone track dt distribution in eta bin 0.5-1.0 ;Time (ns);Counts",
+                                              nbin_1,
+                                              0,
+                                              10);
+  meEle_dtSignif_general_eta_3 = ibook.book1D("Iso_track_dtSignif_general_eta_10_15",
+                                              "Iso cone track dt distribution in eta bin 1.0-1.5 ;Time (ns);Counts",
+                                              nbin_1,
+                                              0,
+                                              10);
+  meEle_dtSignif_general_eta_4 = ibook.book1D("Iso_track_dtSignif_general_eta_15_20",
+                                              "Iso cone track dt distribution in eta bin 1.5-2.0 ;Time (ns);Counts",
+                                              nbin_1,
+                                              0,
+                                              10);
+  meEle_dtSignif_general_eta_5 = ibook.book1D("Iso_track_dtSignif_general_eta_20_24",
+                                              "Iso cone track dt distribution in eta bin 2.0-2.4 ;Time (ns);Counts",
+                                              nbin_1,
+                                              0,
+                                              10);
+  meEle_dtSignif_general_eta_6 = ibook.book1D("Iso_track_dtSignif_general_eta_24_27",
+                                              "Iso cone track dt distribution in eta bin 2.4-2.7 ;Time (ns);Counts",
+                                              nbin_1,
+                                              0,
+                                              10);
+  meEle_dtSignif_general_eta_7 = ibook.book1D("Iso_track_dtSignif_general_eta_27_30",
+                                              "Iso cone track dt distribution in eta bin 2.7-3.0 ;Time (ns);Counts",
+                                              nbin_1,
+                                              0,
+                                              10);
+  // test
+  meEleISO_Nels_Sig_EB_ = ibook.book1D("Ele_Iso_Nels_Sig_EB",
+                                                "Number of electrons after basic "
+                                                "cuts - Signal Barrel;Number of electrons;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meEleISO_Nels_Sig_EE_ = ibook.book1D("Ele_Iso_Nels_Sig_EE",
+                                                "Number of electrons after basic "
+                                                "cuts - Signal Endcap;Number of electrons;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meEleISO_Nels_Bkg_EB_ = ibook.book1D("Ele_Iso_Nels_Bkg_EB",
+                                                "Number of electrons after basic "
+                                                "cuts - Background Barrel;Number of electrons;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meEleISO_Nels_Bkg_EE_ = ibook.book1D("Ele_Iso_Nels_Bkg_EE",
+                                                "Number of electrons after basic "
+                                                "cuts - Background Endcap;Number of electrons;Counts",
+                                                10,
+                                                0,
+                                                10);
+  meEleISO_Ntracks_Sig_nodRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_Sig_nodRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut - Signal Barrel+Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_Bkg_nodRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_Bkg_nodRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut - Background Barrel+Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_Sig_nodRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_Sig_nodRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut - Signal Barrel;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_Sig_nodRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_Sig_nodRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut - Signal Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_Bkg_nodRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_Bkg_nodRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut - Background Barrel;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_Bkg_nodRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_Bkg_nodRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut - Background Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_Sig_dRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_Sig_dRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut - Signal Barrel+Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_Bkg_dRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_Bkg_dRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut - Background Barrel+Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_Sig_dRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_Sig_dRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut - Signal Barrel;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_Sig_dRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_Sig_dRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut - Signal Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_Bkg_dRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_Bkg_dRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut - Background Barrel;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_Bkg_dRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_Bkg_dRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut - Background Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+
+  meEleISO_Ntracks_gen_Sig_nodRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_gen_Sig_nodRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut using genInfo - Signal Barrel+Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_gen_Bkg_nodRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_gen_Bkg_nodRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut using genInfo - Background Barrel+Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_gen_Sig_nodRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_gen_Sig_nodRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut using genInfo - Signal Barrel;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_gen_Sig_nodRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_gen_Sig_nodRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut using genInfo - Signal Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_gen_Bkg_nodRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_gen_Bkg_nodRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut using genInfo - Background Barrel;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_gen_Bkg_nodRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_gen_Bkg_nodRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts without dR cut using genInfo - Background Endcap;Number of tracks;Counts",
+                                                200,
+                                                0,
+                                                200);
+  meEleISO_Ntracks_gen_Sig_dRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_gen_Sig_dRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut using genInfo - Signal Barrel+Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_gen_Bkg_dRcut_tot_ = ibook.book1D("Ele_Iso_Ntracks_gen_Bkg_dRcut_tot",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut using genInfo - Background Barrel+Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_gen_Sig_dRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_gen_Sig_dRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut using genInfo - Signal Barrel;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_gen_Sig_dRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_gen_Sig_dRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut using genInfo - Signal Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_gen_Bkg_dRcut_EB_ = ibook.book1D("Ele_Iso_Ntracks_gen_Bkg_dRcut_EB",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut using genInfo - Background Barrel;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+  meEleISO_Ntracks_gen_Bkg_dRcut_EE_ = ibook.book1D("Ele_Iso_Ntracks_gen_Bkg_dRcut_EE",
+                                                "Total number of tracks after basic "
+                                                "cuts with dR cut using genInfo - Background Endcap;Number of tracks;Counts",
+                                                20,
+                                                0,
+                                                20);
+ 
+  meTrk_genMatch_check_Sig_nodRcut_tot_ = ibook.book1D(
+      "Track_genMatch_info_check_Sig_nodRcut_tot", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Bkg_nodRcut_tot_ = ibook.book1D(
+      "Track_genMatch_info_check_Bkg_nodRcut_tot", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Sig_nodRcut_EB_ = ibook.book1D(
+      "Track_genMatch_info_check_Sig_nodRcut_EB", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Sig_nodRcut_EE_ = ibook.book1D(
+      "Track_genMatch_info_check_Sig_nodRcut_EE", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Bkg_nodRcut_EB_ = ibook.book1D(
+      "Track_genMatch_info_check_Bkg_nodRcut_EB", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Bkg_nodRcut_EE_ = ibook.book1D(
+      "Track_genMatch_info_check_Bkg_nodRcut_EE", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Sig_dRcut_tot_ = ibook.book1D(
+      "Track_genMatch_info_check_Sig_dRcut_tot", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Bkg_dRcut_tot_ = ibook.book1D(
+      "Track_genMatch_info_check_Bkg_dRcut_tot", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Sig_dRcut_EB_ = ibook.book1D(
+      "Track_genMatch_info_check_Sig_dRcut_EB", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Sig_dRcut_EE_ = ibook.book1D(
+      "Track_genMatch_info_check_Sig_dRcut_EE", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Bkg_dRcut_EB_ = ibook.book1D(
+      "Track_genMatch_info_check_Bkg_dRcut_EB", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+  meTrk_genMatch_check_Bkg_dRcut_EE_ = ibook.book1D(
+      "Track_genMatch_info_check_Bkg_dRcut_EE", "Check on tracks matched with a GenParticle (matched=1, non matched=0)", 2, 0, 2);
+
+
 
   // defining vectors for more efficient hist filling
   // Promt part
@@ -4289,6 +4858,42 @@ void MtdEleIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run cons
     Ele_pT_sim_MTD_EE_list_Significance_Bkg = {
         meEle_pt_sim_MTD_4sigma_Bkg_EE_, meEle_pt_sim_MTD_3sigma_Bkg_EE_, meEle_pt_sim_MTD_2sigma_Bkg_EE_};
   }
+  // dt distribution hist vectors
+
+  general_pT_list = {meEle_dt_general_pT_1,
+                     meEle_dt_general_pT_2,
+                     meEle_dt_general_pT_3,
+                     meEle_dt_general_pT_4,
+                     meEle_dt_general_pT_5,
+                     meEle_dt_general_pT_6,
+                     meEle_dt_general_pT_7,
+                     meEle_dt_general_pT_8,
+                     meEle_dt_general_pT_9};
+
+  general_pT_Signif_list = {meEle_dtSignif_general_pT_1,
+                            meEle_dtSignif_general_pT_2,
+                            meEle_dtSignif_general_pT_3,
+                            meEle_dtSignif_general_pT_4,
+                            meEle_dtSignif_general_pT_5,
+                            meEle_dtSignif_general_pT_6,
+                            meEle_dtSignif_general_pT_7,
+                            meEle_dtSignif_general_pT_8,
+                            meEle_dtSignif_general_pT_9};
+  general_eta_list = {meEle_dt_general_eta_1,
+                      meEle_dt_general_eta_2,
+                      meEle_dt_general_eta_3,
+                      meEle_dt_general_eta_4,
+                      meEle_dt_general_eta_5,
+                      meEle_dt_general_eta_6,
+                      meEle_dt_general_eta_7};
+
+  general_eta_Signif_list = {meEle_dtSignif_general_eta_1,
+                             meEle_dtSignif_general_eta_2,
+                             meEle_dtSignif_general_eta_3,
+                             meEle_dtSignif_general_eta_4,
+                             meEle_dtSignif_general_eta_5,
+                             meEle_dtSignif_general_eta_6,
+                             meEle_dtSignif_general_eta_7};
 }
 
 // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
@@ -4310,13 +4915,16 @@ void MtdEleIsoValidation::fillDescriptions(edm::ConfigurationDescriptions& descr
   desc.add<double>("trackMaximumEta", 3.2);
   desc.add<double>("rel_iso_cut", 0.08);
   desc.add<bool>("optionTrackMatchToPV", false);
-  desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
-  desc.add<bool>("option_plots", false);
+  //desc.add<bool>("optionTrackMatchToPV", true);
+  desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
+  desc.add<bool>("option_plots", true);
   desc.add<double>("min_dR_cut", 0.01);
   desc.add<double>("max_dR_cut", 0.3);
   desc.add<double>("min_pt_cut_EB", 0.7);
   desc.add<double>("min_pt_cut_EE", 0.4);
+  //desc.add<double>("max_dz_cut_EB", 0.1);  // PARAM
   desc.add<double>("max_dz_cut_EB", 0.5);  // PARAM
+  //desc.add<double>("max_dz_cut_EE", 0.2);  // PARAM
   desc.add<double>("max_dz_cut_EE", 0.5);  // PARAM
   desc.add<double>("max_dz_vtx_cut", 0.5);
   desc.add<double>("max_dxy_vtx_cut", 0.2);
