@@ -153,10 +153,10 @@ private:
   std::vector<bool> muon_prompt_, muon_isBarrel_;
   std::vector<float> vtx_time_, vtx_time_err_;
 
-  std::vector<std::vector<int>> track_type_v1_, track_type_v2_;
+  std::vector<std::vector<int>> track_type_;
   std::vector<std::vector<float>> track_pt_, track_time_, track_time_err_, track_time_err_i_, track_mva_, track_PVweight_;
   std::vector<std::vector<float>> dtsig_muon_track_, dtsig_vtx_track_;
-  std::vector<std::vector<int>>   track_bx_, track_evtId_;
+  std::vector<std::vector<int>> track_bx_, track_evtId_;
   std::vector<std::vector<bool>> selectedVtxMatching_, selectedLV_, match_vtx_reco2sim_, match_vtx_sim2reco_;
 
   int vtx_index_;
@@ -384,79 +384,6 @@ private:
   MonitorElement* meMuonISO_trk_type_Sig_EE_;
   MonitorElement* meMuonISO_trk_type_Bkg_EB_;
   MonitorElement* meMuonISO_trk_type_Bkg_EE_;
-  MonitorElement* meMuonISO_trk_type_v2_Sig_EB_;
-  MonitorElement* meMuonISO_trk_type_v2_Sig_EE_;
-  MonitorElement* meMuonISO_trk_type_v2_Bkg_EB_;
-  MonitorElement* meMuonISO_trk_type_v2_Bkg_EE_;
-
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EE_;
-
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EE_;
-
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EE_;
-
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EE_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EB_;
-  MonitorElement* meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EE_;
-  
   //////////
   
   MonitorElement* meMuonISO_trk_genMatched_Sig_;
@@ -1421,8 +1348,7 @@ MtdMuonIsoValidation::MtdMuonIsoValidation(const edm::ParameterSet& iConfig)
   tree_ = fs_->make<TTree>("muonIso", "muonIso");
   tree_->Branch("run_",			&run_);
   tree_->Branch("event_",		&event_);
-  tree_->Branch("track_type_v1_",	&track_type_v1_);
-  tree_->Branch("track_type_v2_",	&track_type_v2_);
+  tree_->Branch("track_type_",	        &track_type_);
   tree_->Branch("muon_pt_",		&muon_pt_);
   tree_->Branch("track_pt_",		&track_pt_);
   tree_->Branch("muon_time_",		&muon_time_);
@@ -1861,7 +1787,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   run_   = iEvent.id().run();
   event_ = iEvent.id().event();
 
-  track_type_v1_.clear(), track_type_v2_.clear();
+  track_type_.clear();
   muon_pt_.clear(), track_pt_.clear();
   muon_time_.clear(), vtx_time_.clear(), track_time_.clear();
   dtsig_muon_track_.clear(), dtsig_vtx_track_.clear();
@@ -1904,7 +1830,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   }
   localMuonCollection.shrink_to_fit();
 
-  // test
+  // for test
   // Check the fraction of loose_cut
   std::vector<reco::Muon> localMuonCollection_loose;
   for (const auto& mu_ : muColl) {
@@ -1951,27 +1877,17 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   iEvent.getByToken(Rec4DVerToken_, recVtxs);
   recopv = getRecoPVs(recVtxs);
 
-//  cout << "simpv: " << simpv.size() << endl;
-//  cout << "recpv: " << vertices.size() << endl;
-
   const auto& sigmat0Safe = iEvent.get(sigmat0SafePidToken_);
   matchReco2Sim(recopv, simpv, sigmat0Safe, mtdQualMVA, BeamSpotH);
 
-//  cout << "simpv.size(): " << simpv.size() << endl;
-  
-//  cout << "recopv.at(" << vtx_index << ").sim: " << recopv.at(vtx_index).sim << endl;
   recovtx_sim_ = recopv.at(vtx_index).sim;
   recovtx_pt_ = recopv.at(vtx_index).pt;
   recovtx_ptsq_ = recopv.at(vtx_index).ptsq;
   recovtx_nRecoTrk_ = recopv.at(vtx_index).nRecoTrk;
   recovtx_num_matched_sim_tracks_ = recopv.at(vtx_index).num_matched_sim_tracks;
 
-//  simpv_reco_ = simpv.at(recopv.at(vtx_index).sim).rec;
   for (unsigned int iev=0; iev<simpv.size(); iev++) {
     if (recopv.at(vtx_index).sim == iev) {
-//      cout << "simpv.at(" << iev << ").rec: " << simpv.at(iev).rec << endl;
-//      cout << "recopv.at(" << simpv.at(iev).rec << ").sim: " << recopv.at(simpv.at(iev).rec).sim << endl;
-//      cout << "[simpv] BX: " << simpv.at(iev).eventId.bunchCrossing() << ", evtId: " << simpv.at(iev).eventId.event() << endl;
 //      printSimVtxRecoVtxInfo(simpv.at(iev), recopv.at(vtx_index));
       simvtx_reco_ = simpv.at(iev).rec;
       simvtx_bx_ = simpv.at(iev).eventId.bunchCrossing();
@@ -1981,46 +1897,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       simvtx_nGenTrk_ = simpv.at(iev).nGenTrk;
       simvtx_num_matched_reco_tracks_ = simpv.at(iev).num_matched_reco_tracks;
     }
-//    if (recopv.at(vtx_index).sim == iev && simpv.at(iev).rec == vtx_index) {
-//      cout << "Vtx Matching" << endl;
-//      cout << "recopv.at(" << simpv.at(iev).rec << ").sim: " << recopv.at(simpv.at(iev).rec).sim << endl;
-//      printSimVtxRecoVtxInfo(simpv.at(iev), recopv.at(vtx_index));
-//    }
-
-//    if (simpv.at(iev).eventId.bunchCrossing()==0 && simpv.at(iev).eventId.event()==0) {
-//      cout << "BX/evtId matching for simpv" << endl;
-//      cout << "iev: " << iev << endl;
-//      cout << "simpv.at(" << iev << ").rec: " << simpv.at(iev).rec << endl;
-//      if(simpv.at(iev).rec!=66666) cout << "recopv.at(" << simpv.at(iev).rec << ").sim: " << recopv.at(simpv.at(iev).rec).sim << endl;
-//      printSimVtxRecoVtxInfo(simpv.at(iev), recopv.at(vtx_index));
-//    }
   }
-/*
-  for (unsigned int iv=0; iv<recopv.size(); iv++) {
-    if (recopv.at(iv).recVtx->t() == Vtx_chosen.t()) cout << "iv" << iv << " vtx is found." << endl;
-    if (recopv.at(iv).recVtx == aa) cout << "iv: " << iv << " vtx is found2." << endl;
-    //if (recopv.at(iv) == aa) cout << "[" << iv << ", " << iev << "] vtx is found3." << endl;
-    for (unsigned int iev=0; iev<simpv.size(); iev++) {
-      bool selectedVtxMatching = recopv.at(iv).sim == iev && simpv.at(iev).rec == iv;
-      bool selectedLV = simpv.at(iev).eventId.bunchCrossing() == 0 && simpv.at(iev).eventId.event() == 0 &&
-                          recopv.at(iv).OriginalIndex == 0;
-      bool selectedLVMatching = selectedVtxMatching && selectedLV;
-      if (selectedVtxMatching == true) cout << "v1" << endl;
-      if (selectedLV == true) cout << "v2" << endl;
-      if (selectedLVMatching == true) cout << "v3" << endl;
-//      cout << "[" << iv << ", " << iev << "] recopv.at(iv).sim: " << recopv.at(iv).sim << endl;
-//      cout << "[" << iv << ", " << iev << "] simpv.at(iev).rec: " << simpv.at(iev).rec << endl;
-    }
-  }
-*/
  
-  // test end
-
   auto pdgCheck = [](int pdg) {
     pdg = std::abs(pdg);
     return (pdg == 23 or pdg == 24 or pdg == 15 or pdg == 13);
-    //return (pdg == 23 or pdg == 15 or pdg == 13);
-    //return (pdg == 23 or pdg == 13);
   };
 
   int nmuons_Sig=0, nmuons_Sig_EB=0, nmuons_Sig_EE=0;
@@ -2028,23 +1909,13 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
   for (const auto& muon : localMuonCollection) {
 
-  // for ntuple
-  std::vector<int> track_type_v1_comp, track_type_v2_comp;
-  std::vector<float> track_pt_comp, track_time_comp, track_time_err_comp, track_time_err_i_comp, track_mva_comp, track_PVweight_comp;
-  std::vector<float> dtsig_muon_track_comp, dtsig_vtx_track_comp;
-  std::vector<int> track_bx_comp, track_evtId_comp;
-  std::vector<bool> selectedVtxMatching_comp, selectedLV_comp, match_vtx_reco2sim_comp, match_vtx_sim2reco_comp;
+    // for ntuple
+    std::vector<int> track_type_comp;
+    std::vector<float> track_pt_comp, track_time_comp, track_time_err_comp, track_time_err_i_comp, track_mva_comp, track_PVweight_comp;
+    std::vector<float> dtsig_muon_track_comp, dtsig_vtx_track_comp;
+    std::vector<int> track_bx_comp, track_evtId_comp;
+    std::vector<bool> selectedVtxMatching_comp, selectedLV_comp, match_vtx_reco2sim_comp, match_vtx_sim2reco_comp;
 
-//  track_type_v1_.clear(), track_type_v2_.clear();
-//  muon_pt_.clear(), track_pt_.clear();
-//  muon_time_.clear(), vtx_time_.clear(), track_time_.clear();
-//  dtsig_muon_track_.clear(), dtsig_vtx_track_.clear();
-//  muon_PVweight_.clear(), track_PVweight_.clear();
-//  muon_time_err_.clear(), vtx_time_err_.clear(), track_time_err_.clear();
-//  muon_prompt_.clear(), muon_isBarrel_.clear();
-//  track_bx_.clear(), track_evtId_.clear();
-//  muon_mother_pdgId_.clear();
-//  selectedVtxMatching_.clear(), selectedLV_.clear(), match_vtx_reco2sim_.clear(), match_vtx_sim2reco_.clear();
 
     bool muon_Prompt = false;
     float muon_track_source_dz = std::abs(muon.track()->dz(Vtx_chosen.position()));
@@ -2053,7 +1924,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
     // selecting "good" RECO muons
     // PARAM
 
-    // test
+    // for test
     if (muon.track()->pt() >= 10 || std::abs(muon.track()->eta()) <= 2.4) {
       meMuonISO_dz_muon_->Fill(muon_track_source_dz);
       meMuonISO_dxy_muon_->Fill(muon_track_source_dxy);
@@ -2104,6 +1975,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       }
     }
 
+    // for test
       // Prompt
     if(muon_Prompt) {
       meMuonISO_mva_muon_reco_Sig_->Fill(mtdQualMVA[muon_SigTrkRef]);
@@ -2192,6 +2064,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
     // pT of sim muon
     meMuonISO_pT_muon_sim_->Fill(muon_sim_pt);
 
+    // test end
+
 
     math::XYZVector MuonSigTrackMomentumAtVtx = muon.track()->momentum();
 
@@ -2221,21 +2095,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   	  else muon_mother_pdgId = -9999;
         }
         else {
-	  cout << "bjbj" << endl;
-	  cout << "tp_status  : " << tp_test.first->status() << endl;
-	  cout << "muon_status: " << muon_status << endl;
 	  muon_mother_pdgId = 99999;
 	}
       }
       else {
-	cout << "lolololol" << endl;
-	cout << "muon_status: " << muon_status << endl;
         muon_mother_pdgId = 999999;
         muon_status = 999999;
       }
-
-
       muon_time_err_i_.emplace_back(Sigmat0Pid[muon_SigTrkRef]);
+
+
 
       muon_sigTrkTime = t0Pid[muon_SigTrkRef];
       muon_sigTrkMtdMva = mtdQualMVA[muon_SigTrkRef];
@@ -2253,7 +2122,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       vtx_time_err_.emplace_back(Vtx_chosen.tError());
       muon_mva_.emplace_back(mtdQualMVA[muon_SigTrkRef]);
       muon_status_.emplace_back(muon_status);
-
 
 
       meMuon_avg_error_SigTrk_check_->Fill(muon_sigTrkTimeErr);
@@ -2315,7 +2183,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       std::vector<int> N_tracks_sim_MTD_significance{0, 0, 0};
       std::vector<double> pT_sum_sim_MTD_significance{0, 0, 0};
       std::vector<double> rel_pT_sum_sim_MTD_significance{0, 0, 0};
-      // test
+      // for test
       std::vector<double> pT_sum_gen_MTD_significance{0, 0, 0};
       std::vector<double> rel_pT_sum_gen_MTD_significance{0, 0, 0};
 
@@ -2356,15 +2224,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
          // for ntuple
 	track_time_err_i_comp.emplace_back(Sigmat0Pid[trackref_general]);
-//        muon_isBarrel_.emplace_back(Barrel_muon);
-//        muon_prompt_.emplace_back(muon_Prompt);
-//        muon_pt_.emplace_back(muon_SigTrkRef->pt());
-//        muon_time_.emplace_back(muon_sigTrkTime);
-//        muon_time_err_.emplace_back(muon_sigTrkTimeErr);
-//        muon_PVweight_.emplace_back(Vtx_chosen.trackWeight(muon_SigTrkRef));
-//        vtx_time_.emplace_back(Vtx_chosen.t());
-//        vtx_time_err_.emplace_back(Vtx_chosen.tError());
-
 
 
         // no MTD case
@@ -2377,20 +2236,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
         double tsim_trk = -1.;
         double trk_ptSim = -1.;
         bool genMatched = false;
-	// test to checking the type of tracks
-	// 0: tracks from PV, 1: PU tracks, 2: fake tracks
-	if (TPmatched == r2s_->end()) {
-	  track_type_v1_comp.emplace_back(2);
-	  if (muon_Prompt) {
-	    if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(2);
-	    else meMuonISO_trk_type_Sig_EE_->Fill(2);
-	  }
-	  else {
-	    if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(2);
-	    else meMuonISO_trk_type_Bkg_EE_->Fill(2);
-	  }
-	}
-	else if (TPmatched != r2s_->end()) {
+	if (TPmatched != r2s_->end()) {
           // reco track matched to a TP
           const auto& tp = (TPmatched->val)[0];
           tsim_trk = (tp.first)->parentVertex()->position().t() * 1e9;
@@ -2399,48 +2245,13 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           if (tp.first->status() != -99) {
             genMatched = true;
             meTrk_genMatch_check_->Fill(1);
-	    // test to checking the type of tracks
-	    if (muon_Prompt) {
-	      if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-	        track_type_v1_comp.emplace_back(0);
-	        if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(0);
-		else meMuonISO_trk_type_Sig_EE_->Fill(0);
-	      }
-	      // there are no else cases
-	      else {
-	        track_type_v1_comp.emplace_back(1);
-		if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(1);
-		else meMuonISO_trk_type_Sig_EE_->Fill(1);
-	      }
-	    }
-	    else {
-	      if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-	        track_type_v1_comp.emplace_back(0);
-                if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(0);
-		else meMuonISO_trk_type_Bkg_EE_->Fill(0);
-              }
-	      // there are no else cases
-              else {
-	        track_type_v1_comp.emplace_back(1);
-                if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(1);
-                else meMuonISO_trk_type_Bkg_EE_->Fill(1);
-              }
-	    }
           } else {
-	    track_type_v1_comp.emplace_back(1);
             meTrk_genMatch_check_->Fill(0);
-	    if (muon_Prompt) {
-	      if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(1);
-	      else meMuonISO_trk_type_Sig_EE_->Fill(1);
-	    }
-	    else {
-	      if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(1);
-	      else meMuonISO_trk_type_Bkg_EE_->Fill(1);
-	    }
           }
         }
 
-        // test
+
+        // for test -> The following test has been replaced with a test using the ntuple. Needs to be deleted.
         if(muon_Prompt) {
     	  meMuonISO_mva_trk_reco_Sig_->Fill(mtdQualMVA[trackref_general]);
 	  if (Barrel_muon) {
@@ -2537,6 +2348,8 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	}
         // pT of sim track
         meMuonISO_pT_trk_sim_->Fill(trk_ptSim);
+	// test end
+	
 
         double TrkMTDTime = t0Pid[trackref_general];
         double TrkMTDMva = mtdQualMVA[trackref_general];
@@ -2544,7 +2357,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
         meMuon_avg_error_PUTrk_check_->Fill(TrkMTDTimeErr);
 
-	// test
+	// for track definition
 	bool match_vtx_reco2sim = false;
 	bool match_vtx_sim2reco = false;
 	bool selectedVtxMatching = false;
@@ -2555,13 +2368,12 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	bool check_selectedVtxMatching = false;
 	bool check_selectedLV = false;
 	const reco::TrackBaseRef trkrefBase2(trackref_general);
-	cout << "AAA" << endl;
+
   	for (unsigned int iev=0; iev < simpv.size(); iev++) {
     	  auto vsim = simpv.at(iev).sim_vertex;
 	  match_vtx_reco2sim = (recopv.at(vtx_index).sim == iev);
 	  match_vtx_sim2reco = (simpv.at(iev).rec == vtx_index);
 	  selectedVtxMatching = match_vtx_reco2sim && match_vtx_sim2reco;
-	  //selectedVtxMatching = (recopv.at(vtx_index).sim == iev) && (simpv.at(iev).rec == vtx_index);
 	  selectedLV = (simpv.at(iev).eventId.bunchCrossing() == 0) && (simpv.at(iev).eventId.event() == 0) && (recopv.at(vtx_index).OriginalIndex == 0);
 
 	  if (match_vtx_reco2sim) check_match_vtx_reco2sim = true;
@@ -2569,17 +2381,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	  if (selectedVtxMatching) check_selectedVtxMatching = true;
 	  if (selectedLV) check_selectedLV = true;
 
-	  //if (selectedVtxMatching == true) 
 	  if (match_vtx_reco2sim) {
-	    cout << "BBB" << endl;
-//	    match_vtx_sim2reco_.emplace_back(match_vtx_sim2reco);
-//	    selectedVtxMatching_.emplace_back(selectedVtxMatching);
-//	    selectedLV_.emplace_back(selectedLV);
-//            cout << "reco-sim vtx matching" << endl;
       	    auto tp_info = getMatchedTP(trkrefBase2, vsim).first;
   	    if (tp_info != nullptr) {
-//  	      cout << "(*tp_info)->eventId().bunchCrossing(): "<< (*tp_info)->eventId().bunchCrossing() << endl;
-//  	      cout << "(*tp_info)->eventId().event(): "<< (*tp_info)->eventId().event() << endl;
   	      track_bx_comp.emplace_back((*tp_info)->eventId().bunchCrossing());
   	      track_evtId_comp.emplace_back((*tp_info)->eventId().event());
   	    }
@@ -2587,71 +2391,66 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   	      track_bx_comp.emplace_back(-999);
   	      track_evtId_comp.emplace_back(-999);
   	    }
-  	    // test to checking the type of tracks
+
+	    // track definition
   	    // 0: tracks from PV, 1: PU tracks, 2: fake tracks, 3: tracks from secondary vertices
             int matchCategory = getMatchedTP(trkrefBase2, vsim).second;
   	    if (matchCategory == -1) {
-  	      track_type_v2_comp.emplace_back(2);
+  	      track_type_comp.emplace_back(2);
   	      if (muon_Prompt) {
-  	        if (Barrel_muon) meMuonISO_trk_type_v2_Sig_EB_->Fill(2);
-  	        else meMuonISO_trk_type_v2_Sig_EE_->Fill(2);
+  	        if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(2);
+  	        else meMuonISO_trk_type_Sig_EE_->Fill(2);
   	      }
   	      else {
-  	        if (Barrel_muon) meMuonISO_trk_type_v2_Bkg_EB_->Fill(2);
-                else meMuonISO_trk_type_v2_Bkg_EE_->Fill(2);
+  	        if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(2);
+                else meMuonISO_trk_type_Bkg_EE_->Fill(2);
   	      }
   	    }
   	    else if(matchCategory == 0) {
-  	      track_type_v2_comp.emplace_back(0);
+  	      track_type_comp.emplace_back(0);
   	      if (muon_Prompt) {
-                if (Barrel_muon) meMuonISO_trk_type_v2_Sig_EB_->Fill(0);
-                else meMuonISO_trk_type_v2_Sig_EE_->Fill(0);
+                if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(0);
+                else meMuonISO_trk_type_Sig_EE_->Fill(0);
               }
               else {
-                if (Barrel_muon) meMuonISO_trk_type_v2_Bkg_EB_->Fill(0);
-                else meMuonISO_trk_type_v2_Bkg_EE_->Fill(0);
+                if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(0);
+                else meMuonISO_trk_type_Bkg_EE_->Fill(0);
               }
   	    }
   	    else if(matchCategory == 1) {
-  	      track_type_v2_comp.emplace_back(3);
+  	      track_type_comp.emplace_back(3);
   	      if (muon_Prompt) {
-                if (Barrel_muon) meMuonISO_trk_type_v2_Sig_EB_->Fill(3);
-                else meMuonISO_trk_type_v2_Sig_EE_->Fill(3);
+                if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(3);
+                else meMuonISO_trk_type_Sig_EE_->Fill(3);
               }
               else {
-                if (Barrel_muon) meMuonISO_trk_type_v2_Bkg_EB_->Fill(3);
-                else meMuonISO_trk_type_v2_Bkg_EE_->Fill(3);
+                if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(3);
+                else meMuonISO_trk_type_Bkg_EE_->Fill(3);
               }
   	    }
   	    else if(matchCategory == 2) {
-  	      track_type_v2_comp.emplace_back(1);
+  	      track_type_comp.emplace_back(1);
   	      if (muon_Prompt) {
-                if (Barrel_muon) meMuonISO_trk_type_v2_Sig_EB_->Fill(1);
-                else meMuonISO_trk_type_v2_Sig_EE_->Fill(1);
+                if (Barrel_muon) meMuonISO_trk_type_Sig_EB_->Fill(1);
+                else meMuonISO_trk_type_Sig_EE_->Fill(1);
               }
               else {
-                if (Barrel_muon) meMuonISO_trk_type_v2_Bkg_EB_->Fill(1);
-                else meMuonISO_trk_type_v2_Bkg_EE_->Fill(1);
+                if (Barrel_muon) meMuonISO_trk_type_Bkg_EB_->Fill(1);
+                else meMuonISO_trk_type_Bkg_EE_->Fill(1);
               }
   	    }
-//	  cout << "matchCategory: "<< matchCategory << endl;
 	    else {
   	      track_bx_comp.emplace_back(-999);
   	      track_evtId_comp.emplace_back(-999);
-	      track_type_v2_comp.emplace_back(-999);
+	      track_type_comp.emplace_back(-999);
 	    }
 	  }
-//	  else { // not reco-sim vtx matching
-//	    cout << "not reco-sim vtx matching" << endl;
-//	  }
   	}
 	match_vtx_reco2sim_comp.emplace_back(check_match_vtx_reco2sim);
 	match_vtx_sim2reco_comp.emplace_back(check_match_vtx_sim2reco);
 	selectedVtxMatching_comp.emplace_back(check_selectedVtxMatching);
 	selectedLV_comp.emplace_back(check_selectedLV);
-        // test end
 	
-	// for ntuple
 	track_pt_comp.emplace_back(trackGen.pt());
 	track_PVweight_comp.emplace_back(Vtx_chosen.trackWeight(trackref_general));
 	track_time_comp.emplace_back(TrkMTDTime);
@@ -2667,15 +2466,13 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	else dtsig_vtx_track_comp.emplace_back(-999);
 
 
+
         // MTD GEN case
         if (genMatched) {
           N_tracks_gen++;
           pT_sum_gen += trk_ptSim;
         }
 
-        //const reco::TrackBaseRef trkrefBase(trackref_general);
-        //auto TPmatched = r2s_->find(trkrefBase);
-	
         // dt with the track
         if (dt_sig_track_) {
           double dt_sigTrk = 0;
@@ -2693,35 +2490,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_muon_trk_sim_Sig_EB_->Fill(dt_sim_sigTrk);
 	        meMuonISO_dtSig_muon_trk_sim_Sig_EB_->Fill(dt_sim_sigTrk_signif);
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Sig_EB_->Fill(dt_sim_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
-		  }
-	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_sigTrk_signif);
-	        }
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EB_->Fill(1);
-		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_muon_trk_sim_Sig_EE_->Fill(dt_sim_sigTrk);
 	        meMuonISO_dtSig_muon_trk_sim_Sig_EE_->Fill(dt_sim_sigTrk_signif);
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Sig_EE_->Fill(dt_sim_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
-		  }
-	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_sigTrk_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EE_->Fill(1);
-		}
 	      }
 	    }
 	    else {
@@ -2729,35 +2502,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_muon_trk_sim_Bkg_EB_->Fill(dt_sim_sigTrk);
 	        meMuonISO_dtSig_muon_trk_sim_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
-		  }
-	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_sigTrk_signif);
-	        }
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EB_->Fill(1);
-		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_muon_trk_sim_Bkg_EE_->Fill(dt_sim_sigTrk);
 	        meMuonISO_dtSig_muon_trk_sim_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
 	        if(genMatched) meMuonISO_dtSig_muon_trk_sim_genMatched_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
-		  }
-	          else meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_sigTrk_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EE_->Fill(1);
-		}
 	      }
 	    }
 
@@ -2775,7 +2524,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               if (dt_sim_sigTrk_signif < max_dt_significance_cut[i]) {
                 N_tracks_sim_MTD_significance[i]++;
                 pT_sum_sim_MTD_significance[i] += trk_ptSim;
-		// test
+		// for test
 		if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
               }
             }
@@ -2786,28 +2535,18 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               for (long unsigned int i = 0; i < N_tracks_sim_MTD.size(); i++) {
                 N_tracks_sim_MTD[i] = N_tracks_sim_MTD[i] + 1;
                 pT_sum_sim_MTD[i] = pT_sum_sim_MTD[i] + trk_ptSim;
-		
-		// test for checking the type of tracks
-		if (muon_Prompt) {
-		  if (Barrel_muon) meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EB_->Fill(1);
-		  else meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EE_->Fill(1);
-		}
-		else {
-		  if (Barrel_muon) meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EB_->Fill(1);
-		  else meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EE_->Fill(1);
-		}
               }
             }
             for (long unsigned int i = 0; i < N_tracks_sim_MTD_significance.size(); i++) {
               N_tracks_sim_MTD_significance[i]++;
               pT_sum_sim_MTD_significance[i] += trk_ptSim;
-	      // test
+	      // for test
 	      if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
             }
           }
 
           // MTD reco case
-          if (TrkMTDTimeErr > 0 && muon_sigTrkTimeErr > 0) {    //FIXME For tracks, there exist cases where track has time or error of time even without an MVA score. It seems MVA score is needed. // FIXME It is already considered by defining tErr of track above
+          if (TrkMTDTimeErr > 0 && muon_sigTrkTimeErr > 0) {
             dt_sigTrk = std::abs(TrkMTDTime - muon_sigTrkTime);
             dt_sigTrk_signif =
                 dt_sigTrk / std::sqrt(TrkMTDTimeErr * TrkMTDTimeErr + muon_sigTrkTimeErr * muon_sigTrkTimeErr);
@@ -2817,35 +2556,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_muon_trk_reco_Sig_EB_->Fill(dt_sigTrk);
 	        meMuonISO_dtSig_muon_trk_reco_Sig_EB_->Fill(dt_sigTrk_signif);
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Sig_EB_->Fill(dt_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_->Fill(dt_sigTrk_signif);
-  		  }
-  	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EB_->Fill(dt_sigTrk_signif);
-	        }
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EB_->Fill(1);
-		}
 	      }
 	      else {
 	        meMuonISO_dt_muon_trk_reco_Sig_EE_->Fill(dt_sigTrk);
 	        meMuonISO_dtSig_muon_trk_reco_Sig_EE_->Fill(dt_sigTrk_signif);
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Sig_EE_->Fill(dt_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EE_->Fill(dt_sigTrk_signif);
-  		  }
-  	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_->Fill(dt_sigTrk_signif);
-		}
-		else {
-		  meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EE_->Fill(1);
-		}
 	      }
 	    }
 	    else { // Non-prompt
@@ -2853,35 +2568,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_muon_trk_reco_Bkg_EB_->Fill(dt_sigTrk);
 	        meMuonISO_dtSig_muon_trk_reco_Bkg_EB_->Fill(dt_sigTrk_signif);
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Bkg_EB_->Fill(dt_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
-  		  }
-  	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_->Fill(dt_sigTrk_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EB_->Fill(1);
-		}
 	      }
 	      else {
 	        meMuonISO_dt_muon_trk_reco_Bkg_EE_->Fill(dt_sigTrk);
 	        meMuonISO_dtSig_muon_trk_reco_Bkg_EE_->Fill(dt_sigTrk_signif);
 	        if (genMatched) meMuonISO_dtSig_muon_trk_reco_genMatched_Bkg_EE_->Fill(dt_sigTrk_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
-  		  }
-  	          else meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EE_->Fill(dt_sigTrk_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EE_->Fill(1);
-		}
 	      }
 	    }
             meMuon_no_dt_check_->Fill(1);
@@ -2910,16 +2601,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
                 N_tracks_MTD[i] = N_tracks_MTD[i] + 1;
                 pT_sum_MTD[i] = pT_sum_MTD[i] + trackGen.pt();
               }
-	      
-	      // test for checking the type of tracks
-	      if (muon_Prompt) {
-		if (Barrel_muon) meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EB_->Fill(1);
-		else meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EE_->Fill(1);
-	      }
-	      else {
-		if (Barrel_muon) meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EB_->Fill(1);
-		else meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EE_->Fill(1);
-	      }
             }
             for (long unsigned int i = 0; i < N_tracks_MTD_significance.size(); i++) {
               N_tracks_MTD_significance[i]++;
@@ -2964,35 +2645,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_PV_trk_sim_Sig_EB_->Fill(dt_sim_vtx);
 	        meMuonISO_dtSig_PV_trk_sim_Sig_EB_->Fill(dt_sim_vtx_signif);
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Sig_EB_->Fill(dt_sim_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
-		  }
-	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_->Fill(dt_sim_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EB_->Fill(1);
-		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_PV_trk_sim_Sig_EE_->Fill(dt_sim_vtx);
 	        meMuonISO_dtSig_PV_trk_sim_Sig_EE_->Fill(dt_sim_vtx_signif);
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Sig_EE_->Fill(dt_sim_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
-		  }
-	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_->Fill(dt_sim_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EE_->Fill(1);
-		}
 	      }
 	    }
 	    else {
@@ -3000,35 +2657,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_PV_trk_sim_Bkg_EB_->Fill(dt_sim_vtx);
 	        meMuonISO_dtSig_PV_trk_sim_Bkg_EB_->Fill(dt_sim_vtx_signif);
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Bkg_EB_->Fill(dt_sim_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
-		  }
-	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_->Fill(dt_sim_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EB_->Fill(1);
-		}
 	      }
 	      else { // Endcap region
 	        meMuonISO_dt_PV_trk_sim_Bkg_EE_->Fill(dt_sim_vtx);
 	        meMuonISO_dtSig_PV_trk_sim_Bkg_EE_->Fill(dt_sim_vtx_signif);
 	        if(genMatched) meMuonISO_dtSig_PV_trk_sim_genMatched_Bkg_EE_->Fill(dt_sim_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-	          if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-		    meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
-		  }
-	          else meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EE_->Fill(dt_sim_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EE_->Fill(1);
-		}
 	      }
 	    }
 
@@ -3046,7 +2679,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               if (dt_sim_vtx_signif < max_dt_significance_cut[i]) {
                 N_tracks_sim_MTD_significance[i]++;
                 pT_sum_sim_MTD_significance[i] += trk_ptSim;
-		// test
+		// for test
 		if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
               }
             }
@@ -3055,28 +2688,18 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
               for (long unsigned int i = 0; i < N_tracks_sim_MTD.size(); i++) {
                 N_tracks_sim_MTD[i] = N_tracks_sim_MTD[i] + 1;      // N_tracks_noMTD
                 pT_sum_sim_MTD[i] = pT_sum_sim_MTD[i] + trk_ptSim;  // pT_sum_noMTD
-
-		// test for checking the type of tracks
-                if (muon_Prompt) {
-		  if (Barrel_muon) meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EB_->Fill(1);
-		  else meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EE_->Fill(1);
-		}
-                else {
-		  if (Barrel_muon) meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EB_->Fill(1);
-		  else meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EE_->Fill(1);
-		}
               }
             }
             for (long unsigned int i = 0; i < N_tracks_sim_MTD_significance.size(); i++) {
               N_tracks_sim_MTD_significance[i]++;
               pT_sum_sim_MTD_significance[i] += trk_ptSim;
-	      // test
+	      // for test
 	      if(genMatched) pT_sum_gen_MTD_significance[i] += trk_ptSim;
             }
           }
 
           // MTD RECO case
-          if (TrkMTDTimeErr > 0 && Vtx_chosen.tError() > 0) {    //FIXME For tracks, there exist cases where track has time or error of time even without an MVA score. It seems MVA score is needed.
+          if (TrkMTDTimeErr > 0 && Vtx_chosen.tError() > 0) {
             dt_vtx = std::abs(TrkMTDTime - Vtx_chosen.t());
             dt_vtx_signif =
                 dt_vtx / std::sqrt(TrkMTDTimeErr * TrkMTDTimeErr + Vtx_chosen.tError() * Vtx_chosen.tError());
@@ -3086,35 +2709,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_PV_trk_reco_Sig_EB_->Fill(dt_vtx);
 	        meMuonISO_dtSig_PV_trk_reco_Sig_EB_->Fill(dt_vtx_signif);
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Sig_EB_->Fill(dt_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_->Fill(dt_vtx_signif);
-  		  }
-  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_->Fill(dt_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EB_->Fill(1);
-		}
 	      }
 	      else {
 	        meMuonISO_dt_PV_trk_reco_Sig_EE_->Fill(dt_vtx);
 	        meMuonISO_dtSig_PV_trk_reco_Sig_EE_->Fill(dt_vtx_signif);
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Sig_EE_->Fill(dt_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_->Fill(dt_vtx_signif);
-  		  }
-  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_->Fill(dt_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EE_->Fill(1);
-		}
 	      }
 	    }
 	    else { // Non-prompt
@@ -3122,35 +2721,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	        meMuonISO_dt_PV_trk_reco_Bkg_EB_->Fill(dt_vtx);
 	        meMuonISO_dtSig_PV_trk_reco_Bkg_EB_->Fill(dt_vtx_signif);
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Bkg_EB_->Fill(dt_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EB_->Fill(dt_vtx_signif);
-  		  }
-  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_->Fill(dt_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EB_->Fill(1);
-		}
 	      }
 	      else {
 	        meMuonISO_dt_PV_trk_reco_Bkg_EE_->Fill(dt_vtx);
 	        meMuonISO_dtSig_PV_trk_reco_Bkg_EE_->Fill(dt_vtx_signif);
 	        if (genMatched) meMuonISO_dtSig_PV_trk_reco_genMatched_Bkg_EE_->Fill(dt_vtx_signif);
-
-	        // test for checking the type of tracks
-		if (TPmatched != r2s_->end()) {
-		  const auto& tp = (TPmatched->val)[0];
-  		  if ((tp.first)->eventId().bunchCrossing()==0 && (tp.first)->eventId().event()==0) {
-  		    meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EE_->Fill(dt_vtx_signif);
-  		  }
-  	          else meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EE_->Fill(dt_vtx_signif);
-		}
-		else { // tracks are not TPmatched but have t, tErr, MVA -> maybe fake track?
-		  meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EE_->Fill(1);
-		}
 	      }
 	    }
             meMuon_no_dt_check_->Fill(1);
@@ -3178,16 +2753,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
                 N_tracks_MTD[i] = N_tracks_MTD[i] + 1;          // N_tracks_noMTD
                 pT_sum_MTD[i] = pT_sum_MTD[i] + trackGen.pt();  // pT_sum_noMTD
 	      }
-
-	      // test for checking the type of tracks
-              if (muon_Prompt) {
-		if (Barrel_muon) meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EB_->Fill(1);
-		else meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EE_->Fill(1);
-	      }
-              else {
-		if (Barrel_muon) meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EB_->Fill(1);
-		else meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EE_->Fill(1);
-              }
             }
             for (long unsigned int i = 0; i < N_tracks_MTD_significance.size(); i++) {
               N_tracks_MTD_significance[i]++;
@@ -3215,10 +2780,11 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
             }
           }  // End of optional dt distributions plots
         }
-      }
+      }  // End of track loop
 
       rel_pT_sum_noMTD = pT_sum_noMTD / muon.track()->pt();  // rel_ch_iso calculation
 
+      // muon_sim_pt is initialized to -1. It is necessary to apply "muon_sim_pt!=-1" cut.
       if (optionalPlots_) {
         for (long unsigned int i = 0; i < N_tracks_MTD.size(); i++) {
           rel_pT_sum_MTD[i] = pT_sum_MTD[i] / muon.track()->pt();
@@ -3515,9 +3081,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
         }
       }
     }  // muon matched to a track
-//  tree_->Fill();
-    track_type_v1_.emplace_back(track_type_v1_comp);
-    track_type_v2_.emplace_back(track_type_v2_comp);
+
+    // for ntuple
+    track_type_.emplace_back(track_type_comp);
     track_pt_.emplace_back(track_pt_comp);
     track_time_.emplace_back(track_time_comp);
     track_time_err_.emplace_back(track_time_err_comp);
@@ -3548,10 +3114,8 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
   ibook.setCurrentFolder(folder_);
 
   // for regular Validation use a reduced binning, for detailed analysis and ROC curves use the larger one
-  //int nbin_1 = 40;
-  //int nbin_2 = 40;
-  int nbin_1 = 1000;
-  int nbin_2 = 2000;
+  int nbin_1 = 40;
+  int nbin_2 = 40;
   if (optionalPlots_) {
     nbin_1 = 1000;
     nbin_2 = 2000;
@@ -6874,354 +6438,13 @@ void MtdMuonIsoValidation::bookHistograms(DQMStore::IBooker& ibook, edm::Run con
                                                 1);
     // test to checking the type of tracks
   meMuonISO_trk_type_Sig_EB_ = ibook.book1D(
-      "Muon_Iso_track_type_Sig_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Signal Barrel", 4, 0, 4);
+      "Muon_Iso_track_type_Sig_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Signal Barrel", 4, 0, 4);
   meMuonISO_trk_type_Sig_EE_ = ibook.book1D(
-      "Muon_Iso_track_type_Sig_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Signal Endcap", 4, 0, 4);
+      "Muon_Iso_track_type_Sig_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Signal Endcap", 4, 0, 4);
   meMuonISO_trk_type_Bkg_EB_ = ibook.book1D(
-      "Muon_Iso_track_type_Bkg_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Background Barrel", 4, 0, 4);
+      "Muon_Iso_track_type_Bkg_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Background Barrel", 4, 0, 4);
   meMuonISO_trk_type_Bkg_EE_ = ibook.book1D(
-      "Muon_Iso_track_type_Bkg_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2) - Background Endcap", 4, 0, 4);
-  meMuonISO_trk_type_v2_Sig_EB_ = ibook.book1D(
-      "Muon_Iso_track_type_v2_Sig_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Signal Barrel", 4, 0, 4);
-  meMuonISO_trk_type_v2_Sig_EE_ = ibook.book1D(
-      "Muon_Iso_track_type_v2_Sig_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Signal Endcap", 4, 0, 4);
-  meMuonISO_trk_type_v2_Bkg_EB_ = ibook.book1D(
-      "Muon_Iso_track_type_v2_Bkg_EB", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Background Barrel", 4, 0, 4);
-  meMuonISO_trk_type_v2_Bkg_EE_ = ibook.book1D(
-      "Muon_Iso_track_type_v2_Bkg_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Background Endcap", 4, 0, 4);
-
-  meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PVtrk_Sig_EB",
-                                                "dtSig distribution for reco PV track and reco muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_PVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PVtrk_Sig_EE",
-                                                "dtSig distribution for reco PV track and reco muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PVtrk_Bkg_EB",
-                                                "dtSig distribution for reco PV track and reco muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_PVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PVtrk_Bkg_EE",
-                                                "dtSig distribution for reco PV track and reco muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PUtrk_Sig_EB",
-                                                "dtSig distribution for reco PU track and reco muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_PUtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PUtrk_Sig_EE",
-                                                "dtSig distribution for reco PU track and reco muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PUtrk_Bkg_EB",
-                                                "dtSig distribution for reco PU track and reco muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_reco_PUtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_PUtrk_Bkg_EE",
-                                                "dtSig distribution for reco PU track and reco muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  // FIXME the name of histograms below need to be changed (it is not about signif)
-  meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Sig_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_reco_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Sig_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Bkg_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_reco_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_faketrk_Bkg_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Sig_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_reco_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Sig_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Bkg_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_reco_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_reco_without_tErr_Bkg_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-
-  meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PVtrk_Sig_EB",
-                                                "dtSig distribution for sim PV track and sim muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_PVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PVtrk_Sig_EE",
-                                                "dtSig distribution for sim PV track and sim muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PVtrk_Bkg_EB",
-                                                "dtSig distribution for sim PV track and sim muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_PVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PVtrk_Bkg_EE",
-                                                "dtSig distribution for sim PV track and sim muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PUtrk_Sig_EB",
-                                                "dtSig distribution for sim PU track and sim muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_PUtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PUtrk_Sig_EE",
-                                                "dtSig distribution for sim PU track and sim muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PUtrk_Bkg_EB",
-                                                "dtSig distribution for sim PU track and sim muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_muon_trk_sim_PUtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_PUtrk_Bkg_EE",
-                                                "dtSig distribution for sim PU track and sim muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  // FIXME the name of histograms below need to be changed (it is not about signif)
-  meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Sig_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_sim_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Sig_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Bkg_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_sim_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_faketrk_Bkg_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Sig_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_sim_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Sig_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Bkg_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_muon_trk_sim_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_muon_track_sim_without_tErr_Bkg_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-
-  meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PVtrk_Sig_EB",
-                                                "dtSig distribution for reco PV track and reco muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_PVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PVtrk_Sig_EE",
-                                                "dtSig distribution for reco PV track and reco muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PVtrk_Bkg_EB",
-                                                "dtSig distribution for reco PV track and reco muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_PVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PVtrk_Bkg_EE",
-                                                "dtSig distribution for reco PV track and reco muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PUtrk_Sig_EB",
-                                                "dtSig distribution for reco PU track and reco muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_PUtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PUtrk_Sig_EE",
-                                                "dtSig distribution for reco PU track and reco muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PUtrk_Bkg_EB",
-                                                "dtSig distribution for reco PU track and reco muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_reco_PUtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_PUtrk_Bkg_EE",
-                                                "dtSig distribution for reco PU track and reco muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  // FIXME the name of histograms below need to be changed (it is not about signif)
-  meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Sig_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_reco_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Sig_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Bkg_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_reco_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_faketrk_Bkg_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Sig_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_reco_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Sig_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Bkg_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_reco_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_reco_without_tErr_Bkg_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-
-  meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PVtrk_Sig_EB",
-                                                "dtSig distribution for sim PV track and sim muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_PVtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PVtrk_Sig_EE",
-                                                "dtSig distribution for sim PV track and sim muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PVtrk_Bkg_EB",
-                                                "dtSig distribution for sim PV track and sim muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_PVtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PVtrk_Bkg_EE",
-                                                "dtSig distribution for sim PV track and sim muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PUtrk_Sig_EB",
-                                                "dtSig distribution for sim PU track and sim muon - Signal Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_PUtrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PUtrk_Sig_EE",
-                                                "dtSig distribution for sim PU track and sim muon - Signal Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PUtrk_Bkg_EB",
-                                                "dtSig distribution for sim PU track and sim muon - Background Barrel;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  meMuonISO_dtSig_PV_trk_sim_PUtrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_PUtrk_Bkg_EE",
-                                                "dtSig distribution for sim PU track and sim muon - Background Endcap;#sigma;Counts",
-                                                10,
-                                                0,
-                                                10);
-  // FIXME the name of histograms below need to be changed (it is not about signif)
-  meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Sig_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_sim_faketrk_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Sig_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Bkg_EB",
-                                                "check whether it is a fake track or not - 1: fake track - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_sim_faketrk_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_faketrk_Bkg_EE",
-                                                "check whether it is a fake track or not - 1: fake track - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Sig_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_sim_without_tErr_Sig_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Sig_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Signal Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EB_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Bkg_EB",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Barrel;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-  meMuonISO_dtSig_PV_trk_sim_without_tErr_Bkg_EE_ = ibook.book1D("Muon_Iso_dtSig_PV_track_sim_without_tErr_Bkg_EE",
-                                                "check on tracks not having error of time - 1: not having error of time - Background Endcap;#sigma;Counts",
-                                                2,
-                                                0,
-                                                2);
-
-
-
-
-
+      "Muon_Iso_track_type_Bkg_EE", "Check the type of tracks (from PV=0, from PU=1, fake=2, from SV=3) - Background Endcap", 4, 0, 4);
 
   meMuonISO_Nmuons_Sig_ = ibook.book1D("Muon_Iso_Nmuons_Sig",
                                                 "Number of muons after basic "
@@ -7774,7 +6997,6 @@ void MtdMuonIsoValidation::fillDescriptions(edm::ConfigurationDescriptions& desc
   desc.add<double>("trackMinimumEta", 1.5);
   desc.add<double>("trackMaximumEta", 3.2);
   desc.add<double>("rel_iso_cut", 0.08);
-  //desc.add<bool>("optionTrackMatchToPV", true);
   desc.add<bool>("optionTrackMatchToPV", false);
   //desc.add<bool>("option_dtToTrack", false);  // default is dt with track, if false will do dt to vertex
   desc.add<bool>("option_dtToTrack", true);  // default is dt with track, if false will do dt to vertex
@@ -7790,16 +7012,15 @@ void MtdMuonIsoValidation::fillDescriptions(edm::ConfigurationDescriptions& desc
 //  desc.add<double>("min_strip_cut", 0.01);
   desc.add<double>("min_track_mtd_mva_cut", 0.5);
 
-  // test
+  // for track definition
   desc.add<edm::InputTag>("offlineBS", edm::InputTag("offlineBeamSpot"));
   desc.add<edm::InputTag>("SimTag", edm::InputTag("mix", "MergedTrackTruth"));
   desc.add<edm::InputTag>("sigmat0SafePID", edm::InputTag("tofPID:sigmat0safe"));
-  // test end
 
   descriptions.add("mtdMuonIsoValid", desc);
 }
 
-// test
+// for track definition. it is unnecessary.
 void MtdMuonIsoValidation::printSimVtxRecoVtxInfo(
     const struct MtdMuonIsoValidation::simPrimaryVertex& simpVtx,
     const struct MtdMuonIsoValidation::recoPrimaryVertex& recopVtx) {
@@ -7825,7 +7046,6 @@ void MtdMuonIsoValidation::printSimVtxRecoVtxInfo(
         << "  eta =" << std::setw(6) << std::setprecision(2) << (*iTP)->eta();
   }
 }
-// test end
 
 DEFINE_FWK_MODULE(MtdMuonIsoValidation);
 
