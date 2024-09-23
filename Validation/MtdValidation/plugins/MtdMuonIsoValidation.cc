@@ -148,21 +148,34 @@ private:
   int run_;
   int event_;
 
-  std::vector<float> muon_pt_, muon_time_, muon_time_err_, muon_time_err_i_, muon_mva_, muon_PVweight_;
-  std::vector<int> muon_mother_pdgId_, muon_status_;
+  std::vector<float> muon_pt_, muon_eta_, muon_phi_;
+  std::vector<float> muon_pv_dz_, muon_pv_dxy_;
+  std::vector<float> muon_time_, muon_time_err_, muon_time_err_i_, muon_mva_, muon_PVweight_;
+  std::vector<float> muon_time_sim_;
+  std::vector<int> muon_mother_pdgId_, muon_status_, muon_mother_legacy_;
   std::vector<bool> muon_prompt_, muon_isBarrel_;
   std::vector<float> vtx_time_, vtx_time_err_;
+  std::vector<float> muon_iso_, muon_rel_iso_;
+  std::vector<float> muon_vz_, muon_dz_, muon_dxy_;
+  std::vector<bool> muon_isMuon_, muon_isPFMuon_, muon_isGlobalMuon_, muon_isTrackerMuon_, muon_isStandAloneMuon_, muon_isCutBasedIdLoose_, muon_isLooseMuon_;
 
+  int nvertex_;
+  float vtx_z0_, beamspot_z0_;
+
+  std::vector<int> ntrack_;
   std::vector<std::vector<int>> track_type_;
-  std::vector<std::vector<float>> track_pt_, track_time_, track_time_err_, track_time_err_i_, track_mva_, track_PVweight_;
+  std::vector<std::vector<float>> track_pt_, track_eta_, track_phi_, track_charge_;
+  std::vector<std::vector<float>> track_time_, track_time_err_, track_time_err_i_, track_mva_, track_PVweight_;
+  std::vector<std::vector<float>> track_time_sim_;
   std::vector<std::vector<float>> dtsig_muon_track_, dtsig_vtx_track_;
   std::vector<std::vector<int>> track_bx_, track_evtId_;
-  std::vector<std::vector<bool>> selectedVtxMatching_, selectedLV_, match_vtx_reco2sim_, match_vtx_sim2reco_;
+  std::vector<std::vector<bool>> selectedVtxMatching_, selectedLV_, match_vtx_reco2sim_, match_vtx_sim2reco_, track_genMatched_;
+  std::vector<std::vector<float>> track_pv_dz_, track_pv_dxy_, track_dz_, track_dxy_, track_vz_;
 
   int vtx_index_;
   int recovtx_sim_, simvtx_reco_, simvtx_bx_, simvtx_evtId_;
-  float simvtx_pt_, simvtx_ptsq_, recovtx_pt_, recovtx_ptsq_;
-  int simvtx_nGenTrk_, simvtx_num_matched_reco_tracks_, recovtx_nRecoTrk_, recovtx_num_matched_sim_tracks_;
+  float simvtx_pt_, simvtx_ptsq_, recovtx_pt_, recovtx_ptsq_, simvtx_time_;
+  int simvtx_nGenTrk_, simvtx_num_matched_reco_tracks_, recovtx_nRecoTrk_, recovtx_num_matched_sim_tracks_, recovtx_original_index_;
 
 
   // for track definition
@@ -1346,49 +1359,86 @@ MtdMuonIsoValidation::MtdMuonIsoValidation(const edm::ParameterSet& iConfig)
 
   // for ntuple
   tree_ = fs_->make<TTree>("muonIso", "muonIso");
-  tree_->Branch("run_",			&run_);
-  tree_->Branch("event_",		&event_);
-  tree_->Branch("track_type_",	        &track_type_);
-  tree_->Branch("muon_pt_",		&muon_pt_);
-  tree_->Branch("track_pt_",		&track_pt_);
-  tree_->Branch("muon_time_",		&muon_time_);
-  tree_->Branch("vtx_time_",		&vtx_time_);
-  tree_->Branch("track_time_",		&track_time_);
-  tree_->Branch("dtsig_muon_track_",	&dtsig_muon_track_);
-  tree_->Branch("dtsig_vtx_track_",	&dtsig_vtx_track_);
-  tree_->Branch("muon_PVweight_",	&muon_PVweight_);
-  tree_->Branch("track_PVweight_",	&track_PVweight_);
-  tree_->Branch("muon_time_err_",	&muon_time_err_);
-  tree_->Branch("vtx_time_err_",	&vtx_time_err_);
-  tree_->Branch("track_time_err_",	&track_time_err_);
-  tree_->Branch("muon_prompt_",		&muon_prompt_);
-  tree_->Branch("muon_isBarrel_",	&muon_isBarrel_);
-  tree_->Branch("muon_status_",	        &muon_status_);
-  tree_->Branch("track_bx_",		&track_bx_);
-  tree_->Branch("track_evtId_",		&track_evtId_);
-  tree_->Branch("muon_mother_pdgId_",	&muon_mother_pdgId_);
-  tree_->Branch("muon_mva_",		&muon_mva_);
-  tree_->Branch("track_mva_",		&track_mva_);
-  tree_->Branch("muon_time_err_i_",	&muon_time_err_i_);
-  tree_->Branch("track_time_err_i_",	&track_time_err_i_);
-
-  tree_->Branch("vtx_index_",		&vtx_index_);
-  tree_->Branch("recovtx_sim_",		&recovtx_sim_);
-  tree_->Branch("simvtx_reco_",		&simvtx_reco_);
-  tree_->Branch("simvtx_bx_",		&simvtx_bx_);
-  tree_->Branch("simvtx_evtId_",	&simvtx_evtId_);
-  tree_->Branch("selectedVtxMatching_",	&selectedVtxMatching_);
-  tree_->Branch("selectedLV_",		&selectedLV_);
-  tree_->Branch("match_vtx_reco2sim_",	&match_vtx_reco2sim_);
-  tree_->Branch("match_vtx_sim2reco_",	&match_vtx_sim2reco_);
-  tree_->Branch("simvtx_pt_",		&simvtx_pt_);
-  tree_->Branch("simvtx_ptsq_",		&simvtx_ptsq_);
-  tree_->Branch("simvtx_nGenTrk_",	&simvtx_nGenTrk_);
-  tree_->Branch("simvtx_num_matched_reco_tracks_", &simvtx_num_matched_reco_tracks_);
-  tree_->Branch("recovtx_pt_",		&recovtx_pt_);
-  tree_->Branch("recovtx_ptsq_",	&recovtx_ptsq_);
-  tree_->Branch("recovtx_nRecoTrk_",	&recovtx_nRecoTrk_);
-  tree_->Branch("recovtx_num_matched_sim_tracks_", &recovtx_num_matched_sim_tracks_);
+  tree_->Branch("run_",			   		&run_);
+  tree_->Branch("event_",		   		&event_);
+    // muon
+  tree_->Branch("muon_pt_",		   		&muon_pt_);
+  tree_->Branch("muon_eta_",		   		&muon_eta_);
+  tree_->Branch("muon_phi_",		   		&muon_phi_);
+  tree_->Branch("muon_mva_",		   		&muon_mva_);
+  tree_->Branch("muon_time_",		   		&muon_time_);
+  tree_->Branch("muon_time_err_i_",	   		&muon_time_err_i_);
+  tree_->Branch("muon_time_err_",	   		&muon_time_err_);
+  tree_->Branch("muon_prompt_",		   		&muon_prompt_);
+  tree_->Branch("muon_isBarrel_",	   		&muon_isBarrel_);
+  tree_->Branch("muon_status_",	           		&muon_status_);
+  tree_->Branch("muon_PVweight_",	   		&muon_PVweight_);
+  tree_->Branch("muon_pv_dz_",		   		&muon_pv_dz_);
+  tree_->Branch("muon_pv_dxy_",		   		&muon_pv_dxy_);
+  tree_->Branch("muon_vz_",		   		&muon_vz_);
+  tree_->Branch("muon_dz_",		   		&muon_dz_);
+  tree_->Branch("muon_dxy_",		   		&muon_dxy_);
+  tree_->Branch("muon_isMuon_",            		&muon_isMuon_);
+  tree_->Branch("muon_isPFMuon_",          		&muon_isPFMuon_);
+  tree_->Branch("muon_isGlobalMuon_",      		&muon_isGlobalMuon_);
+  tree_->Branch("muon_isTrackerMuon_",     		&muon_isTrackerMuon_);
+  tree_->Branch("muon_isStandAloneMuon_",  		&muon_isStandAloneMuon_);
+  tree_->Branch("muon_isCutBasedIdLoose_", 		&muon_isCutBasedIdLoose_);
+  tree_->Branch("muon_isLooseMuon_",       		&muon_isLooseMuon_);
+  tree_->Branch("muon_mother_pdgId_",	   		&muon_mother_pdgId_);
+  tree_->Branch("muon_mother_legacy_",	   		&muon_mother_legacy_);
+  tree_->Branch("muon_time_sim_",	   		&muon_time_sim_);
+    // track
+  tree_->Branch("track_pt_",		   		&track_pt_);
+  tree_->Branch("track_eta_",		   		&track_eta_);
+  tree_->Branch("track_phi_",		   		&track_phi_);
+  tree_->Branch("track_mva_",		   		&track_mva_);
+  tree_->Branch("track_time_",		   		&track_time_);
+  tree_->Branch("track_time_err_i_",	   		&track_time_err_i_);
+  tree_->Branch("track_time_err_",	   		&track_time_err_);
+  tree_->Branch("track_genMatched_",	   		&track_genMatched_);
+  tree_->Branch("track_PVweight_",	   		&track_PVweight_);
+  tree_->Branch("track_pv_dz_",		   		&track_pv_dz_);
+  tree_->Branch("track_pv_dxy_",	   		&track_pv_dxy_);
+  tree_->Branch("track_vz_",		   		&track_vz_);
+  tree_->Branch("track_dz_",		   		&track_dz_);
+  tree_->Branch("track_dxy_",		   		&track_dxy_);
+  tree_->Branch("track_bx_",		   		&track_bx_);
+  tree_->Branch("track_evtId_",		   		&track_evtId_);
+  tree_->Branch("track_type_",	           		&track_type_);
+  tree_->Branch("track_charge_",	   		&track_charge_);
+  tree_->Branch("ntrack_",		   		&ntrack_);
+  tree_->Branch("track_time_sim_",	   		&track_time_sim_);
+    // vertex
+  tree_->Branch("vtx_time_",		   		&vtx_time_);
+  tree_->Branch("vtx_time_err_",	   		&vtx_time_err_);
+  tree_->Branch("nvertex_",		   		&nvertex_);
+  tree_->Branch("vtx_z0_",		   		&vtx_z0_);
+  tree_->Branch("beamspot_z0_",		   		&beamspot_z0_);
+  tree_->Branch("vtx_index_",		   		&vtx_index_);
+  tree_->Branch("recovtx_sim_",		   		&recovtx_sim_);
+  tree_->Branch("simvtx_reco_",		   		&simvtx_reco_);
+  tree_->Branch("simvtx_bx_",		   		&simvtx_bx_);
+  tree_->Branch("simvtx_evtId_",	   		&simvtx_evtId_);
+  tree_->Branch("simvtx_pt_",		   		&simvtx_pt_);
+  tree_->Branch("simvtx_ptsq_",		   		&simvtx_ptsq_);
+  tree_->Branch("recovtx_pt_",		   		&recovtx_pt_);
+  tree_->Branch("recovtx_ptsq_",	   		&recovtx_ptsq_);
+  tree_->Branch("simvtx_nGenTrk_",	   		&simvtx_nGenTrk_);
+  tree_->Branch("simvtx_num_matched_reco_tracks_", 	&simvtx_num_matched_reco_tracks_);
+  tree_->Branch("recovtx_nRecoTrk_",	   		&recovtx_nRecoTrk_);
+  tree_->Branch("recovtx_num_matched_sim_tracks_", 	&recovtx_num_matched_sim_tracks_);
+  tree_->Branch("recovtx_original_index_", 		&recovtx_original_index_);
+  tree_->Branch("selectedVtxMatching_",	   		&selectedVtxMatching_);
+  tree_->Branch("selectedLV_",		   		&selectedLV_);
+  tree_->Branch("match_vtx_reco2sim_",	   		&match_vtx_reco2sim_);
+  tree_->Branch("match_vtx_sim2reco_",	   		&match_vtx_sim2reco_);
+  tree_->Branch("simvtx_time_",	           		&simvtx_time_);
+    // for isolation
+  tree_->Branch("dtsig_muon_track_",	   		&dtsig_muon_track_);
+  tree_->Branch("dtsig_vtx_track_",	   		&dtsig_vtx_track_);
+  tree_->Branch("muon_iso_",		   		&muon_iso_);
+  tree_->Branch("muon_rel_iso_",	   		&muon_rel_iso_);
 }
 
 MtdMuonIsoValidation::~MtdMuonIsoValidation() {}
@@ -1786,23 +1836,33 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   // for ntuple
   run_   = iEvent.id().run();
   event_ = iEvent.id().event();
-
-  track_type_.clear();
-  muon_pt_.clear(), track_pt_.clear();
-  muon_time_.clear(), vtx_time_.clear(), track_time_.clear();
-  dtsig_muon_track_.clear(), dtsig_vtx_track_.clear();
-  muon_PVweight_.clear(), track_PVweight_.clear();
-  muon_time_err_.clear(), vtx_time_err_.clear(), track_time_err_.clear();
-  muon_prompt_.clear(), muon_isBarrel_.clear(), muon_status_.clear();
+    // muon
+  muon_pt_.clear(), muon_eta_.clear(), muon_phi_.clear(), muon_mva_.clear();
+  muon_time_.clear(), muon_time_err_i_.clear(), muon_time_err_.clear();
+  muon_prompt_.clear(), muon_isBarrel_.clear(), muon_status_.clear(), muon_PVweight_.clear();
+  muon_pv_dz_.clear(), muon_pv_dxy_.clear(), muon_vz_.clear(), muon_dz_.clear(), muon_dxy_.clear();
+  muon_isMuon_.clear(), muon_isPFMuon_.clear(), muon_isGlobalMuon_.clear(), muon_isTrackerMuon_.clear(), muon_isStandAloneMuon_.clear(), muon_isCutBasedIdLoose_.clear(), muon_isLooseMuon_.clear();
+  muon_mother_pdgId_.clear(), muon_mother_legacy_.clear(), muon_time_sim_.clear();
+    // track
+  track_pt_.clear(), track_eta_.clear(), track_phi_.clear(), track_mva_.clear();
+  track_time_.clear(), track_time_err_i_.clear(), track_time_err_.clear();
+  track_genMatched_.clear(), track_PVweight_.clear();
+  track_pv_dz_.clear(), track_pv_dxy_.clear(), track_vz_.clear(), track_dz_.clear(), track_dxy_.clear();
   track_bx_.clear(), track_evtId_.clear();
-  muon_mother_pdgId_.clear();
-  muon_mva_.clear(), track_mva_.clear();
-  muon_time_err_i_.clear(), track_time_err_i_.clear();
-  selectedVtxMatching_.clear(), selectedLV_.clear(), match_vtx_reco2sim_.clear(), match_vtx_sim2reco_.clear();
-
+  track_type_.clear(), track_charge_.clear(), ntrack_.clear(), track_time_sim_.clear();
+    // vertex
+  vtx_time_.clear(), vtx_time_err_.clear();
+  nvertex_=0, vtx_z0_=0, beamspot_z0_=0;
   vtx_index_=-999, recovtx_sim_=-999, simvtx_reco_=-999, simvtx_bx_=-999, simvtx_evtId_=-99;
   simvtx_pt_=-999., simvtx_ptsq_=-999., recovtx_pt_=-999., recovtx_ptsq_=-999.;
-  simvtx_nGenTrk_=-999, simvtx_num_matched_reco_tracks_=-999, recovtx_nRecoTrk_=-999, recovtx_num_matched_sim_tracks_=-999;
+  simvtx_nGenTrk_=-999, simvtx_num_matched_reco_tracks_=-999, recovtx_nRecoTrk_=-999, recovtx_num_matched_sim_tracks_=-999, recovtx_original_index_=-999;
+  selectedVtxMatching_.clear(), selectedLV_.clear(), match_vtx_reco2sim_.clear(), match_vtx_sim2reco_.clear();
+  simvtx_time_=-999;
+    // for isolation
+  dtsig_muon_track_.clear(), dtsig_vtx_track_.clear();
+  muon_iso_.clear(), muon_rel_iso_.clear();
+
+
 
 
   auto GenRecTrackHandle = iEvent.getHandle(GenRecTrackToken_);
@@ -1824,9 +1884,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   // Create muon collection
   std::vector<reco::Muon> localMuonCollection;
   for (const auto& mu_ : muColl) {
-    if(mu_.passed(reco::Muon::CutBasedIdLoose)) {     // loose ID
+//    if(mu_.passed(reco::Muon::CutBasedIdLoose)) {     // loose ID
       localMuonCollection.emplace_back(mu_);
-    }
+//    }
   }
   localMuonCollection.shrink_to_fit();
 
@@ -1842,6 +1902,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   reco::Vertex Vtx_chosen;
   unsigned int vtx_index=0;
   // This part has to be included, because in ~1% of the events, the "good" vertex is the 1st one not the 0th one in the collection
+  nvertex_ = vertices.size();
   for (int iVtx = 0; iVtx < (int)vertices.size(); iVtx++) {
     const reco::Vertex& vertex = vertices.at(iVtx);
     if (!vertex.isFake() && vertex.ndof() >= 4) {
@@ -1851,6 +1912,14 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
     }
   }
   vtx_index_ = vtx_index;
+  vtx_z0_ = Vtx_chosen.z();
+//  cout << endl;
+//  cout << "vtx size: " << vertices.size() << endl;
+//  cout << endl;
+
+
+//  cout << "Vtx_chosen.z(): " << Vtx_chosen.z() << endl;
+//  cout << endl;
 
   // for track definition
   edm::Handle<TrackingParticleCollection> TPCollectionH;
@@ -1869,6 +1938,10 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   if (!BeamSpotH.isValid())
     edm::LogWarning("MtdMuonIsoValidation") << "BeamSpotH is not valid";
 
+  beamspot_z0_ = BeamSpotH->z0();
+//  cout << "BeamSpotH->z0(): " << BeamSpotH->z0() << endl;
+//  cout << endl;
+
   std::vector<simPrimaryVertex> simpv; // a list of simulated MC PVs
   simpv = getSimPVs(TVCollectionH);
 
@@ -1885,6 +1958,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
   recovtx_ptsq_ = recopv.at(vtx_index).ptsq;
   recovtx_nRecoTrk_ = recopv.at(vtx_index).nRecoTrk;
   recovtx_num_matched_sim_tracks_ = recopv.at(vtx_index).num_matched_sim_tracks;
+  recovtx_original_index_ = recopv.at(vtx_index).OriginalIndex;
 
   for (unsigned int iev=0; iev<simpv.size(); iev++) {
     if (recopv.at(vtx_index).sim == iev) {
@@ -1896,9 +1970,10 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       simvtx_ptsq_ = simpv.at(iev).ptsq;
       simvtx_nGenTrk_ = simpv.at(iev).nGenTrk;
       simvtx_num_matched_reco_tracks_ = simpv.at(iev).num_matched_reco_tracks;
+      simvtx_time_ = simpv.at(iev).t;
     }
   }
- 
+
   auto pdgCheck = [](int pdg) {
     pdg = std::abs(pdg);
     return (pdg == 23 or pdg == 24 or pdg == 15 or pdg == 13);
@@ -1909,12 +1984,27 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
   for (const auto& muon : localMuonCollection) {
 
+    if (muon.track().isNull()) continue;
+
+//    cout << "isMuon:           " << muon.isMuon() << endl;
+//    cout << "isPFMuon:         " << muon.isPFMuon() << endl;
+//    cout << "isGlobalMuon:     " << muon.isGlobalMuon() << endl;
+//    cout << "isTrackerMuon:    " << muon.isTrackerMuon() << endl;
+//    cout << "isStandAloneMuon: " << muon.isStandAloneMuon() << endl;
+//    cout << "CutBasedIdLoose:  " << muon.passed(reco::Muon::CutBasedIdLoose) << endl;
+//    cout << "isLooseMuon:      " << muon::isLooseMuon(muon) << endl;
+//    cout << "isLooseMuon2:     " << (muon.isPFMuon() && (muon.isGlobalMuon() || muon.isTrackerMuon())) << endl;
+
     // for ntuple
     std::vector<int> track_type_comp;
-    std::vector<float> track_pt_comp, track_time_comp, track_time_err_comp, track_time_err_i_comp, track_mva_comp, track_PVweight_comp;
+    std::vector<float> track_pt_comp, track_eta_comp, track_phi_comp, track_charge_comp;
+    std::vector<float> track_time_comp, track_time_err_comp, track_time_err_i_comp, track_mva_comp, track_PVweight_comp;
+    std::vector<float> track_time_sim_comp;
     std::vector<float> dtsig_muon_track_comp, dtsig_vtx_track_comp;
     std::vector<int> track_bx_comp, track_evtId_comp;
     std::vector<bool> selectedVtxMatching_comp, selectedLV_comp, match_vtx_reco2sim_comp, match_vtx_sim2reco_comp;
+    std::vector<float> track_pv_dz_comp, track_pv_dxy_comp, track_vz_comp, track_dz_comp, track_dxy_comp;
+    std::vector<bool> track_genMatched_comp;
 
 
     bool muon_Prompt = false;
@@ -1939,9 +2029,16 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
     }
     // test end
     
-    if (muon.track()->pt() < 10 || std::abs(muon.track()->eta()) > 2.4 || muon_track_source_dz > max_dz_vtx_cut || muon_track_source_dxy > max_dxy_vtx_cut)
-      continue;
+//    if (muon.track()->pt() < 10 || std::abs(muon.track()->eta()) > 2.4 || muon_track_source_dz > max_dz_vtx_cut || muon_track_source_dxy > max_dxy_vtx_cut)
+    if (muon.track()->pt() < 10 || std::abs(muon.track()->eta()) > 2.4) continue;
 
+//      cout << "muon_pt_: " << muon.track()->pt() << endl;
+//      cout << "[muon]" << endl;
+//	cout << "dz()        : " << muon.track()->dz() << endl;
+//	cout << "dz(vtx)     : " << muon.track()->dz(Vtx_chosen.position()) << endl;
+//	cout << "dz(BeamSpot): " << muon.track()->dz(BeamSpotH->position()) << endl;
+//	cout << "vz()        : " << muon.track()->vz() << endl;
+//	cout << endl;
     bool Barrel_muon = 0;
     if(std::abs(muon.track()->eta()) < 1.5) Barrel_muon = 1;
     const reco::TrackRef muon_SigTrkRef = muon.track();
@@ -2075,6 +2172,7 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 
     // if we found a track-matching, we add MTD timing information for it
     if (muon_SigTrkRef.isNonnull()) {
+      int ntrk=0;
 
       // track pT/dz cuts
       float min_pt_cut = Barrel_muon ? min_pt_cut_EB : min_pt_cut_EE;
@@ -2104,7 +2202,25 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       }
       muon_time_err_i_.emplace_back(Sigmat0Pid[muon_SigTrkRef]);
 
-
+      /*
+      // test
+      const reco::TrackBaseRef trkrefb_test2(muon_SigTrkRef);
+      auto found_test2 = r2s_->find(trkrefb_test2);
+      if(found_test2 != r2s_->end()) {
+      cout << "(found_test2->val).size(): " << (found_test2->val).size() << endl;
+	for(unsigned int k=0; k<(found_test2->val).size(); k++) {
+	  const auto& tp_test2 = (found_test2->val)[k];
+	  cout << "[" << k << "] second" << tp_test2.second << ", status: " << tp_test2.first->status() << endl;
+	  cout << "(tp_test2.first->genParticles()).size(): " << (tp_test2.first->genParticles()).size() << endl;
+	  for(unsigned int p=0; p<(tp_test2.first->genParticles()).size(); p++) {
+	    const auto genParticle2 = *(tp_test2.first->genParticles()[p]);
+	    cout << "genParticle2.pdgId(): " << genParticle2.pdgId() << endl;
+	    if (genParticle2.mother() != nullptr) cout << "genParticle2.mother()->pdgId(): " << genParticle2.mother()->pdgId() << endl;
+	  }
+	}
+      }
+      // test end
+      // */
 
       muon_sigTrkTime = t0Pid[muon_SigTrkRef];
       muon_sigTrkMtdMva = mtdQualMVA[muon_SigTrkRef];
@@ -2115,13 +2231,28 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       muon_isBarrel_.emplace_back(Barrel_muon);
       muon_prompt_.emplace_back(muon_Prompt);
       muon_pt_.emplace_back(muon_SigTrkRef->pt());
+      muon_eta_.emplace_back(muon_SigTrkRef->eta());
+      muon_phi_.emplace_back(muon_SigTrkRef->phi());
+      muon_pv_dxy_.emplace_back(muon_track_source_dxy);
+      muon_pv_dz_.emplace_back(muon_track_source_dz);
       muon_time_.emplace_back(muon_sigTrkTime);
       muon_time_err_.emplace_back(muon_sigTrkTimeErr);
+      muon_time_sim_.emplace_back(tsim_muon);
       muon_PVweight_.emplace_back(Vtx_chosen.trackWeight(muon_SigTrkRef));
       vtx_time_.emplace_back(Vtx_chosen.t());
       vtx_time_err_.emplace_back(Vtx_chosen.tError());
       muon_mva_.emplace_back(mtdQualMVA[muon_SigTrkRef]);
       muon_status_.emplace_back(muon_status);
+      muon_vz_.emplace_back(muon.track()->vz());
+      muon_dz_.emplace_back(muon.track()->dz());
+      muon_dxy_.emplace_back(muon.track()->dxy());
+      muon_isMuon_.emplace_back(muon.isMuon());
+      muon_isPFMuon_.emplace_back(muon.isPFMuon());
+      muon_isGlobalMuon_.emplace_back(muon.isGlobalMuon());
+      muon_isTrackerMuon_.emplace_back(muon.isTrackerMuon());
+      muon_isStandAloneMuon_.emplace_back(muon.isStandAloneMuon());
+      muon_isCutBasedIdLoose_.emplace_back(muon.passed(reco::Muon::CutBasedIdLoose));
+      muon_isLooseMuon_.emplace_back(muon::isLooseMuon(muon));
 
 
       meMuon_avg_error_SigTrk_check_->Fill(muon_sigTrkTimeErr);
@@ -2188,7 +2319,6 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       std::vector<double> rel_pT_sum_gen_MTD_significance{0, 0, 0};
 
 
-
       int general_index = 0;
 
       for (const auto& trackGen : *GenRecTrackHandle) {
@@ -2204,9 +2334,29 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           continue;
         }
 
-        if (std::abs(trackGen.vz() - muon.track()->vz()) > max_dz_cut) {
-          continue;
-        }
+	ntrk++;
+
+//	if(TMath::Abs(trackref_general->dz(Vtx_chosen.position())) - TMath::Abs((muon.track()->vz() - trackGen.vz())) >0.5) {
+//	  cout << "dz diff: " << TMath::Abs(trackref_general->dz(Vtx_chosen.position())) << endl;
+//	  cout << "vz diff: " << TMath::Abs(muon.track()->vz() - trackGen.vz()) << endl;
+//	  cout << "diff   : " << TMath::Abs(trackref_general->dz(Vtx_chosen.position())) - TMath::Abs((muon.track()->vz() - trackGen.vz())) << endl;
+//	  cout << endl;
+//	}
+//        if (std::abs(trackGen.vz() - muon.track()->vz()) > max_dz_cut) {
+//          continue;
+//        }
+
+
+//	cout << "[track]" << endl;
+//	cout << "trackref_general->dz()        : " << trackref_general->dz() << endl;
+//	cout << "trackGen.dz()                 : " << trackGen.dz() << endl;
+//	cout << "trackref_general->dz(vtx)     : " << trackref_general->dz(Vtx_chosen.position()) << endl;
+//	cout << "trackGen.dz(vtx)              : " << trackGen.dz(Vtx_chosen.position()) << endl;
+//	cout << "trackref_general->dz(BeamSpot): " << trackref_general->dz(BeamSpotH->position()) << endl;
+//	cout << "trackGen.dz(BeamSpot)         : " << trackGen.dz(BeamSpotH->position()) << endl;
+//	cout << "trackref_general->vz()        : " << trackref_general->vz() << endl;
+//	cout << "trackGen.vz()                 : " << trackGen.vz() << endl;
+//	cout << endl;
 
         // cut for general track matching to PV
         if (track_match_PV_) {
@@ -2446,16 +2596,32 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
 	    }
 	  }
   	}
+	if(check_match_vtx_reco2sim==false) {
+  	  track_bx_comp.emplace_back(-999);
+  	  track_evtId_comp.emplace_back(-999);
+	  track_type_comp.emplace_back(-999);
+	}
 	match_vtx_reco2sim_comp.emplace_back(check_match_vtx_reco2sim);
 	match_vtx_sim2reco_comp.emplace_back(check_match_vtx_sim2reco);
 	selectedVtxMatching_comp.emplace_back(check_selectedVtxMatching);
 	selectedLV_comp.emplace_back(check_selectedLV);
 	
 	track_pt_comp.emplace_back(trackGen.pt());
+	track_eta_comp.emplace_back(trackGen.eta());
+	track_phi_comp.emplace_back(trackGen.phi());
+	track_charge_comp.emplace_back(trackGen.charge());
 	track_PVweight_comp.emplace_back(Vtx_chosen.trackWeight(trackref_general));
 	track_time_comp.emplace_back(TrkMTDTime);
 	track_time_err_comp.emplace_back(TrkMTDTimeErr);
+	track_time_sim_comp.emplace_back(tsim_trk);
 	track_mva_comp.emplace_back(mtdQualMVA[trackref_general]);
+	track_pv_dz_comp.emplace_back(trackref_general->dz(Vtx_chosen.position()));
+	track_pv_dxy_comp.emplace_back(trackref_general->dxy(Vtx_chosen.position()));
+	track_dz_comp.emplace_back(trackref_general->dz());
+	track_dxy_comp.emplace_back(trackref_general->dxy());
+	track_vz_comp.emplace_back(trackGen.vz());
+	track_genMatched_comp.emplace_back(genMatched);
+
 	if (TrkMTDTimeErr > 0 && muon_sigTrkTimeErr > 0) {
 	  dtsig_muon_track_comp.emplace_back(std::abs(TrkMTDTime - muon_sigTrkTime) / std::sqrt(TrkMTDTimeErr * TrkMTDTimeErr + muon_sigTrkTimeErr * muon_sigTrkTimeErr));
 	}
@@ -2783,6 +2949,9 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
       }  // End of track loop
 
       rel_pT_sum_noMTD = pT_sum_noMTD / muon.track()->pt();  // rel_ch_iso calculation
+      // for ntuple
+      muon_iso_.emplace_back(pT_sum_noMTD);
+      muon_rel_iso_.emplace_back(rel_pT_sum_noMTD);
 
       // muon_sim_pt is initialized to -1. It is necessary to apply "muon_sim_pt!=-1" cut.
       if (optionalPlots_) {
@@ -3080,14 +3249,19 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
           }
         }
       }
+    ntrack_.emplace_back(ntrk);
     }  // muon matched to a track
 
     // for ntuple
     track_type_.emplace_back(track_type_comp);
     track_pt_.emplace_back(track_pt_comp);
+    track_eta_.emplace_back(track_eta_comp);
+    track_phi_.emplace_back(track_phi_comp);
+    track_charge_.emplace_back(track_charge_comp);
     track_time_.emplace_back(track_time_comp);
     track_time_err_.emplace_back(track_time_err_comp);
     track_time_err_i_.emplace_back(track_time_err_i_comp);
+    track_time_sim_.emplace_back(track_time_sim_comp);
     track_mva_.emplace_back(track_mva_comp);
     track_PVweight_.emplace_back(track_PVweight_comp);
     dtsig_muon_track_.emplace_back(dtsig_muon_track_comp);
@@ -3098,6 +3272,12 @@ void MtdMuonIsoValidation::analyze(const edm::Event& iEvent, const edm::EventSet
     selectedLV_.emplace_back(selectedLV_comp);
     match_vtx_reco2sim_.emplace_back(match_vtx_reco2sim_comp);
     match_vtx_sim2reco_.emplace_back(match_vtx_sim2reco_comp);
+    track_pv_dz_.emplace_back(track_pv_dz_comp);
+    track_pv_dxy_.emplace_back(track_pv_dxy_comp);
+    track_dz_.emplace_back(track_dz_comp);
+    track_dxy_.emplace_back(track_dxy_comp);
+    track_vz_.emplace_back(track_vz_comp);
+    track_genMatched_.emplace_back(track_genMatched_comp);
 
   }    // muon collection inside single event
   tree_->Fill();
